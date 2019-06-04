@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title font-weight-bold">Historico de solicitudes</h4>
+      </div>
+      <!--      <p-table #dt1 [columns]="cols" [value]="historicos" [paginator]="true" [rows]="10" dataKey="vin" [resizableColumns]="true" [reorderableColumns]="true"-->
+      <!--               selectionMode="single" [(selection)]="historico" stateStorage="session" stateKey="statedemo-session">-->
+      <!--        <ng-template pTemplate="header" let-columns>-->
+      <!--          <tr>-->
+      <!--            <th *ngFor="let col of columns" [pSortableColumn]="col.field" pResizableColumn pReorderableColumn>-->
+      <!--              {{col.header}}-->
+      <!--              <p-sortIcon [field]="col.field"></p-sortIcon>-->
+      <!--            </th>-->
+      <!--          </tr>-->
+      <!--          <tr>-->
+      <!--            <th *ngFor="let col of columns" [ngSwitch]="col.field" class="ui-fluid">-->
+      <!--              <input pInputText type="text" (input)="dt1.filter($event.target.value, col.field, col.filterMatchMode)" [value]="dt1.filters[col.field]?.value">-->
+      <!--            </th>-->
+      <!--          </tr>-->
+      <!--        </ng-template>-->
+      <!--        <ng-template pTemplate="body" let-rowData let-columns="columns">-->
+      <!--          <tr [pSelectableRow]="rowData">-->
+      <!--            <td *ngFor="let col of columns">-->
+      <!--              {{rowData[col.field]}}-->
+      <!--            </td>-->
+      <!--          </tr>-->
+      <!--        </ng-template>-->
+      <!--      </p-table>-->
+      <p-dataTable [value]="historicos.data" [rows]="10" [paginator]="true" [globalFilter]="gb" [sortOrder]="1" [sortField]="fechaRegistro"
+                   emptyMessage="No se encontraron registros">
+        <p-column [style]="{'width':'5%'}" header="N°">
+          <ng-template let-index="rowIndex" pTemplate type="body">
+            <span>{{index + 1}}</span>
+          </ng-template>
+        </p-column>
+        <p-column  [filter]="true" filterPlaceholder="Fecha registro" [sortable]="true" >
+          <!--<ng-template let-col let-car="rowData" pTemplate="body">
+            {{data[col.field]|date:'yyyy/MM/dd' }}
+          </ng-template>-->
+          <!--<ng-template let-col let-transaction="rowData" pTemplate="body">
+            {{fechaRegistro|date:'yyyy/MM/dd'}}
+          </ng-template>-->
+          <ng-template let-row="rowData" pTemplate="body">
+            {{row.fechaRegistro | date:'dd/MM/yyyy hh:mm:ss'}}
+          </ng-template>
+        </p-column>
+        <p-column field="nomSolic" header="Solicitante" [filter]="true" filterPlaceholder="Solicitante"></p-column>
+        <!--        <p-column field="nomAsignado" header="Asignado" [filter]="true" filterPlaceholder="Asignado"></p-column>-->
+        <p-column field="tipoCaso" header="Tipo de Caso" [filter]="true" filterPlaceholder="Tipo de Caso"></p-column>
+        <p-column field="hojaRuta" header="Hoja de Ruta" [filter]="true" filterPlaceholder="Hoja de Ruta"></p-column>
+        <p-column field="tipoSolic" header="Tipo Solicitud" [filter]="true"
+                  filterPlaceholder="Tipo Solicitud"></p-column>
+
+
+        <!--<div class="btn-group" dropdown>
+                <button dropdownToggle type="button" class="btn btn-primary btn-sm dropdown-toggle">
+                  Acción <span class="caret"></span>
+                </button>
+
+                <ul *dropdownMenu class="dropdown-menu" role="menu">
+                  <li role="menuitem"><a class="dropdown-item" (click)="ver(doc.id_individual)">Ver</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="deleteDoc(doc.id)">Eliminar</a></li>
+                </ul>
+              </div>&ndash;&gt;-->
+      </p-dataTable>
+    </div>
+  </div>
+</div>

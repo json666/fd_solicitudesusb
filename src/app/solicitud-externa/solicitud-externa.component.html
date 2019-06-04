@@ -1,0 +1,264 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+      <form novalidate>
+        <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+        <p class="card-description font-weight-bold">
+          Informacion de la Persona
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Hoja de ruta</label>
+              <div class="col-sm-9">
+                <!--<input type="text" class="form-control" placeholder="Nombres Solicitante" [(ngModel)]="solicitud.solicitante.nombre" name="nombre">-->
+                <span class="value">{{h_ruta}}</span>
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Cite Original</label>
+              <div class="col-sm-9">
+                <!--<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">-->
+                <span class="value">{{cite}}</span>
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+          <!--<div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">NumeroTramite Original</label>
+              <div class="col-sm-9">
+                &lt;!&ndash;<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">&ndash;&gt;
+                <span class="value">{{cite}}</span>
+                &lt;!&ndash;                       [(ngModel)]="solicitud.solicitante.materno">&ndash;&gt;
+              </div>
+            </div>
+          </div>-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nombres</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Nombres Solicitante" uppercase [maxlength]="30"
+                       [(ngModel)]="solicitudes.solicitante.nombre"
+                       name="nombre"> <!--formControlName="nombre" [formControl]="solicitudFrm.controls['solicitudes.solicitante.nombre']">-->
+                <!--                <app-control-messages [control]="solicitudFrm.controls['solicitudes.solicitante.nombre']"></app-control-messages>-->
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Ap. Paterno</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Apellido Paterno" uppercase [maxlength]="30"
+                       [(ngModel)]="solicitudes.solicitante.paterno"
+                       name="paterno">
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Ap. Materno</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Apellido Materno"  uppercase [maxlength]="30"
+                       [(ngModel)]="solicitudes.solicitante.materno" name="materno">
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Sexo</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="selTipoSexo"
+                        [(ngModel)]="solicitudes.solicitante.sexo">
+                  <option *ngFor="let obj of tipoGenero" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Documento de Identidad</label>
+              <div class="col-sm-9">
+                <input type="number"  maxlength="15"  min="0" required class="form-control" placeholder="Nro. de Documento"
+                       [(ngModel)]="solicitudes.solicitante.ci" name="ci">
+                <!--                       [(ngModel)]="solicitud.solicitante.ci">-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Documento</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="tipoDocumentoList"
+                        [(ngModel)]="solicitudes.solicitante.tipDoc">
+                  <option *ngFor="let obj of tipoDocumentoList" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nro. Telefono</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" pattern="[0-9]{10}" placeholder="Nro. Telefono"
+                       [(ngModel)]="solicitudes.solicitante.fono" name="telefono">
+                <!--                       [(ngModel)]="solicitud.solicitante.telefono" >-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nro. Celular</label>
+              <div class="col-sm-9">
+                <input type="number" class="form-control" pattern="[0-9]{10} "placeholder="Nro. Celular"
+                       [(ngModel)]="solicitudes.solicitante.fono1" name="celular">
+                <!--                       [(ngModel)]="solicitud.solicitante.celular" >-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Direccion</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Direccion" uppercase [maxlength]="250"
+                       [(ngModel)]="solicitudes.solicitante.direccion" name="direccion">
+                <!--                       [(ngModel)]="solicitud.solicitante.direccion" >-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Correo Electronico</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Correo Electronico"
+                       [(ngModel)]="solicitudes.solicitante.email" name="correo">
+                <!--                       [(ngModel)]="solicitud.solicitante.correo">-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Caso:</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="tipoDocumentoList"
+                        [(ngModel)]="solicitudes.caso">
+                  <option *ngFor="let obj of tipoCaso" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Edad:</label>
+              <div class="col-sm-9">
+                <input type="number" max="3" min="0" pattern="[0-9]{3}"class="form-control" placeholder="Edad"
+                       [(ngModel)]="solicitudes.solicitante.edad" name="edad">
+                <!--                       [(ngModel)]="solicitud.solicitante.celular" >-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title"></h4>
+              <p class="card-description"></p>
+              <ngb-accordion [closeOthers]="false" activeIds="static-7, static-8, static-9, static-10, static-11, static-12" class="accordion accordion-danger">
+                <ngb-panel id="static-7">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="">
+                      Requerimiento de Servicio
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio" uppercase [maxlength]="300"
+                              [(ngModel)]="solicitudes.solicitud.requerimiento" name="requerimiento"></textarea>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-8">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Informe de analisis de requerimiento
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="2" placeholder="Informe de analisis  de requerimiento" uppercase [maxlength]="300"
+                              [(ngModel)]="solicitudes.solicitud.analisis" name="analisis"></textarea>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-9">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Acciones y Recomendaciones
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="2" placeholder="Acciones y Recomendaciones" uppercase [maxlength]="300"
+                              [(ngModel)]="solicitudes.solicitud.recomendaciones" name="recomendaciones"></textarea>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-10">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Remision
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="2" placeholder="Remision" uppercase  [maxlength]="300"
+                              [(ngModel)]="solicitudes.solicitud.remision" name="remision"></textarea>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-11">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Observaciones
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="3" placeholder="Observaciones" uppercase [maxlength]="300"
+                              [(ngModel)]="solicitudes.solicitud.observaciones" name="observaciones"></textarea>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-12">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Informe de avance y conclusiones de servicio
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="3" placeholder="Informe de avance y conclusiones de servicio"
+                              [(ngModel)]="solicitudes.solicitud.conclusion" name="conclusion"></textarea>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success btn-fw" (click)="recibir()">Guardar</button>
+        <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading">
+  <app-loading-indicator></app-loading-indicator>
+</div>

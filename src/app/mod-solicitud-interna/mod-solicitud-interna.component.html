@@ -1,0 +1,179 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+      <form class="form-interno" novalidate>
+        <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+        <p class="card-description font-weight-bold">
+          Hoja de Ruta Administrativa
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Hoja de ruta</label>
+              <div class="col-sm-9">
+                <span class="value">{{regSolicitud.solicitud.hojaRuta}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Referencia:</label>
+              <div class="col-sm-9">
+                <span class="value">{{regSolicitud.solicitud.solicRef|uppercase}}</span>
+
+                <!--                <textarea class="form-control" id="referencia" rows="2" name="solicRef"-->
+                <!--                          [(ngModel)]="regSolicitud.solicitud.solicRef"></textarea>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Tipo Documento</label>
+              <div class="col-sm-7">
+                {{solicitudes.solicitud.tipDocSolicitud.des|uppercase}}
+                <!--<select class="form-control" name="selTipoDocumentoSoli"
+                        [(ngModel)]="solicitudes.solicitud.tipDocSolicitud">
+                  <option *ngFor="let obj of tipoDocumentoAccion" [ngValue]="obj">{{obj.des}}</option>
+                </select>-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Número Hojas</label>
+              <div class="col-sm-8">
+                {{regSolicitud.solicitud.persId}}
+                <!--                <input type="text" class="form-control" placeholder="Nro. Hojas"-->
+                <!--                       [(ngModel)]="regSolicitud.solicitud.persId"-->
+                <!--                       name="nroHojas">-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Tipo Acción</label>
+              <div class="col-sm-9">
+                {{solicitudes.solicitud.taccion.des|uppercase}}
+                <!--                <select class="form-control" name="selTipoTarea" [(ngModel)]="solicitudes.solicitud.taccion">-->
+                <!--                  <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des}}</option>-->
+                <!--                </select>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--        <div class="col-12 grid-margin">-->
+        <div class="col-lg-12 grid-margin">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Revisiones</h4>
+              <form class="form-interno" novalidate>
+                <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+                <p class="card-description">
+
+                </p>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-4 col-form-label">Estado:</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" name="desc"
+                                                         [(ngModel)]="revisiones.estado">
+                          <option *ngFor="let obj of listaEstados" [ngValue]="obj">{{obj.esolicDesc}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <!--<div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Unidad</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="selTipoTarea" (change)="cargarPersonas($event)">
+                          &lt;!&ndash;                          [(ngModel)]="solicitudes.solicitud.taccion">&ndash;&gt;
+                          <option *ngFor="let obj of tipoUnidad" [ngValue]="obj">{{obj.unidDesc|lowercase}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>-->
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-5 col-form-label">Responsable:</label>
+                      <div class="col-sm-7">
+                        <select class="form-control" name="selTipoTarea"
+                          [(ngModel)]="revisiones.personas">
+                          <option *ngFor="let obj of listadoPersonas"
+                                  [ngValue]="obj">{{obj.nombre}} {{obj.apellido1}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Tipo Acción</label>
+                      <div class="col-sm-9">
+                        <select class="form-control" name="selTipoTarea"
+                          [(ngModel)]="revisiones.accion">
+                          <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--                <div class="col-12 stretch-card">-->
+                <!--                <div class="card">-->
+                <!--                  <div class="card-body">-->
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Descripcion:</label>
+                  <div class="col-sm-9">
+                          <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio"
+                                    name="requerimiento"
+                    [(ngModel)]="revisiones.desc"> </textarea>
+
+                  </div>
+                  <!--                    </div>-->
+
+                  <!--                    </div>-->
+                  <!--                  </div>-->
+                </div>
+                <button type="button" class="btn btn-success btn-fw" (click)="adicionarRevisiones()" label="Show">Adicionar
+                </button>
+                <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!--        </div>-->
+        <div class="col-lg-12 grid-margin stretch-card" *ngIf="verRevisiones == true">
+          <!--          <div class="card">-->
+          <div class="card-body">
+            <!--              <h4 class="card-title">Basic accordions</h4>-->
+            <!--              <p class="card-description">Use class <code>.accordion-inverse-*</code> for inverse styling</p>-->
+            <ngb-accordion [closeOthers]="true" activeIds="static-3" class="accordion accordion-inverse-primary">
+              <ngb-panel *ngFor="let rev of regSolicitud.revisiones">
+                <ng-template ngbPanelTitle>
+                  <h6 class="mb-0">
+                    Fecha registro: {{rev.fecha|date:'yyyy/MM/dd'}} - Responsable: {{rev.idPersona}}
+                  </h6>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                  {{rev.desc}}
+                </ng-template>
+              </ngb-panel>
+            </ngb-accordion>
+          </div>
+        </div>
+        <!--        </div>-->
+
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading">
+  <app-loading-indicator></app-loading-indicator>
+</div>

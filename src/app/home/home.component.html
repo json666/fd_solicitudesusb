@@ -1,0 +1,89 @@
+<!--
+<div class="col-xl-9 col-sm-3 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Nueva Solicitud</h4>
+      <p class="card-description">
+        Basic form elements
+      </p>
+      <form class="forms-sample">
+        <div class="row">
+          <div class="col-xl-6">
+            <label for="exampleInputName1">Hoja de Ruta</label>
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="Hoja de Ruta">
+          </div>
+          <div class="col-xl-6">
+            <label for="exampleInputName1">NumeroTramite Original</label>
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="NumeroTramite Original">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6">
+            <label for="exampleInputEmail3">Remitente</label>
+            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Remitente">
+          </div>
+          <div class="col-xl-6">
+            <label for="exampleInputEmail3">Cargo</label>
+            <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Cargo">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-6">
+            <label for="exampleInputPassword4">Destinatario</label>
+            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Destinatario">
+          </div>
+          <div class="col-xl-6">
+            <label for="exampleInputPassword4">Cargo</label>
+            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Cargo">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="referencia">Referencia</label>
+          <textarea class="form-control" id="referencia" rows="4"></textarea>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-3">
+            <label class="col-form-label">Tipo Documento</label>
+            <select class="form-control">
+              <option>Carnet de Identidad</option>
+              <option>Pasaporte</option>
+              <option>NIT</option>
+            </select>
+          </div>
+          <div class="col-xl-3">
+            <label for="exampleInputPassword4">Nro. Hojas</label>
+            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Nro. Hojas">
+          </div>
+          <div class="col-xl-3">
+            <label for="exampleInputPassword4">Adjunto</label>
+            <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Adjunto">
+          </div>
+          <div class="col-md-3">
+            <label for="fecha" class="col-form-label">Fecha</label>
+            <input type="date" name="bday" id="fecha" min="1000-01-01" max="3000-12-31" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputCity1">Número de Hojas</label>
+          <input type="text" class="form-control" id="exampleInputCity1" placeholder="Número de Hojas">
+        </div>
+        <button type="submit" class="btn btn-success mr-2">Submit</button>
+        <button class="btn btn-light">Cancel</button>
+      </form>
+    </div>
+  </div>
+</div>
+-->
+<div class="container-scroller">
+  <app-navbar></app-navbar>
+  <div class="container-fluid page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

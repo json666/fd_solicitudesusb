@@ -1,0 +1,47 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+      <form class="form-interno" novalidate>
+        <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+        <p class="card-description font-weight-bold">
+          Anular Solicitud
+        </p>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Anular Solicitud</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="selTipoDocumentoSoli" [(ngModel)]="revisiones.estado">
+                  <option *ngFor="let obj of listaEstados" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Motivo:</label>
+              <div class="col-sm-9">
+                <span class value><textarea class="form-control" id="referencia" rows="2"
+                                            [(ngModel)]="revisiones.desc"
+                                            name="referencia"></textarea></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-success btn-fw" (click)="registrarInternos()" label="Show">Registrar
+        </button>
+        <button type="button" class="btn btn-warning btn-fw" [routerLink]="['home/consulta-correspondencia/']">Cancelar</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading">
+  <app-loading-indicator></app-loading-indicator>
+</div>
+<!--
+<div>
+  <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+</div>
+-->

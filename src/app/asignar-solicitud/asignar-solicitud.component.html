@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-md-6 d-flex align-items-stretch grid-margin">
+    <div class="row flex-grow">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Accion a Tomar Caso</h4>
+            <p class="card-description">
+              Asignar Caso
+            </p>
+            <form class="forms-sample">
+              <div class="form-group">
+                <label for="idTipoAccion">Accion:</label>
+                <select class="form-control" name="tipoAccion" id="idTipoAccion">
+                  <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+
+              <p class="card-description">
+                Destinatario
+              </p>
+
+              <div class="form-group">
+                <label for="idTipoUnidad">Unidad</label>
+                <select class="form-control" name="tipoUnidad" id="idTipoUnidad" (change)="cargarPersonas($event)">
+                  <option value="">--Seleccione un valor--</option>
+                  <option *ngFor="let obj of tipoUnidad" [ngValue]="obj.unidId">{{obj.unidDesc}}</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="idTipoUnidad">Responsable</label>
+                <select class="form-control" name="tipoUnidad" id="idResponsable" (change)="cargarPersonas($event)">
+                  <option value="">--Seleccione un valor--</option>
+                  <option *ngFor="let obj of tipoUnidad" [ngValue]="obj.unidId">{{obj.unidDesc}}</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-success mr-2">Guardar</button>
+              <button class="btn btn-light">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

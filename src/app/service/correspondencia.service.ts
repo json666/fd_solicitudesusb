@@ -1,0 +1,145 @@
+import { Injectable } from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {environment} from '../environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CorrespondenciaService {
+  public headers = new HttpHeaders();
+
+  public pathLogin: string;
+
+  constructor(private http: HttpClient) {
+      this.pathLogin = "http://localhost:8080/esb/rest/loginshelf/login";
+      //this.headers.append("Content-Type","application/json");
+  }
+  loginUsuario (data:any): Observable<any> {
+    return this.http.post(this.pathLogin, data);
+  }
+
+  registroSolicitud(data:any){
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = { headers: headers };
+    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas',data,options);//.catch(this.handleError);
+  }
+
+  actualizarSolicitud(data:any){
+    // let headers1 = new HttpHeaders({
+    //   'Content-Type': 'application/json'
+    // });
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = { headers: headers };
+    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas/upd',data,options).map(this.extractData);
+  }
+
+  listadoSolicitudes():Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas').map(this.extractData);//catch(this.handleError);
+  }
+
+
+  listadoSolicitudesPorFilter(data : any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas?cite='+data).map(this.extractData);//catch(this.handleError);
+  }
+
+  listadoPersonas(){
+    return this.http.get(environment.urlBackEndSolicitudUSB+'personas').map(this.extractData);//.catch(this.handleError);
+  }
+
+  validaUsuario(data:any):Observable<any>{
+      return this.http.post(environment.urlBackEndSolicitudUSB+'auth/login', data).map(this.extractData);
+  }
+
+  cargarDatosSolicitud(data: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas/'+data).map(this.extractData);//.catch(this.handleError);
+  }
+
+
+
+  obtieneTotal():Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/totales').map(this.extractData);//.catch(this.handleError);
+  }
+
+  obtieneTotalCasos():Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/totalcasos').map(this.extractData);//.catch(this.handleError);
+  }
+
+
+  obtieneTotalCasos1():Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/totalcasos').map(this.extractData);//.catch(this.handleError);
+  }
+
+  obtieneDatosEstadisticosA(parametro: any, parametro1: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicporcontexto/'+parametro+'/'+parametro1).map(this.extractData);
+  }
+
+  obtieneDatosEstadisticosB(parametro: any, parametro1:any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicportipo/'+parametro+'/'+parametro1).map(this.extractData);
+  }
+  listadoUnidades(): Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'unidades').map(this.extractData);
+  }
+  listadoPersonasUnidad(): Observable<any> {
+    return this.http.get(environment.urlBackEndSolicitudUSB+'personas').map(this.extractData);
+  }
+
+  estadosSolicitud(): Observable<any> {
+    return this.http.get(environment.urlBackEndSolicitudUSB+'estados').map(this.extractData);
+  }
+
+  registrarRevisiones(data:any){
+    return this.http.post(environment.urlBackEndSolicitudUSB+'revisiones/nueva', data);//.map(this.extractData);//.catch(this.handleError);
+  }
+
+  listadoHistorico(): Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'solicitudes/vistas').map(this.extractData);//.catch(this.handleError);
+  }
+
+  vistasDetalladas(): Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'solicitudes/vistasdetalladas').map(this.extractData);//.catch(this.handleError);
+  }
+
+  obtieneDatosEstadisticosEdad(parametro: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicporedad/'+parametro).map(this.extractData);
+  }
+
+  obtieneDatosEstadisticosPorContexto(parametro: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicporcontexto/'+parametro).map(this.extractData);
+  }
+
+
+  obtieneSolicitudesPorVencer(parametro: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'notificaciones/personas/'+parametro).map(this.extractData);
+  }
+
+
+  generarReporte(parametro: any): Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas/pdf/externos/'+parametro).map(this.extractData);
+  }
+
+  obtieneDatosEstadisticosC():Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicporcontexto/').map(this.extractData);
+  }
+
+  obtieneDatosEstadisticosD(parameter: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'solicitudes/agregado/'+parameter).map(this.extractData);
+  }
+
+
+
+
+  private extractData(res: Response) {
+    let body = res;
+    return body || {};
+    //console.log(body)
+  }
+
+  private handleError(error: any) {
+    return Observable.throw(error);
+  }
+}

@@ -1,0 +1,167 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title"></h4>
+      <form class="form-interno" novalidate>
+        <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+        <p class="card-description font-weight-bold">
+          Hoja de Ruta Administrativa
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Hoja de ruta</label>
+              <div class="col-sm-9">
+                <!--<input type="text" class="form-control" placeholder="Nombres Solicitante" [(ngModel)]="solicitud.solicitante.nombre" name="nombre">-->
+                <span class="value">{{h_ruta}}</span>
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Numero Tramite</label>
+              <div class="col-sm-8">
+                <!--<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">-->
+                <span class="value">{{cite}}</span>
+                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+           <div class="col-md-6">
+             <div class="form-group row">
+               <label class="col-sm-3 col-form-label">Destinatario:</label>
+               <div class="col-sm-9">
+                 <input type="text" class="form-control" placeholder="Datos del destinatario"
+                        name="materno">
+               </div>
+             </div>
+           </div>
+           <div class="col-md-6">
+             <div class="form-group row">
+               <label class="col-sm-3 col-form-label">Cargo:</label>
+               <div class="col-sm-9">
+                 <select class="form-control" name="selTipoCargo"
+                 >
+                   <option *ngFor="let obj of tipoCargoList" [ngValue]="obj">{{obj.des}}</option>
+                 </select>
+               </div>
+             </div>
+           </div>
+         </div>-->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Referencia:</label>
+              <div class="col-sm-9">
+                <span class value><textarea class="form-control" id="referencia" rows="2"
+                                            [(ngModel)]="solicitudes.solicitud.referencia"
+                                            name="referencia"></textarea></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class=" card-title col-sm-3 col-form-label">Limite:</label>
+              <div class="col-sm-9">
+                <input type="date" name="fecReg" id="fecha1" min="1000-01-01" max="3000-12-31" class="form-control"
+                       [(ngModel)]="solicitudes.solicitud.limite">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Tipo Documento</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="selTipoDocumentoSoli"
+                        [(ngModel)]="solicitudes.solicitud.tipDocSolicitud">
+                  <option *ngFor="let obj of tipoDocumentoAccion" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Número Hojas</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Nro. Hojas"
+                       [(ngModel)]="solicitudes.solicitud.nroHojas" name="nroHojas">
+                <!--<label  *ngIf="hojas.errors && isValidFormInterno != null && !isValidFormInterno" class="sr-only">Ingrese solo valores numericos</label>-->
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Acción</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="selTipoTarea" [(ngModel)]="solicitudes.solicitud.taccion">
+                  <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!--          <div class="col-md-4">-->
+          <!--            <div class="form-group row">-->
+          <!--              <label class="col-sm-3 col-form-label">Fecha</label>-->
+          <!--              <div class="col-sm-9">-->
+          <!--                <input type="date" name="fecReg" id="fecha" min="1000-01-01" max="3000-12-31" class="form-control"-->
+          <!--                       [(ngModel)]="solicitud.fecReg">-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-4 col-form-label">Tipo Caso</label>
+              <div class="col-sm-8">
+                <select class="form-control" name="selTipoDocumentoSoli"
+                        [(ngModel)]="solicitudes.caso">
+                  <option *ngFor="let obj of tipoCasoReg" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success btn-fw" (click)="registrarInternos()" label="Show">Registrar
+        </button>
+        <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
+        <!--<div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title"></h4>
+              <p class="card-description"></p>
+              <div *ngFor="let obj of historicoHojaRutaAdm">
+                <ngb-accordion [closeOthers]="false" class="accordion accordion-danger">
+                  <ngb-panel id="static-{{obj.id}}">
+                    <ng-template ngbPanelTitle>
+                      <h6 class="mb-0">
+                        Historico Hoja de Ruta Administrativa - {{obj.id}}
+                      </h6>
+                    </ng-template>
+                    <ng-template ngbPanelContent>
+                      <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio"
+                                [(ngModel)]="solicitud.requerimiento" name="requerimiento"></textarea>
+                    </ng-template>
+                  </ngb-panel>
+                </ngb-accordion>
+              </div>
+            </div>
+          </div>
+        </div>-->
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="loading">
+  <app-loading-indicator></app-loading-indicator>
+</div>
+<!--
+<div>
+  <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
+</div>
+-->

@@ -1,0 +1,205 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item nav-profile">
+      <div class="nav-link">
+        <div class="user-wrapper">
+          <div class="profile-image">
+            <img *ngIf="sexo==6" src="assets/images/faces/man.png" alt="profile image">
+            <img *ngIf="sexo==7" src="assets/images/faces/girl.png" alt="profile image">
+          </div>
+          <div class="text-wrapper">
+            <p class="designation text-muted-usb">{{username}}</p>
+            <div>
+              <small class="designation text-muted-usb">{{cargo}}</small>
+              <span class="status-indicator online"></span>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-success btn-block">Solicitud
+          <i class="mdi mdi-plus"></i>
+        </button>
+      </div>
+    </li>
+    <!--<li class="nav-item">
+      <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-television"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>-->
+    <li class="nav-item" *ngIf="codigo ==='ADMIN' || codigo ==='QUERY'">
+      <a class="nav-link" [routerLink]="['/home/app-dashboard']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-television"></i>
+        <span class="menu-title">Principal</span>
+      </a>
+    </li>
+
+    <!--<li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href=""  aria-expanded="false" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-content-copy"></i>
+        <span class="menu-title">Casos</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" >Buttons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" >Typography</a>
+          </li>
+        </ul>
+      </div>
+    </li>-->
+    <!--<div ngbDropdown class="d-inline-block">
+
+      &lt;!&ndash;<button class="btn btn-outline-secondary" type="button" id="dropdownMenuOutlineButton2" ngbDropdownToggle>&ndash;&gt;
+        &lt;!&ndash;Dropdown&ndash;&gt;
+      &lt;!&ndash;</button>&ndash;&gt;
+      <a class="nav-link">
+        <i class="menu-icon mdi mdi-notification-clear-all"></i>
+        <span class="menu-title"  id="dropdownMenuOutlineButton2" ngbDropdownToggle>Casos</span>
+      </a>
+      <div ngbDropdownMenu aria-labelledby="dropdownMenuOutlineButton2">
+        <h6 class="dropdown-header">Registro Interno</h6>
+        <a class="dropdown-item" href="#">Registro Externo</a>
+      </div>
+    </div>-->
+    <li class="nav-item" *ngIf="codigo ==='ADMIN' || codigo ==='QUERY'">
+      <a class="nav-link" [routerLink]="['/home/consulta-correspondencia']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-database-search"></i>
+        <span class="menu-title">Consulta</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="codigo ==='ADMIN'">
+      <a class="nav-link" [routerLink]="['/home/registro-externo']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-content-save-settings"></i>
+        <span class="menu-title">Casos Interno</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="codigo ==='ADMIN'">
+      <a class="nav-link" [routerLink]="['/home/app-solicitud-externa']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-jira"></i>
+        <span class="menu-title">Casos Externos</span>
+      </a>
+    </li>
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" routerLink="/progressbar" routerLinkActive="active">-->
+        <!--<i class="menu-icon mdi mdi-trackpad"></i>-->
+        <!--<span class="menu-title">Progress bar</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">
+      <a class="nav-link" routerLink="/carousel" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-texture"></i>
+        <span class="menu-title">Carousal</span>
+      </a>
+    </li>-->
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" routerLink="/tooltips" routerLinkActive="active">-->
+        <!--<i class="menu-icon mdi mdi-content-copy"></i>-->
+        <!--<span class="menu-title">Tooltip</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" routerLink="/dropdowns" routerLinkActive="active">-->
+        <!--<i class="menu-icon mdi mdi-backup-restore"></i>-->
+        <!--<span class="menu-title">Dropdown</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" routerLink="/breadcrumbs" routerLinkActive="active">-->
+        <!--<i class="menu-icon mdi mdi-flag-outline"></i>-->
+        <!--<span class="menu-title">Breadcrumb</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">
+      <a class="nav-link" routerLink="/pagination" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-loupe"></i>
+        <span class="menu-title">Pagination</span>
+      </a>
+    </li>-->
+    <li class="nav-item" *ngIf="codigo==='ADMIN' || codigo==='QUERY'">
+      <a class="nav-link" [routerLink]="['/home/app-reportes']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-table"></i>
+        <span class="menu-title">Reportes Basicos</span>
+      </a>
+    </li>
+    <!--<li class="nav-item" *ngIf="codigo==='ADMIN'">
+      <a class="nav-link" [routerLink]="['/home/app-asignar-solicitud']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-table"></i>
+        <span class="menu-title">Asignacion</span>
+      </a>
+    </li>-->
+    <li class="nav-item" *ngIf="codigo==='ADMIN' || codigo==='QUERY'">
+      <a class="nav-link" [routerLink]="['/home/app-matriz']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-periodic-table"></i>
+        <span class="menu-title">Matriz de Seguimiento</span>
+      </a>
+    </li>
+    <li class="nav-item" *ngIf="codigo==='ADMIN' || codigo==='QUERY'">
+      <a class="nav-link" [routerLink]="['/home/historico']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-apple-mobileme"></i>
+        <span class="menu-title">Historico de Solicitudes</span>
+      </a>
+    </li>
+<!--    <li class="nav-item" >-->
+<!--      <a class="nav-link" href="#ui-basic" aria-expanded="true" aria-controls="ui-basic" routerLink="/home/buttons" routerLinkActive="active">-->
+<!--&lt;!&ndash;        <i class="menu-icon mdi mdi-shield-outline"></i>&ndash;&gt;-->
+<!--        <i class="menu-icon mdi mdi-content-copy"></i>-->
+<!--        <span class="menu-title">Administracion de Usuarios</span>-->
+<!--        <i class="dropdown-menu"></i>-->
+<!--      </a>-->
+<!--      <div class="collapse show" id="ui-basic" style="">-->
+<!--        <ul class="nav flex-column sub-menu">-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a>-->
+<!--          </li>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </li>-->
+    <!--<li class="nav-item">
+      <a class="nav-link"  aria-expanded="true" href="#" aria-controls="ui-basic">
+        <i class="menu-icon mdi mdi-content-copy"></i>
+        <span class="menu-title">Basic UI Elements</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse show" id="ui-basic" style="">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" >Buttons</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" >Typography</a>
+          </li>
+        </ul>
+      </div>
+    </li>-->
+    <!--<li class="nav-item">
+      <a class="nav-link" routerLink="/accordions" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-altimeter"></i>
+        <span class="menu-title">Accordion</span>
+      </a>
+    </li>-->
+    <!--<li class="nav-item">-->
+      <!--<a class="nav-link" routerLink="/badges" routerLinkActive="active">-->
+        <!--<i class="menu-icon mdi mdi-checkbox-multiple-blank-circle-outline"></i>-->
+        <!--<span class="menu-title">Badges</span>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">
+      <a class="nav-link" routerLink="/icons" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-chart-bubble"></i>
+        <span class="menu-title">Icons</span>
+      </a>
+    </li>-->
+    <!--<li class="nav-item">
+      <a class="nav-link"[routerLink]="['/home/icons']" routerLinkActive="active">
+        <i class="menu-icon mdi mdi-format-italic"></i>
+        <span class="menu-title">Typography</span>
+      </a>
+    </li>-->
+  </ul>
+</nav>
