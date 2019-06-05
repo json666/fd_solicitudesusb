@@ -40,7 +40,8 @@
             <span class="badge badge-pill badge-warning float-right"></span>
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item" *ngIf="obj.interna===true"  [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">
+          <a class="dropdown-item preview-item" *ngIf="obj.interna===true"
+             [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-success">
                 <i class="mdi mdi-tune-vertical mx-0"></i>
@@ -53,6 +54,7 @@
               </p>
             </div>
           </a>
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item" [routerLink]="['/home/mod-solicitud-interna/' + obj.solicId]">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-warning">
@@ -65,34 +67,6 @@
               </p>
             </div>
           </a>
-          <!--<div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-warning">
-                <i class="mdi mdi-tune-vertical mx-0"></i>
-              </div>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-medium">Settings</h6>
-              <p class="font-weight-light small-text">
-                Private message
-              </p>
-            </div>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-info">
-                <i class="mdi mdi-email-outline mx-0"></i>
-              </div>
-            </div>
-            <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-medium">New user registration</h6>
-              <p class="font-weight-light small-text">
-                2 days ago
-              </p>
-            </div>
-          </a>-->
         </div>
       </li>
       <li class="nav-item dropdown d-none d-xl-inline-block" ngbDropdown>
