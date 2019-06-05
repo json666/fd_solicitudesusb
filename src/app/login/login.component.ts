@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   loading: boolean = false;
   public respuesta;
 
+  data: any = {};
+
   loginForm: FormGroup;
 
   public loginUser: Login;
@@ -58,60 +60,59 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('usr');
   }*/
 
-  public login() {
-    let data = {
-      username: this.usuario,
-      password: this.password
-    };
+  public login(form) {
 
-    console.log('Valor 1:' + data.username);
-    console.log('Valor 2:' + data.password);
-    // if (this.validForm()) {
-    console.info('Aqio.,....');
-    this.service.validaUsuario(data).subscribe(response => {
+    console.log('Login form info', form.invalid);
+    console.log('Login form Valid', form.valid);
+    console.log('Valor 1:' + this.data.username);
+    console.log('Valor 2:' + this.data.password);
+    if (this.validForm(form)) {
+      this.service.validaUsuario(this.data).subscribe(response => {
 
-      console.log('Usuario:' + JSON.stringify(response));
-      if (response.status === 'success') {
-        this.loading = true;
-        console.info(' JsonLogin:.. 2', JSON.stringify(response));
-
-        this.loginUser = response;
-
-        //let value=JSON.stringify(this.loginUser);
-        console.log('Usuario:' + JSON.stringify(this.loginUser));
-        /*
-                console.log("*****Usuario*****:"+this.loginUser.usuario);
-                localStorage.setItem('id', response.usuario.ausrId);
-                console.log("*****Usuario2*****:"+response.usuario);
-                value=JSON.stringify(this.loginUser);
-                sessionStorage.setItem("app-login", value);*/
-        // console.log("Valor:"+this.loginUser.usuario.ausrId);
-        localStorage.setItem('id', this.loginUser.usuario.ausrId.toString());
-        let value = JSON.stringify(this.loginUser);
-        sessionStorage.setItem('app-login', value);
-        let link = ['/home'];
+        console.log('Usuario:' + JSON.stringify(response));
         if (response.status === 'success') {
-          this.router.navigate(link);
+          this.loading = true;
+          console.info(' JsonLogin:.. 2', JSON.stringify(response));
+
+          this.loginUser = response;
+          console.log('Usuario:' + JSON.stringify(this.loginUser));
+          /*
+                  console.log("*****Usuario*****:"+this.loginUser.usuario);
+                  localStorage.setItem('id', response.usuario.ausrId);
+                  console.log("*****Usuario2*****:"+response.usuario);
+                  value=JSON.stringify(this.loginUser);
+                  sessionStorage.setItem("app-login", value);*/
+          // console.log("Valor:"+this.loginUser.usuario.ausrId);
+          localStorage.setItem('id', this.loginUser.usuario.ausrId.toString());
+          let value = JSON.stringify(this.loginUser);
+          sessionStorage.setItem('app-login', value);
+          let link = ['/home'];
+          if (response.status === 'success') {
+            this.router.navigate(link);
+          } else {
+            link = ['/login'];
+            this.router.navigate(link);
+          }
+          this.loading = false;
         } else {
-          link = ['/login'];
-          this.router.navigate(link);
+          alert(response.status);
         }
-        this.loading = false;
-      } else {
-        alert(response.status);
-      }
 
-    });
+      });
 
 
-    // }
+    }
   }
 
-  validForm(): boolean {
-    if (this.loginForm.valid) {
+  validForm(f): boolean {
+    if (f.valid) {
       return true;
     } else {
       return false;
     }
+  }
+
+  onSubmit() {
+    alert(JSON.stringify(this.data));
   }
 }

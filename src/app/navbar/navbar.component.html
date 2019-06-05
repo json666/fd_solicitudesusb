@@ -33,14 +33,15 @@
           <span class="count">{{cantidadNotif}}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu
-             aria-labelledby="notificationDropdown" *ngFor="let obj of notificacion">
+             aria-labelledby="notificationDropdown" >
           <a class="dropdown-item">
             <p class="mb-0 font-weight-normal float-left">Tu tienes {{cantidadNotif}} solicitudes, que estan por vencer
             </p>
             <span class="badge badge-pill badge-warning float-right"></span>
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item" *ngIf="obj.interna===true"  [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">
+          <!--<a class="dropdown-item preview-item" *ngIf="obj.interna===true"  [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">-->
+          <a class="dropdown-item preview-item" *ngFor="let obj of notificacion index as i"  [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-success">
                 <i class="mdi mdi-tune-vertical mx-0"></i>
@@ -52,8 +53,18 @@
                 {{obj.solicId}}-INT-{{obj.notifFecha}}
               </p>
             </div>
+            <!--<div class="preview-thumbnail">
+              <div class="preview-icon bg-warning">
+                <i class="mdi mdi-tune-vertical mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-medium">{{obj.hojaRuta}}</h6>
+              <p class="font-weight-light small-text">
+              </p>
+            </div>-->
           </a>
-          <a class="dropdown-item preview-item" [routerLink]="['/home/mod-solicitud-interna/' + obj.solicId]">
+          <!--<a class="dropdown-item preview-item" [routerLink]="['/home/mod-solicitud-interna/' + obj.solicId]">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-warning">
                 <i class="mdi mdi-tune-vertical mx-0"></i>
@@ -64,7 +75,7 @@
               <p class="font-weight-light small-text">
               </p>
             </div>
-          </a>
+          </a>-->
           <!--<div class="dropdown-divider"></div>
           <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">

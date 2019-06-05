@@ -37,7 +37,7 @@
 
   </div>
 </div>-->
-<!doctype html>
+<!--<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -48,33 +48,44 @@
 
   <title>Universidad Salesiana</title>
 
-  <!-- Bootstrap core CSS -->
+  &lt;!&ndash; Bootstrap core CSS &ndash;&gt;
 
-  <!-- Custom styles for this template -->
+  &lt;!&ndash; Custom styles for this template &ndash;&gt;
   <link href="../../assets/styles/signin.css" rel="stylesheet">
-</head>
+</head>-->
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="jumbotron">
+        <h1 class="h3 mb-3 font-weight-normal">Ingrese sus datos</h1>
+        <form class="form-signin"   name="form" #f="ngForm" novalidate>
+          <img class="mb-4" src="../../assets/images/logo--usb.png" alt="" width="235" height="56">
+          <h1 class="h3 mb-3 font-weight-normal">Ingrese sus datos</h1>
+          <label  class="sr-only">Usuario</label>
+          <input type="text"  class="form-control" placeholder="Usuario" [(ngModel)]="data.username" #username="ngModel" name="username"
+                 [ngClass]="{'is-invalid': f.submitted && username.invalid}" required>
+          <div *ngIf="username.errors?.required" class="invalid-feedback">
+            <div>Nombre de Usuario requerido</div>
+          </div>
+          <label class="sr-only">Password</label>
+          <input type="password" class="form-control" placeholder="Password" [(ngModel)]="data.password" #password="ngModel" name="password"
+                 [ngClass]="{'is-invalid': f.submitted &&  password.invalid}"required>
+          <div *ngIf="password.errors?.required" class="invalid-feedback">
+            <div>Datos de la contraseña son requeridos</div>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block"  (click)="login(f)">acceder</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!--
 <body class="text-center">
-<form class="form-signin" >
-  <img class="mb-4" src="../../assets/images/logo--usb.png" alt="" width="235" height="56">
-  <h1 class="h3 mb-3 font-weight-normal">Ingrese sus datos</h1>
-  <label for="usr" class="sr-only">Usuario</label>
-  <input type="text" id="usr" class="form-control" placeholder="Usuario" [(ngModel)]="usuario"  name="usuario">
-<!--  <label *ngIf="usr.valid" [ngClass] = "'error'"> Dato de usuario es requerido.</label>-->
-  <label for="inputPassword" class="sr-only">Password</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Password"  [(ngModel)]="password" name="password">
-  <!--<label *ngIf="pwd.errors" [ngClass] = "'error'"> Dato obligatorio </label>-->
-  <!--<div class="checkbox mb-3">
-    <label>
-      &lt;!&ndash;      <input type="checkbox" value="remember-me"> Cambiar Clave&ndash;&gt;
-      <a [routerLink]="['/home/historico']" routerLinkActive="active">Cambiar Clave</a>
-    </label>
-  </div>-->
-  <button class="btn btn-lg btn-primary btn-block" (click)="login()">acceder</button>
-  <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
-</form>
+
 </body>
 </html>
 <div *ngIf="loading">
   <app-loading-indicator></app-loading-indicator>
-</div>
+</div>-->

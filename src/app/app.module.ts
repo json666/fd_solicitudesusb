@@ -48,6 +48,7 @@ import {TableModule} from 'primeng/table';
 import { ModSolicitudInternaComponent } from './mod-solicitud-interna/mod-solicitud-interna.component';
 import { HistoricoComponent } from './historico/historico.component';
 import { AnularSolicitudComponent } from './anular-solicitud/anular-solicitud.component';
+import {Ng2SmartTableModule} from 'ng2-smart-table';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { AnularSolicitudComponent } from './anular-solicitud/anular-solicitud.co
     DataTableModule,
     TableModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    Ng2SmartTableModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

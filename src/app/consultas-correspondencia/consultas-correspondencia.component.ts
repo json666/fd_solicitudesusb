@@ -7,6 +7,7 @@ import {CorrespondenciaService} from '../service/correspondencia.service';
 import {ListadoSolicitud} from '../model/response/listado-solicitud';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
+import {LocalDataSource} from 'ng2-smart-table';
 
 @Component({
   selector: 'app-consultas-correspondencia',
@@ -16,38 +17,36 @@ import {environment} from '../environments/environment';
 export class ConsultasCorrespondenciaComponent implements OnInit {
 
   solicitudes: Solicitud[];
-
   solicitdudes1: ListadoSolicitud[];
-
   solicitdud: ListadoSolicitud;
-
-  public parametro: string = '';
+  public parametro: any = '';
   public listado;
   public soliTemp: RespSolicitud;
+  settings: any = {}
+  sources: LocalDataSource;
+  data: any = [];
 
   constructor(private _service: CorrespondenciaService,
               private router: Router) {
+    this.sources = new LocalDataSource(this.data);
   }
 
   ngOnInit() {
     this.solicitudes = [];
     this.soliTemp = new RespSolicitud();
+    this.settings = {
+      columns:{
+        fechaRegistro:{
+          title: 'Fecha Registro',
+          filter: false
+        }
+      }
+    };
+
+
     this._service.listadoSolicitudes().subscribe(response => {
       this.solicitdudes1 = response;
       console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
-      /* for (const element of  this.solicitdudes1 ) {
-             console.info("ELELEMENTO:"+element.solicitud.interna);
-       }
-       console.info('Solicitudes.....:.. 2', JSON.stringify(response));*/
-      // let value = JSON.stringify(this.solicitdudes1);
-      // let soli[] = JSON.parse(value);
-      // console.info('Solicitudes.....:..  value', value);
-      // this.soliTemp = value.solicitud;
-      // console.log("Solcitud:" + this.soliTemp);
-      //
-      // console.info('Date:'+date);
-      // var d = new Date(parseInt(date, 10));
-      // var ds = d.toString('MM/dd/yy HH:mm:ss');
     });
 
   }
@@ -99,10 +98,6 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
       this.solicitdudes1 = null;
       this.solicitdudes1 = response;
       console.info('***********************************Tipo Solicitud***********************************.....:.. :::::', JSON.stringify(response));
-      /*for (const element of  this.solicitdudes1 ) {
-        console.info("ELELEMENTO:"+element.solicitud.interna);
-      }
-      console.info('Solicitudes.....:.. 2', JSON.stringify(response));*/
     });
 
   }
