@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {Observable, throwError} from 'rxjs';
 import {environment} from '../environments/environment';
+import {catchError} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,6 @@ export class CorrespondenciaService {
 
   constructor(private http: HttpClient) {
       this.pathLogin = "http://localhost:8080/esb/rest/loginshelf/login";
-      //this.headers.append("Content-Type","application/json");
   }
   loginUsuario (data:any): Observable<any> {
     return this.http.post(this.pathLogin, data);
@@ -24,7 +24,7 @@ export class CorrespondenciaService {
       'Content-Type': 'application/json'
     });
     let options = { headers: headers };
-    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas',data,options);//.catch(this.handleError);
+    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas',data,options);
   }
 
   actualizarSolicitud(data:any){
@@ -52,7 +52,7 @@ export class CorrespondenciaService {
   }
 
   validaUsuario(data:any):Observable<any>{
-      return this.http.post(environment.urlBackEndSolicitudUSB+'auth/login', data).map(this.extractData);
+      return this.http.post(environment.urlBackEndSolicitudUSB+'auth/login', data).map(this.extractData).pipe(catchError(this.handleError));
   }
 
   cargarDatosSolicitud(data: any):Observable<any>{
@@ -140,6 +140,9 @@ export class CorrespondenciaService {
   }
 
   private handleError(error: any) {
-    return Observable.throw(error);
+    if (error instanceof  HttpErrorResponse){
+    }
+    console.info('Error Message:', error.status);
+    return throwError(error.message);
   }
 }

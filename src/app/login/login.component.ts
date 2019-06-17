@@ -69,36 +69,36 @@ export class LoginComponent implements OnInit {
     if (this.validForm(form)) {
       this.service.validaUsuario(this.data).subscribe(response => {
 
-        console.log('Usuario:' + JSON.stringify(response));
-        if (response.status === 'success') {
-          this.loading = true;
-          console.info(' JsonLogin:.. 2', JSON.stringify(response));
-
-          this.loginUser = response;
-          console.log('Usuario:' + JSON.stringify(this.loginUser));
-          /*
-                  console.log("*****Usuario*****:"+this.loginUser.usuario);
-                  localStorage.setItem('id', response.usuario.ausrId);
-                  console.log("*****Usuario2*****:"+response.usuario);
-                  value=JSON.stringify(this.loginUser);
-                  sessionStorage.setItem("app-login", value);*/
-          // console.log("Valor:"+this.loginUser.usuario.ausrId);
-          localStorage.setItem('id', this.loginUser.usuario.ausrId.toString());
-          let value = JSON.stringify(this.loginUser);
-          sessionStorage.setItem('app-login', value);
-          let link = ['/home'];
+          console.log('Usuario:' + JSON.stringify(response));
           if (response.status === 'success') {
-            this.router.navigate(link);
-          } else {
-            link = ['/login'];
-            this.router.navigate(link);
-          }
-          this.loading = false;
-        } else {
-          alert(response.status);
-        }
+            this.loading = true;
+            console.info(' JsonLogin:.. 2', JSON.stringify(response));
 
-      });
+            this.loginUser = response;
+            console.log('Usuario:' + JSON.stringify(this.loginUser));
+            /*
+                    console.log("*****Usuario*****:"+this.loginUser.usuario);
+                    localStorage.setItem('id', response.usuario.ausrId);
+                    console.log("*****Usuario2*****:"+response.usuario);
+                    value=JSON.stringify(this.loginUser);
+                    sessionStorage.setItem("app-login", value);*/
+            // console.log("Valor:"+this.loginUser.usuario.ausrId);
+            localStorage.setItem('id', this.loginUser.usuario.ausrId.toString());
+            let value = JSON.stringify(this.loginUser);
+            sessionStorage.setItem('app-login', value);
+            let link = ['/home'];
+            if (response.status === 'success') {
+              this.router.navigate(link);
+            } else {
+              link = ['/login'];
+              this.router.navigate(link);
+            }
+            this.loading = false;
+          }
+        },
+        error => {
+          alert('Usuario no encontrado');
+        });
 
 
     }

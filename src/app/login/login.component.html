@@ -60,7 +60,6 @@
         <h1 class="h3 mb-3 font-weight-normal">Ingrese sus datos</h1>
         <form class="form-signin"   name="form" #f="ngForm" novalidate>
           <img class="mb-4" src="../../assets/images/logo--usb.png" alt="" width="235" height="56">
-          <h1 class="h3 mb-3 font-weight-normal">Ingrese sus datos</h1>
           <label  class="sr-only">Usuario</label>
           <input type="text"  class="form-control" placeholder="Usuario" [(ngModel)]="data.username" #username="ngModel" name="username"
                  [ngClass]="{'is-invalid': f.submitted && username.invalid}" required>
