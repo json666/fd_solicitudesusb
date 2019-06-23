@@ -11,12 +11,14 @@ $teal: #58d8a3;
 $cyan: #57c7d4;
 $black: #000;
 $white: #ffffff;
+$color_menu_usb:#242a33;
 $white-smoke: #f4f4f4;
 $ghost-white: #f7fafc;
 $violet: #41478a;
 $darkslategray: #2e383e;
 $dodger-blue: #3498db;
-$blue-teal-gradient: linear-gradient(120deg, #00e4d0, #5983e8);
+//$blue-teal-gradient: linear-gradient(120deg, #00e4d0, #5983e8);
+$blue-teal-gradient: linear-gradient(120deg, #242a33, #5983e8);
 $blue-teal-gradient-light: linear-gradient(120deg, rgba(0, 228, 208, 0.7), rgba(89, 131, 232, 0.7));
 $theme-colors: ( primary: #308ee0, secondary: #e5e5e5, success: #00ce68, info: #8862e0, warning: #ffaf00, danger: #e65251, light: #f3f5f6, dark: #424964);
 $colors: ( blue: $blue, indigo: $indigo, purple: $purple, pink: $pink, red: $red, orange: $orange, yellow: $yellow, green: $green, teal: $teal, cyan: $cyan, white: $white, white-smoke: #f3f5f6, gray: $gray-600, gray-light: #8ba2b5, gray-lightest: #f7f7f9, gray-dark: #292b2c);
@@ -34,10 +36,11 @@ $social-colors: ( twitter: #1da1f2, facebook: #3b579d, google: #dc4a38, linkedin
 $type-1: 'Poppins',
 sans-serif;
 $type-2: $type-1;
-$default-font-size: 12px;
-$default-font-size-usb: 12px;
+$default-font-size: 10px;
+$default-font-size-usb: 10px;
 $text-muted: #c2c2c2;
-$text-muted-usb: #000;
+$text-muted-usb: #ffffff;
+//$text-muted-usb: #000;
 
 $body-color: #212529;
 ////////// FONT VARIABLES //////////
@@ -45,7 +48,9 @@ $body-color: #212529;
 $sidebar-width-lg: 255px;
 $sidebar-width-mini: 185px;
 $sidebar-width-icon: 70px;
-$sidebar-light-bg: $white;        ///$white
+//$sidebar-light-bg: $white;        ///$white
+//$sidebar-light-bg: $white;        ///$white
+$sidebar-light-bg: $color_menu_usb;        ///$white
 $sidebar-light-menu-color: #4a4a4a;
 $sidebar-light-menu-active-bg: #fafbfc;
 $sidebar-light-menu-active-color: theme-color(primary);
@@ -113,6 +118,7 @@ $horizontal-2-brand-width: 125px;
 ///////// NAVBAR ////////
 $navbar-height: 63px;
 $navbar-light-color: #202339;
+//$navbar-light-color:000;
 $navbar-font-size: $sidebar-menu-font-size;
 $navbar-icon-font-size: 1.25rem;
 ///////// NAVBAR ////////
