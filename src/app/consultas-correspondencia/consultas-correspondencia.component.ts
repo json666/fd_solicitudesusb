@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Solicitud} from '../model/solicitud';
 import {Solicitante} from '../model/solicitante';
-import {formatDate} from '@angular/common';
 import {RespSolicitud} from '../model/response/resp-solicitud';
 import {CorrespondenciaService} from '../service/correspondencia.service';
 import {ListadoSolicitud} from '../model/response/listado-solicitud';
@@ -22,14 +21,15 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   public parametro: any = '';
   public listado;
   public soliTemp: RespSolicitud;
-  settings: any = {}
+  settings: any = {};
   sources: LocalDataSource;
   data = [];
-  source: LocalDataSource = new LocalDataSource();
+  tamanio: any;
+  //source: LocalDataSource = new LocalDataSource();
 
   constructor(private _service: CorrespondenciaService,
               private router: Router) {
-    // this.sources = new LocalDataSource(this.data);
+    this.sources = new LocalDataSource();
 
   }
 
@@ -65,7 +65,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
 
     this._service.listadoSolicitudes().subscribe(response => {
       this.solicitdudes1 = response;
-      for (const resp of this.solicitdudes1) {
+      /*for (const resp of this.solicitdudes1) {
         var date = resp.solicitud.solicFecIng;
         var d = new Date(parseInt(date, 10));
         // var ds = d.toDateString('YYYY/MM/dd HH:mm:ss');
@@ -89,13 +89,14 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
             };
             this.data.push(ext);
           }
-      }
+      }*/
       // console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
-      console.info('Tipo Solicitud Data.....:.. :::::', JSON.stringify(this.data));
+      // console.info('Tipo Solicitud Data.....:.. :::::', JSON.stringify(this.data));
+      this.tamanio = this.solicitdudes1.length;
+      console.info('Tamanio array:' +this.tamanio);
     });
 
-    this.sources.load(this.data);
-
+    // this.sources.load(this.data);
   }
 
   cargarSolicitudes() {

@@ -82,232 +82,243 @@
   <!--      </div>-->
   <!--    </div>-->
   <!--  </div>-->
-  <div class="col-lg-12 grid-margin stretch-card">
+  <!--<div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title font-weight-bold">Bandeja de Solicitudes</h4>
         <ng2-smart-table [settings]="settings" [source]="data"></ng2-smart-table>
       </div>
     </div>
-  </div>
+  </div>-->
 </div>
 
 
-<!--
 <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th>
-                Nro.
-              </th>
-              <th>
-                Fecha Registro
-              </th>
-              <th>
-                Datos Solicitante
-              </th>
-              <th>
-                Tipo Caso
-              </th>
-              <th>
-                Hoja de Ruta
-              </th>
-              <th>
-                Acciones Tomadas
-              </th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let obj of solicitdudes1">
-              <td>
-                {{obj.solicitud.solicId}}
-              </td>
-              <td>
-                {{obj.solicitud.solicFecIng|date:'yyyy/MM/dd'}}
-              </td>
-              <td *ngIf="obj.solicitud.interna == true">
-                {{obj.remInterno.nombre|uppercase}}
-              </td>
-              <td *ngIf="obj.solicitud.interna != true">
-                {{obj.remExterno.nombre|uppercase}} {{obj.remExterno.apellido1|uppercase}}
-              </td>
-              <td *ngIf="obj.solicitud.interna == true">
-                INTERNA
-              </td>
-              <td *ngIf="obj.solicitud.interna != true">
-                EXTERNA
-              </td>
-              <td>{{obj.solicitud.hojaRuta}}</td>
-              <td *ngIf="obj.solicitud.interna == true">
-                <!--<div class="col-sm-6 col-md-4 col-lg-3"><i class="fa fa-edit"  ngbTooltip="Editar"></i></div>
-                <i class="fa fa-exchange" ngbTooltip="Asignar"></i>-->
-<!--<button type="button" class="btn btn-primary btn-xs" (click)="seguimiento(obj.solicitud.solicId)"
-        ngbTooltip="Asignar">
-  <i class="fa-building-o"></i>
-</button>
-<button type="button" class="btn btn-danger btn-xs" ngbTooltip="Modificar">
-  <i class="fa fa-edit"></i>
-</button>
-<button type="button" class="btn btn-warning btn-xs" (click)="soloCambioEstado(obj.solicitud.solicId)"
-        ngbTooltip="Anular">
-  <i class="fa fa-times-rectangle"></i>
-</button>
-<button type="button" class="btn btn-success btn-xs" ngbTooltip="Imprimir">
-  <i class="fa fa-print"></i>
-</button>
-</td>
-<td *ngIf="obj.solicitud.interna != true">
-  <button type="button" class="btn btn-danger btn-xs" *ngIf="obj.solicitud.esolicId ==2"
-          ng-disabled="true"
-          (click)="editarFormulario(obj.solicitud.solicId)" ngbTooltip="Modificar">
-    <i class="fa-building-o"></i>
-  </button>
-  <button type="button" class="btn btn-danger btn-xs" *ngIf="obj.solicitud.esolicId !=2"
-          (click)="editarFormulario(obj.solicitud.solicId)" ngbTooltip="Modificar">
-    <i class="fa-building-o"></i>
-  </button>
-  <button type="button" class="btn btn-warning btn-xs" *ngIf="obj.solicitud.esolicId ==2"
-          ng-disabled="true"
-          (click)="soloCambioEstado(obj.solicitud.solicId)" ngbTooltip="Anular">
-    <i class="fa fa-times-rectangle"></i>
-  </button>
-  <button type="button" class="btn btn-warning btn-xs" *ngIf="obj.solicitud.esolicId !=2"
-          (click)="soloCambioEstado(obj.solicitud.solicId)" ngbTooltip="Anular">
-    <i class="fa fa-times-rectangle"></i>
-  </button>
-  <button type="button" class="btn btn-success btn-xs" *ngIf="obj.solicitud.esolicId ==2"
-          ng-disabled="true"
-          (click)="mostrarReporte(obj.solicitud.solicId)" ngbTooltip="Imprimir">
-    <i class="fa fa-print"></i>
-  </button>
-  <button type="button" class="btn btn-success btn-xs" *ngIf="obj.solicitud.esolicId !=2"
-          ng-disabled="true"
-          (click)="mostrarReporte(obj.solicitud.solicId)" ngbTooltip="Imprimir">
-    <i class="fa fa-print"></i>
-  </button>
-</td>
-</tr>-->
-<!--<tr>
-  <td class="py-1">
-    <img src="assets/images/faces-clipart/pic-2.png" alt="image"/>
-  </td>
-  <td>
-    Messsy Adam
-  </td>
-  <td>
-    <div class="progress">
-      <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
-           aria-valuemin="0" aria-valuemax="100"></div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>
+        Nro.
+      </th>
+      <th>
+        Fecha Registro
+      </th>
+      <th>
+        Datos Solicitante
+      </th>
+      <th>
+        Tipo Caso
+      </th>
+      <th>
+        Hoja de Ruta
+      </th>
+      <th>
+        Acciones Tomadas
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let obj of solicitdudes1">
+      <td>
+        {{obj.solicitud.solicId}}
+      </td>
+      <td>
+        {{obj.solicitud.solicFecIng|date:'yyyy/MM/dd'}}
+      </td>
+      <td *ngIf="obj.solicitud.interna == true">
+        {{obj.remInterno.nombre|uppercase}}
+      </td>
+      <td *ngIf="obj.solicitud.interna != true">
+        {{obj.remExterno.nombre|uppercase}} {{obj.remExterno.apellido1|uppercase}}
+      </td>
+      <td *ngIf="obj.solicitud.interna == true">
+        INTERNA
+      </td>
+      <td *ngIf="obj.solicitud.interna != true">
+        EXTERNA
+      </td>
+      <td>{{obj.solicitud.hojaRuta}}</td>
+      <td *ngIf="obj.solicitud.interna == true">
+        <div class="col-sm-6 col-md-4 col-lg-3"><i class="fa fa-edit" ngbTooltip="Editar"></i></div>
+        <i class="fa fa-exchange" ngbTooltip="Asignar"></i>
+        <button type="button" class="btn btn-primary btn-xs" (click)="seguimiento(obj.solicitud.solicId)"
+                ngbTooltip="Asignar">
+          <i class="fa-building-o"></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" ngbTooltip="Modificar">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button type="button" class="btn btn-warning btn-xs" (click)="soloCambioEstado(obj.solicitud.solicId)"
+                ngbTooltip="Anular">
+          <i class="fa fa-times-rectangle"></i>
+        </button>
+        <button type="button" class="btn btn-success btn-xs" ngbTooltip="Imprimir">
+          <i class="fa fa-print"></i>
+        </button>
+      </td>
+      <td *ngIf="obj.solicitud.interna != true">
+        <button type="button" class="btn btn-danger btn-xs" *ngIf="obj.solicitud.esolicId ==2"
+                ng-disabled="true"
+                (click)="editarFormulario(obj.solicitud.solicId)" ngbTooltip="Modificar">
+          <i class="fa-building-o"></i>
+        </button>
+        <button type="button" class="btn btn-danger btn-xs" *ngIf="obj.solicitud.esolicId !=2"
+                (click)="editarFormulario(obj.solicitud.solicId)" ngbTooltip="Modificar">
+          <i class="fa-building-o"></i>
+        </button>
+        <button type="button" class="btn btn-warning btn-xs" *ngIf="obj.solicitud.esolicId ==2"
+                ng-disabled="true"
+                (click)="soloCambioEstado(obj.solicitud.solicId)" ngbTooltip="Anular">
+          <i class="fa fa-times-rectangle"></i>
+        </button>
+        <button type="button" class="btn btn-warning btn-xs" *ngIf="obj.solicitud.esolicId !=2"
+                (click)="soloCambioEstado(obj.solicitud.solicId)" ngbTooltip="Anular">
+          <i class="fa fa-times-rectangle"></i>
+        </button>
+        <button type="button" class="btn btn-success btn-xs" *ngIf="obj.solicitud.esolicId ==2"
+                ng-disabled="true"
+                (click)="mostrarReporte(obj.solicitud.solicId)" ngbTooltip="Imprimir">
+          <i class="fa fa-print"></i>
+        </button>
+        <button type="button" class="btn btn-success btn-xs" *ngIf="obj.solicitud.esolicId !=2"
+                ng-disabled="true"
+                (click)="mostrarReporte(obj.solicitud.solicId)" ngbTooltip="Imprimir">
+          <i class="fa fa-print"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<!--<div class="col-md-4 col-sm-6 grid-margin stretch-card">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Basic Paginations</h4>
+      <p class="card-description">Default bordered pagination</p>
+      <ngb-pagination [collectionSize]="tamanio" [pageSize]="10" [page]="1" aria-label="Default pagination"></ngb-pagination>
     </div>
-  </td>
-  <td>
-    $245.30
-  </td>
-  <td>
-    July 1, 2015
-  </td>
-</tr>
-<tr>
-  <td class="py-1">
-    <img src="assets/images/faces-clipart/pic-3.png" alt="image"/>
-  </td>
-  <td>
-    John Richards
-  </td>
-  <td>
-    <div class="progress">
-      <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90"
-           aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </td>
-  <td>
-    $138.00
-  </td>
-  <td>
-    Apr 12, 2015
-  </td>
-</tr>
-<tr>
-  <td class="py-1">
-    <img src="assets/images/faces-clipart/pic-4.png" alt="image"/>
-  </td>
-  <td>
-    Peter Meggik
-  </td>
-  <td>
-    <div class="progress">
-      <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50"
-           aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </td>
-  <td>
-    $ 77.99
-  </td>
-  <td>
-    May 15, 2015
-  </td>
-</tr>
-<tr>
-  <td class="py-1">
-    <img src="assets/images/faces-clipart/pic-1.png" alt="image"/>
-  </td>
-  <td>
-    Edward
-  </td>
-  <td>
-    <div class="progress">
-      <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35"
-           aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </td>
-  <td>
-    $ 160.25
-  </td>
-  <td>
-    May 03, 2015
-  </td>
-</tr>
-<tr>
-  <td class="py-1">
-    <img src="assets/images/faces-clipart/pic-2.png" alt="image"/>
-  </td>
-  <td>
-    John Doe
-  </td>
-  <td>
-    <div class="progress">
-      <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65"
-           aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </td>
-  <td>
-    $ 123.21
-  </td>
-  <td>
-    April 05, 2015
-  </td>
-</tr>
-<tr>
-  <td class="py-1">
-    <img src="assets/images/faces-clipart/pic-3.png" alt="image"/>
-  </td>
-  <td>
-    Henry Tom
-  </td>
-  <td>
-    <div class="progress">
-      <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20"
-           aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-  </td>
-  <td>
-    $ 150.00
-  </td>
-  <td>
-    June 16, 2015
-  </td>
-</tr>
-</tbody>
-</table>
+  </div>
 </div>-->
+    <!--<tr>
+      <td class="py-1">
+        <img src="assets/images/faces-clipart/pic-2.png" alt="image"/>
+      </td>
+      <td>
+        Messsy Adam
+      </td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
+               aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </td>
+      <td>
+        $245.30
+      </td>
+      <td>
+        July 1, 2015
+      </td>
+    </tr>
+    <tr>
+      <td class="py-1">
+        <img src="assets/images/faces-clipart/pic-3.png" alt="image"/>
+      </td>
+      <td>
+        John Richards
+      </td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 90%" aria-valuenow="90"
+               aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </td>
+      <td>
+        $138.00
+      </td>
+      <td>
+        Apr 12, 2015
+      </td>
+    </tr>
+    <tr>
+      <td class="py-1">
+        <img src="assets/images/faces-clipart/pic-4.png" alt="image"/>
+      </td>
+      <td>
+        Peter Meggik
+      </td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50"
+               aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </td>
+      <td>
+        $ 77.99
+      </td>
+      <td>
+        May 15, 2015
+      </td>
+    </tr>
+    <tr>
+      <td class="py-1">
+        <img src="assets/images/faces-clipart/pic-1.png" alt="image"/>
+      </td>
+      <td>
+        Edward
+      </td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="35"
+               aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </td>
+      <td>
+        $ 160.25
+      </td>
+      <td>
+        May 03, 2015
+      </td>
+    </tr>
+    <tr>
+      <td class="py-1">
+        <img src="assets/images/faces-clipart/pic-2.png" alt="image"/>
+      </td>
+      <td>
+        John Doe
+      </td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="65"
+               aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </td>
+      <td>
+        $ 123.21
+      </td>
+      <td>
+        April 05, 2015
+      </td>
+    </tr>
+    <tr>
+      <td class="py-1">
+        <img src="assets/images/faces-clipart/pic-3.png" alt="image"/>
+      </td>
+      <td>
+        Henry Tom
+      </td>
+      <td>
+        <div class="progress">
+          <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20"
+               aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      </td>
+      <td>
+        $ 150.00
+      </td>
+      <td>
+        June 16, 2015
+      </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>-->

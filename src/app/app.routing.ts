@@ -20,6 +20,7 @@ import {ModSolicitudInternaComponent} from './mod-solicitud-interna/mod-solicitu
 import {HistoricoComponent} from './historico/historico.component';
 import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.component';
 import {TabsComponent} from './tabs/tabs.component';
+import {PaginationComponent} from './pagination/pagination.component';
 // import { NgModule } from '@angular/core';
 // import { RouterModule, Routes } from '@angular/router';
 
@@ -44,6 +45,7 @@ export const routes: Routes = [
     { path: 'buttons', component: ButtonsComponent },
     { path: 'tables', component: TablesComponent },
     { path: 'tabs', component: TabsComponent },
+    { path: 'paginacion', component: PaginationComponent },
     { path: 'app-anular', component: AnularSolicitudComponent }
     // { path: 'icons', component: TypographyComponent }
   ]},

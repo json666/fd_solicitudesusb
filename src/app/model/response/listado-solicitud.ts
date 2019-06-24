@@ -13,6 +13,8 @@ export class ListadoSolicitud {
   detalleSolicitud: DetSolicitud;
   tarea: string;
   tipoTareaId: number;
+  nombreCorto: string;
+  nombreLargo: string;
 
 
 

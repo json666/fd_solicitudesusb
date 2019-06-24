@@ -32,7 +32,6 @@ export class RegistroExternoComponent implements OnInit {
   tipoCasoReg: Array<Dominio> = new Array<Dominio>();
   cite: string;
   h_ruta: string;
-  
 
   public cites: NumeroTramite;
   public hoja_ruta: NumeroTramite;
