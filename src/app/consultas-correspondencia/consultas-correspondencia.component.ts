@@ -24,11 +24,13 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   public soliTemp: RespSolicitud;
   settings: any = {}
   sources: LocalDataSource;
-  data: any = [];
+  data = [];
+  source: LocalDataSource = new LocalDataSource();
 
   constructor(private _service: CorrespondenciaService,
               private router: Router) {
-    this.sources = new LocalDataSource(this.data);
+    // this.sources = new LocalDataSource(this.data);
+
   }
 
   ngOnInit() {
@@ -39,6 +41,23 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
         fechaRegistro:{
           title: 'Fecha Registro',
           filter: false
+        },
+        datosSolicitante:{
+          title: 'Datos Solicitante',
+          filter: false
+        },
+        interno:{
+          title: 'Tipo Solicitud',
+          filter: false
+        },
+        id:{
+          title: 'id',
+          filter: false,
+          hideHeader: true
+        },
+        hoja:{
+          title: 'Numero de Control',
+          filter: false
         }
       }
     };
@@ -46,8 +65,36 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
 
     this._service.listadoSolicitudes().subscribe(response => {
       this.solicitdudes1 = response;
-      console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
+      for (const resp of this.solicitdudes1) {
+        var date = resp.solicitud.solicFecIng;
+        var d = new Date(parseInt(date, 10));
+        // var ds = d.toDateString('YYYY/MM/dd HH:mm:ss');
+          if(resp.solicitud.interna){
+              let int = {
+                fechaRegistro: d,
+                datosSolicitante: resp.remInterno.nombreLargo.toUpperCase(),
+                interno: 'INTERNO',
+                id: resp.solicitud.solicId,
+                hoja: resp.solicitud.hojaRuta
+
+              };
+              this.data.push(int);
+          } else {
+            let ext = {
+              fechaRegistro: d,
+              datosSolicitante: resp.remExterno.nombreLargo.toUpperCase(),
+              interno: 'EXTERNO',
+              id: resp.solicitud.solicId,
+              hoja: resp.solicitud.hojaRuta
+            };
+            this.data.push(ext);
+          }
+      }
+      // console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
+      console.info('Tipo Solicitud Data.....:.. :::::', JSON.stringify(this.data));
     });
+
+    this.sources.load(this.data);
 
   }
 

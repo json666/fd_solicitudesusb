@@ -15,5 +15,7 @@ export class RemInterno{
   genero: string;
   direccion: string;
   tipoDocId: number;
+  nombreCorto: string;
+  nombreLargo: string;
 
 }

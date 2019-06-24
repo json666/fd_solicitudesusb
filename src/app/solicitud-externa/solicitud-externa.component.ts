@@ -85,14 +85,14 @@ export class SolicitudExternaComponent implements OnInit , OnDestroy{
       this.tipoCaso = response2;
     });
 
-    this._param.generaCITE('EXT').subscribe(response1 => {
-      this.hoja_ruta = response1;
-      this.h_ruta = this.hoja_ruta.valor;
-    });
-    this._param.generaCITE('CITE').subscribe(response => {
-      this.cites = response;
-      this.cite = this.cites.valor;
-    });
+    // this._param.generaCITE('EXT').subscribe(response1 => {
+    //   this.hoja_ruta = response1;
+    //   this.h_ruta = this.hoja_ruta.valor;
+    // });
+    // this._param.generaCITE('CITE').subscribe(response => {
+    //   this.cites = response;
+    //   this.cite = this.cites.valor;
+    // });
 
 
 
@@ -109,9 +109,11 @@ export class SolicitudExternaComponent implements OnInit , OnDestroy{
     // console.info('Registrar Solicitud:.. ', this.solicitudes);
     // console.info('Registrar Solicitud:.. 2', JSON.stringify(this.solicitudes));
     this.regSolicitud.tarea = this.solicitudes.tarea.des;
-    this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
+    // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
+    this.regSolicitud.solicitud.hojaRuta = '';
     this.regSolicitud.solicitud.tsolicId = 1;
-    this.regSolicitud.solicitud.solicCite = this.cite;
+    // this.regSolicitud.solicitud.solicCite = this.cite;
+    this.regSolicitud.solicitud.solicCite = '';
     // console.info("TIPO CASO:**********************************"+this.solicitudes.caso.cod+"**************");
     this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
     this.regSolicitud.solicitud.interna = 'false';

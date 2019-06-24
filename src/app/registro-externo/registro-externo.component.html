@@ -7,14 +7,14 @@
         <p class="card-description font-weight-bold">
           Hoja de Ruta Administrativa
         </p>
-        <div class="row">
+        <!--<div class="row">
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Hoja de ruta</label>
               <div class="col-sm-9">
-                <!--<input type="text" class="form-control" placeholder="Nombres Solicitante" [(ngModel)]="solicitud.solicitante.nombre" name="nombre">-->
+                &lt;!&ndash;<input type="text" class="form-control" placeholder="Nombres Solicitante" [(ngModel)]="solicitud.solicitante.nombre" name="nombre">&ndash;&gt;
                 <span class="value">{{h_ruta}}</span>
-                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+                &lt;!&ndash;                       [(ngModel)]="solicitud.solicitante.materno">&ndash;&gt;
               </div>
             </div>
           </div>
@@ -22,13 +22,13 @@
             <div class="form-group row">
               <label class="col-sm-4 col-form-label">Numero Tramite</label>
               <div class="col-sm-8">
-                <!--<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">-->
+                &lt;!&ndash;<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">&ndash;&gt;
                 <span class="value">{{cite}}</span>
-                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+                &lt;!&ndash;                       [(ngModel)]="solicitud.solicitante.materno">&ndash;&gt;
               </div>
             </div>
           </div>
-        </div>
+        </div>-->
         <!-- <div class="row">
            <div class="col-md-6">
              <div class="form-group row">
@@ -56,7 +56,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Referencia:</label>
               <div class="col-sm-9">
-                <span class value><textarea class="form-control" id="referencia" rows="2"
+                <span class value><textarea  id="referencia" rows="2"
                                             [(ngModel)]="solicitudes.solicitud.referencia"
                                             name="referencia"></textarea></span>
               </div>
@@ -127,9 +127,9 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-success btn-fw" (click)="registrarInternos()" label="Show">Registrar
+        <button type="button" class="btn btn-outline-primary" (click)="registrarInternos()" label="Show">Registrar
         </button>
-        <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
+        <button type="button" class="btn btn-outline-warning">Cancelar</button>
         <!--<div class="col-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">

@@ -75,14 +75,14 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.remInterno = new RemInterno();
     this.regSolicitud.destinatario = new RegDestinatario();
 
-    this._param.generaCITE('INT').subscribe(response1 => {
-      this.hoja_ruta = response1;
-      this.h_ruta = this.hoja_ruta.valor;
-    });
-    this._param.generaCITE('CITE').subscribe(response => {
-      this.cites = response;
-      this.cite = this.cites.valor;
-    });
+    // this._param.generaCITE('INT').subscribe(response1 => {
+    //   this.hoja_ruta = response1;
+    //   this.h_ruta = this.hoja_ruta.valor;
+    // });
+    // this._param.generaCITE('CITE').subscribe(response => {
+    //   this.cites = response;
+    //   this.cite = this.cites.valor;
+    // });
     /// tipo documento
     this._param.getDatosDominio('docsolic').subscribe(response3 => {
       this.tipoDocumentoAccion = response3;
@@ -115,8 +115,10 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.tarea = 'Aqui va la descripcion de la tarea';
     this.regSolicitud.tipoTareaId = this.solicitudes.solicitud.taccion.id;
     console.log('TDOCTAR:' + this.solicitudes.solicitud.limite + '' + this.userFinal.persona.id);
-    this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
-    this.regSolicitud.solicitud.solicCite = this.cite;
+    // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
+    this.regSolicitud.solicitud.hojaRuta = '';//"";
+    this.regSolicitud.solicitud.solicCite = '';//this.cite;
+    // this.regSolicitud.solicitud.solicCite = this.cite;
     console.log('TDOC:' + this.solicitudes.solicitud.tipDocSolicitud.cod);
     this.regSolicitud.solicitud.tsolicId = this.solicitudes.solicitud.tipDocSolicitud.id;
     this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
@@ -132,8 +134,6 @@ export class RegistroExternoComponent implements OnInit {
     this._serv.registroSolicitud(reg).subscribe(response => {
       alert('Se realizo el registro exitosamente.');
       this.regSolicitud = new RegistroInterno();
-      // this.msgs = [];
-      //this.msgs.push({severity:'success', summary:'Success Message', detail:'Order submitted'});
       this.solicitudes = new Solicitudes();
       const link = ['home/consulta-correspondencia/'];
       this.router.navigate(link);

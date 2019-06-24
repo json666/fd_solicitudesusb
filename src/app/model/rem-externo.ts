@@ -12,5 +12,8 @@ export class RemExterno {
   numDoc: string;
   genero: string;
   edad: number;
+  nombreCorto: string;
+  nombreLargo: string;
+
 
 }

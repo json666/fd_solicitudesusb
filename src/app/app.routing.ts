@@ -19,6 +19,7 @@ import {MatrizComponent} from './matriz/matriz.component';
 import {ModSolicitudInternaComponent} from './mod-solicitud-interna/mod-solicitud-interna.component';
 import {HistoricoComponent} from './historico/historico.component';
 import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.component';
+import {TabsComponent} from './tabs/tabs.component';
 // import { NgModule } from '@angular/core';
 // import { RouterModule, Routes } from '@angular/router';
 
@@ -42,6 +43,7 @@ export const routes: Routes = [
     { path: 'app-matriz', component: MatrizComponent },
     { path: 'buttons', component: ButtonsComponent },
     { path: 'tables', component: TablesComponent },
+    { path: 'tabs', component: TabsComponent },
     { path: 'app-anular', component: AnularSolicitudComponent }
     // { path: 'icons', component: TypographyComponent }
   ]},
