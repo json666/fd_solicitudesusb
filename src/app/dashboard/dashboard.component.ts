@@ -38,15 +38,8 @@ export class DashboardComponent implements OnInit {
 
     this._serv.obtieneTotalCasos().subscribe(response1 => {
       this.totalcasos = response1;
-
-      // @ts-ignore
-      //if(this.totalcasos[0].casos === 'interno'){
         this.interno = this.totalcasos[0].count !== undefined ? this.totalcasos[0].count : 0;
-      //}
-      //if(this.totalcasos[1].casos === 'externo'){
         this.externo = this.totalcasos[1].count !== undefined ? this.totalcasos[1].count : 0;
-      //}
-
     });
     this._serv.obtieneDatosEstadisticosD(dt.getFullYear()).subscribe(response1 => {
       this.estados = response1;

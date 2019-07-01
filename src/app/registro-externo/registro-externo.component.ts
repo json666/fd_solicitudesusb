@@ -43,7 +43,7 @@ export class RegistroExternoComponent implements OnInit {
 
   msgs: Message[] = [];
 
-  hojasPattern = "^[0-9]{3}$";
+  hojasPattern = '^[0-9]{3}$';
 
   /*internoForm = new FormGroup({
     hojas: new FormControl('', Validators.pattern(this.hojasPattern))
@@ -99,9 +99,9 @@ export class RegistroExternoComponent implements OnInit {
   }
 
 
- /* get hojas() {
-    return this.internoForm.get('hojas');
-  }*/
+  /* get hojas() {
+     return this.internoForm.get('hojas');
+   }*/
   registrarInternos() {
 
     /*this.isValidFormInterno = false;
@@ -126,18 +126,26 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.solicitud.interna = 'true';
     this.regSolicitud.destinatario.id = this.userFinal.persona.id;
     this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia;
-    let dtn=new Date(this.solicitudes.solicitud.limite);
+    let dtn = new Date(this.solicitudes.solicitud.limite);
     this.regSolicitud.solicitud.limite = new Date(dtn);
     console.info('Registrar Solicitud:.. *************', JSON.stringify(this.regSolicitud));
     const reg = JSON.stringify(this.regSolicitud);
+    const link = ['home/consulta-correspondencia/'];
     this._serv.registroSolicitud(reg).subscribe(response => {
-      alert('Se realizo el registro exitosamente.');
-      this.regSolicitud = new RegistroInterno();
-      this.solicitudes = new Solicitudes();
-      const link = ['home/consulta-correspondencia/'];
-      this.router.navigate(link);
-      this.loading = false;
-    });
+        console.log('response:' + JSON.stringify(response));
+        //if (response.status === '200') {
+          alert('Se realizo el registro exitosamente.');
+          this.regSolicitud = new RegistroInterno();
+          this.solicitudes = new Solicitudes();
+          this.router.navigate(link);
+          this.loading = false;
+        //}
+      },
+      error => {
+        alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
+        this.router.navigate(link);
+        this.loading = false;
+      });
 
   }
 

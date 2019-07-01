@@ -5,7 +5,7 @@ import {RemDestinatario} from '../rem-destinatario';
 import {DetSolicitud} from '../det-solicitud';
 
 export class ListadoSolicitud {
-
+  id: number;
   solicitud: RespSolicitud;
   remExterno: RemExterno;
   remInterno: RemInterno;

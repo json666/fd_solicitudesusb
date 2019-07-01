@@ -9,7 +9,6 @@ import {Destinatario} from '../model/destinatario';
 import {Dominio} from '../model/dominio';
 import {CorrespondenciaService} from '../service/correspondencia.service';
 import {Router} from '@angular/router';
-import {delay} from 'rxjs-compat/operator/delay';
 import {RegistroSolicitud} from '../model/registro-solicitud';
 import {RegSolicitud} from '../model/reg-solicitud';
 import {RemExterno} from '../model/rem-externo';
@@ -22,7 +21,7 @@ import {NumeroTramite} from '../model/numero-tramite';
   templateUrl: './solicitud-externa.component.html',
   styleUrls: ['./solicitud-externa.component.scss']
 })
-export class SolicitudExternaComponent implements OnInit , OnDestroy{
+export class SolicitudExternaComponent implements OnInit, OnDestroy {
 
   solicitudFrm: FormGroup;
   solicitudes: Solicitudes = new Solicitudes();
@@ -51,7 +50,7 @@ export class SolicitudExternaComponent implements OnInit , OnDestroy{
 
   ngOnInit() {
     this.solicitudFrm = this._frmBuilder.group({
-      'solicitudes.solicitante.nombre':  ['', Validators.required]
+      'solicitudes.solicitante.nombre': ['', Validators.required]
       // 'filtro.tipoDocNotificado': ['', Validators.compose([])],
       // 'filtro.tipoProceso': ['', Validators.compose([])],
       // 'filtro.fechaDesde': ['', Validators.compose([])],
@@ -62,9 +61,6 @@ export class SolicitudExternaComponent implements OnInit , OnDestroy{
       // 'filtro.numeroDocNotificado': ['', Validators.compose([])]
 
     });
-
-    // this.cite = this._param.makeid(5);
-    // this.h_ruta = this._param.makeRuta(5);
     this.solicitudes.solicitud = new Solicitud();
     this.solicitudes.solicitante = new Solicitante();
     this.solicitudes.destinatario = new Destinatario();
@@ -95,8 +91,8 @@ export class SolicitudExternaComponent implements OnInit , OnDestroy{
     // });
 
 
-
   }
+
   ngOnDestroy(): void {
   }
 
@@ -144,19 +140,19 @@ export class SolicitudExternaComponent implements OnInit , OnDestroy{
     console.info('Registrar Solicitud:.. *************', JSON.stringify(this.regSolicitud));
     let reg = JSON.stringify(this.regSolicitud);
     this._serv.registroSolicitud(reg).subscribe(response => {
-      alert('Se realizo el registro exitosamente.');
-      this.regSolicitud = new RegistroSolicitud();
-      this.solicitudes = new Solicitudes();
-      let link = ['home/consulta-correspondencia/'];
-      console.info(link);
-      this.router.navigate(link);
-      this.loading = false;
-    });
-
-
-
-
+        console.info('Response:.. *************', response);
+     //   if (response.status === '200') {
+          alert('Se realizo el registro exitosamente.');
+          this.regSolicitud = new RegistroSolicitud();
+          this.solicitudes = new Solicitudes();
+          let link = ['home/consulta-correspondencia/'];
+          console.info(link);
+          this.router.navigate(link);
+          this.loading = false;
+       // }
+      },
+      error => {
+        alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
+      });
   }
-
-
 }

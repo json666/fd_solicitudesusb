@@ -19,15 +19,15 @@ export class CorrespondenciaService {
     return this.http.post(this.pathLogin, data);
   }
 
-  registroSolicitud(data:any){
+  registroSolicitud(data:any): Observable <any> {
     let headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
     let options = { headers: headers };
-    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas',data,options);
+    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas',data,options).map(this.extractData).pipe(catchError(this.handleError));
   }
 
-  actualizarSolicitud(data:any){
+  actualizarSolicitud(data: any){
     // let headers1 = new HttpHeaders({
     //   'Content-Type': 'application/json'
     // });
@@ -35,7 +35,7 @@ export class CorrespondenciaService {
       'Content-Type': 'application/json'
     });
     let options = { headers: headers };
-    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas/upd',data,options).map(this.extractData);
+    return this.http.post(environment.urlBackEndSolicitudUSB+'registradas/upd',data,options).map(this.extractData).pipe(catchError(this.handleError));
   }
 
   listadoSolicitudes():Observable<any>{

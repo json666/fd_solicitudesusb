@@ -21,48 +21,19 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   public parametro: any = '';
   public listado;
   public soliTemp: RespSolicitud;
-  settings: any = {};
-  sources: LocalDataSource;
   data = [];
   tamanio: any;
-  //source: LocalDataSource = new LocalDataSource();
+  page = 1;
+  pageSize = 4;
 
   constructor(private _service: CorrespondenciaService,
               private router: Router) {
-    this.sources = new LocalDataSource();
 
   }
 
   ngOnInit() {
     this.solicitudes = [];
     this.soliTemp = new RespSolicitud();
-    this.settings = {
-      columns:{
-        fechaRegistro:{
-          title: 'Fecha Registro',
-          filter: false
-        },
-        datosSolicitante:{
-          title: 'Datos Solicitante',
-          filter: false
-        },
-        interno:{
-          title: 'Tipo Solicitud',
-          filter: false
-        },
-        id:{
-          title: 'id',
-          filter: false,
-          hideHeader: true
-        },
-        hoja:{
-          title: 'Numero de Control',
-          filter: false
-        }
-      }
-    };
-
-
     this._service.listadoSolicitudes().subscribe(response => {
       this.solicitdudes1 = response;
       /*for (const resp of this.solicitdudes1) {
@@ -97,6 +68,15 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     });
 
     // this.sources.load(this.data);
+  }
+  get registros(): ListadoSolicitud[] {
+    if (this.solicitdudes1.length !== undefined &&  this.solicitdudes1.length>0) {
+      return this.solicitdudes1
+        .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
+        .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    } else {
+      return this.solicitdudes1;
+    }
   }
 
   cargarSolicitudes() {
@@ -158,15 +138,6 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
 
   mostrarReporte(id: string) {
     window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/externos/' + id);
-    /*this._service.generarReporte(id).subscribe(response => {
-      window.open("http://localhost:9999/susb-api/registradas/pdf/externos/"+id);
-      console.info('***********************************Reporte***********************************.....:.. :::::'+response);
-
-      /!*for (const element of  this.solicitdudes1 ) {
-        console.info("ELELEMENTO:"+element.solicitud.interna);
-      }
-      console.info('Solicitudes.....:.. 2', JSON.stringify(response));*!/
-    });*/
   }
 
   soloCambioEstado(id:string) {
