@@ -9,6 +9,6 @@ import { Component, OnInit } from '@angular/core';
     '    center; color:#ffffff; margin-top:200px"><h5>Cargando...</h5> <i class="fa fa-spinner fa-spin" aria-hidden="true" style="font-size:24px;"></i>\n' +
     '    </div></div>'
 })
-export class LoadingIndicatorComponent{
+export class LoadingIndicatorComponent {
 
 }

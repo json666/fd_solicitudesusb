@@ -15,6 +15,7 @@ export class AnularSolicitudComponent implements OnInit {
 
   listaEstados: Array<Estados> = new Array<Estados>();
   revisiones: Revisiones;
+  loading = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -36,6 +37,10 @@ export class AnularSolicitudComponent implements OnInit {
         });
       }, 3000);
     });
+  }
+
+  registrarInternos(){
+    return null;
   }
 
 }

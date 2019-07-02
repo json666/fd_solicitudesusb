@@ -1,13 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ParametricaService} from '../service/parametrica.service';
 import {Parametrica} from '../model/parametrica';
 import {Solicitud} from '../model/solicitud';
-import {Solicitante} from '../model/solicitante';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Destinatario} from '../model/destinatario';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {formatDate} from '@angular/common';
-import {LOCALE_DATA} from '@angular/common/src/i18n/locale_data';
-import {Locale} from 'ngx-bootstrap/chronos/locale/locale.class';
 import {delay} from 'rxjs/operators';
 
 @Component({

@@ -6,7 +6,6 @@ import {CorrespondenciaService} from '../service/correspondencia.service';
 import {ListadoSolicitud} from '../model/response/listado-solicitud';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
-import {LocalDataSource} from 'ng2-smart-table';
 
 @Component({
   selector: 'app-consultas-correspondencia',
@@ -70,7 +69,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     // this.sources.load(this.data);
   }
   get registros(): ListadoSolicitud[] {
-    if (this.solicitdudes1.length !== undefined &&  this.solicitdudes1.length>0) {
+    if ( this.tamanio > 0) {
       return this.solicitdudes1
         .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
         .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
@@ -131,6 +130,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   }
 
   seguimiento(id: string) {
+    console.log('**********************ASIGNAR*******************');
     let link = ['home/mod-solicitud-interna/' + id];
     console.log(link);
     this.router.navigate(link);

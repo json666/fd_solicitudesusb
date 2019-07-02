@@ -26,7 +26,6 @@ import {CarouselComponent} from './carousel/carousel.component';
 import {TabsComponent} from './tabs/tabs.component';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
-import {RegistroCorrespondenciaComponent} from './registro-correspondencia/registro-correspondencia.component';
 import {ConsultasCorrespondenciaComponent} from './consultas-correspondencia/consultas-correspondencia.component';
 import {HttpClientModule} from '@angular/common/http';
 import {RegistroInternoComponent} from './registro-interno/registro-interno.component';
@@ -71,7 +70,6 @@ import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.comp
     TabsComponent,
     HomeComponent,
     LoginComponent,
-    RegistroCorrespondenciaComponent,
     ConsultasCorrespondenciaComponent,
     RegistroInternoComponent,
     LoadingIndicatorComponent,
@@ -99,7 +97,8 @@ import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.comp
     TableModule,
     FileUploadModule,
     ConfirmDialogModule,
-    NgbModule
+    NgbModule,
+    NgbModule.forRoot(),
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

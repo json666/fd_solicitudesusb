@@ -19,5 +19,6 @@ export class Solicitante {
   juridico: boolean;
   genero: string;
   edad: number;
+  telefono: string;
 
 }

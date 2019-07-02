@@ -27,8 +27,8 @@ export class HistoricoComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.historicos= new Historico();
-    this.historicos.data=[];
+    this.historicos = new Historico();
+    this.historicos.data = [];
     this._service.listadoHistorico().subscribe(response => {
       this.historicos = response;
       console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
