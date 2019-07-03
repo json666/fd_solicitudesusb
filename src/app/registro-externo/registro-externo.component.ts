@@ -40,6 +40,7 @@ export class RegistroExternoComponent implements OnInit {
   tipoDocumentoAccion: Array<Dominio> = new Array<Dominio>();
   userSession;
   userFinal;
+  data: any = {};
 
   msgs: Message[] = [];
 

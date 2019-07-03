@@ -2,53 +2,26 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title"></h4>
-      <form novalidate>
+      <form name="form" #f="ngForm" novalidate>
         <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
         <p class="card-description font-weight-bold">
           Informacion de la Persona
         </p>
-        <!--<div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Hoja de ruta</label>
-              <div class="col-sm-9">
-                &lt;!&ndash;<input type="text" class="form-control" placeholder="Nombres Solicitante" [(ngModel)]="solicitud.solicitante.nombre" name="nombre">&ndash;&gt;
-                <span class="value">{{h_ruta}}</span>
-                &lt;!&ndash;                       [(ngModel)]="solicitud.solicitante.materno">&ndash;&gt;
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Cite Original</label>
-              <div class="col-sm-9">
-                &lt;!&ndash;<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">&ndash;&gt;
-                <span class="value">{{cite}}</span>
-                &lt;!&ndash;                       [(ngModel)]="solicitud.solicitante.materno">&ndash;&gt;
-              </div>
-            </div>
-          </div>
-          &lt;!&ndash;<div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label">NumeroTramite Original</label>
-              <div class="col-sm-9">
-                &lt;!&ndash;<input type="text" class="form-control" placeholder="Apellido Paterno" [(ngModel)]="solicitud.solicitante.paterno" name="paterno">&ndash;&gt;
-                <span class="value">{{cite}}</span>
-                &lt;!&ndash;                       [(ngModel)]="solicitud.solicitante.materno">&ndash;&gt;
-              </div>
-            </div>
-          </div>&ndash;&gt;
-        </div>-->
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nombres</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Nombres Solicitante" uppercase [maxlength]="30"
-                       [(ngModel)]="solicitudes.solicitante.nombre"
-                       name="nombre"> <!--formControlName="nombre" [formControl]="solicitudFrm.controls['solicitudes.solicitante.nombre']">-->
-                <!--                <app-control-messages [control]="solicitudFrm.controls['solicitudes.solicitante.nombre']"></app-control-messages>-->
-                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+                <input id="nombre" type="text" class="form-control" placeholder="Nombres Solicitante"
+                       [(ngModel)]="solicitudes.solicitante.nombre" #nombre="ngModel" name="nombre" required>
+                <!--[ngClass]="{'is-invalid': nombre.invalid && f.submitted}" required>-->
+                <!--required>-->
+                <div *ngIf="f.submitted && nombre.invalid"
+                     class="alert alert-danger">
+                  <div *ngIf="nombre.errors?.required">
+                    <div>El Nombre del Solicitante es requerido</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -57,9 +30,12 @@
               <label class="col-sm-3 col-form-label">Ap. Paterno</label>
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Apellido Paterno" uppercase [maxlength]="30"
-                       [(ngModel)]="solicitudes.solicitante.paterno"
-                       name="paterno">
-                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+                       [(ngModel)]="solicitudes.solicitante.paterno" #paterno="ngModel" name="paterno" required>
+                <!--[ngClass]="{'is-invalid': paterno.invalid && f.submitted}" required>-->
+                <div *ngIf="paterno.errors?.required" class="invalid-feedback">
+                  <div>El Apellido Paterno es requerido</div>
+                </div>
+
               </div>
             </div>
           </div>
@@ -69,9 +45,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Ap. Materno</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Apellido Materno"  uppercase [maxlength]="30"
-                       [(ngModel)]="solicitudes.solicitante.materno" name="materno">
-                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
+                <input type="text" class="form-control" placeholder="Apellido Materno" uppercase [maxlength]="30"
+                       [(ngModel)]="solicitudes.solicitante.materno" #materno="ngModel" name="materno" required>
+                <!--[ngClass]="{'is-invalid': materno.invalid && f.submitted}" required>-->
+                <div *ngIf="materno.errors?.required" class="invalid-feedback">
+                  <div>El Apellido Materno es requerido</div>
+                </div>
               </div>
             </div>
           </div>
@@ -92,7 +71,8 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Documento de Identidad</label>
               <div class="col-sm-9">
-                <input type="number"  maxlength="15"  min="0" required class="form-control" placeholder="Nro. de Documento"
+                <input type="number" maxlength="15" min="0" required class="form-control"
+                       placeholder="Nro. de Documento"
                        [(ngModel)]="solicitudes.solicitante.ci" name="ci">
                 <!--                       [(ngModel)]="solicitud.solicitante.ci">-->
               </div>
@@ -125,7 +105,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nro. Celular</label>
               <div class="col-sm-9">
-                <input type="number" class="form-control" pattern="[0-9]{10} "placeholder="Nro. Celular"
+                <input type="number" class="form-control" pattern="[0-9]{10} " placeholder="Nro. Celular"
                        [(ngModel)]="solicitudes.solicitante.fono1" name="celular">
                 <!--                       [(ngModel)]="solicitud.solicitante.celular" >-->
               </div>
@@ -170,7 +150,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Edad:</label>
               <div class="col-sm-9">
-                <input type="number" max="3" min="0" pattern="[0-9]{3}"class="form-control" placeholder="Edad"
+                <input type="number" max="3" min="0" pattern="[0-9]{3}" class="form-control" placeholder="Edad"
                        [(ngModel)]="solicitudes.solicitante.edad" name="edad">
                 <!--                       [(ngModel)]="solicitud.solicitante.celular" >-->
               </div>
@@ -182,7 +162,9 @@
             <div class="card-body">
               <h4 class="card-title"></h4>
               <p class="card-description"></p>
-              <ngb-accordion [closeOthers]="false" activeIds="static-7, static-8, static-9, static-10, static-11, static-12" class="accordion accordion-danger">
+              <ngb-accordion [closeOthers]="false"
+                             activeIds="static-7, static-8, static-9, static-10, static-11, static-12"
+                             class="accordion accordion-danger">
                 <ngb-panel id="static-7">
                   <ng-template ngbPanelTitle>
                     <h6 class="">
@@ -190,7 +172,8 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio" uppercase [maxlength]="300"
+                    <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio" uppercase
+                              [maxlength]="300"
                               [(ngModel)]="solicitudes.solicitud.requerimiento" name="requerimiento"></textarea>
                   </ng-template>
                 </ngb-panel>
@@ -201,7 +184,8 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Informe de analisis  de requerimiento" uppercase [maxlength]="300"
+                    <textarea class="form-control" rows="2" placeholder="Informe de analisis  de requerimiento"
+                              uppercase [maxlength]="300"
                               [(ngModel)]="solicitudes.solicitud.analisis" name="analisis"></textarea>
                   </ng-template>
                 </ngb-panel>
@@ -212,7 +196,8 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Acciones y Recomendaciones" uppercase [maxlength]="300"
+                    <textarea class="form-control" rows="2" placeholder="Acciones y Recomendaciones" uppercase
+                              [maxlength]="300"
                               [(ngModel)]="solicitudes.solicitud.recomendaciones" name="recomendaciones"></textarea>
                   </ng-template>
                 </ngb-panel>
@@ -223,7 +208,7 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Remision" uppercase  [maxlength]="300"
+                    <textarea class="form-control" rows="2" placeholder="Remision" uppercase [maxlength]="300"
                               [(ngModel)]="solicitudes.solicitud.remision" name="remision"></textarea>
                   </ng-template>
                 </ngb-panel>
@@ -253,7 +238,7 @@
             </div>
           </div>
         </div>
-        <button type="button" class="btn btn-outline-success" (click)="recibir()">Guardar</button>
+        <button type="button" class="btn btn-outline-success" (click)="recibir(f)">Guardar</button>
         <button type="button" class="btn btn-outline-danger">Cancelar</button>
       </form>
     </div>

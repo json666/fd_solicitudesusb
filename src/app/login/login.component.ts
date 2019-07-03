@@ -62,8 +62,9 @@ export class LoginComponent implements OnInit {
 
   public login(form) {
 
-    console.log('Login form info', form.invalid);
+    console.log('Login form Invalid', form.invalid);
     console.log('Login form Valid', form.valid);
+    console.log('Login form Submitted', form.submitted);
     console.log('Valor 1:' + this.data.username);
     console.log('Valor 2:' + this.data.password);
     if (this.validForm(form)) {

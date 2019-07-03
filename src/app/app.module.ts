@@ -97,8 +97,8 @@ import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.comp
     TableModule,
     FileUploadModule,
     ConfirmDialogModule,
-    NgbModule,
     NgbModule.forRoot(),
+    NgbModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

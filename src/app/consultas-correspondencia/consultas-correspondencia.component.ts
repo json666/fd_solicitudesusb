@@ -21,7 +21,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   public listado;
   public soliTemp: RespSolicitud;
   data = [];
-  tamanio: any;
+  tamanio: any=0;
   page = 1;
   pageSize = 4;
 
@@ -35,41 +35,22 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     this.soliTemp = new RespSolicitud();
     this._service.listadoSolicitudes().subscribe(response => {
       this.solicitdudes1 = response;
-      /*for (const resp of this.solicitdudes1) {
-        var date = resp.solicitud.solicFecIng;
-        var d = new Date(parseInt(date, 10));
-        // var ds = d.toDateString('YYYY/MM/dd HH:mm:ss');
-          if(resp.solicitud.interna){
-              let int = {
-                fechaRegistro: d,
-                datosSolicitante: resp.remInterno.nombreLargo.toUpperCase(),
-                interno: 'INTERNO',
-                id: resp.solicitud.solicId,
-                hoja: resp.solicitud.hojaRuta
-
-              };
-              this.data.push(int);
-          } else {
-            let ext = {
-              fechaRegistro: d,
-              datosSolicitante: resp.remExterno.nombreLargo.toUpperCase(),
-              interno: 'EXTERNO',
-              id: resp.solicitud.solicId,
-              hoja: resp.solicitud.hojaRuta
-            };
-            this.data.push(ext);
-          }
-      }*/
       // console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
       // console.info('Tipo Solicitud Data.....:.. :::::', JSON.stringify(this.data));
       this.tamanio = this.solicitdudes1.length;
-      console.info('Tamanio array:' +this.tamanio);
+      console.info('Tamanio array:' + this.tamanio);
+      // this.solicitdudes1
+      //   .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
+      //   .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     });
-
-    // this.sources.load(this.data);
   }
-  get registros(): ListadoSolicitud[] {
-    if ( this.tamanio > 0) {
+
+  /*ngAfterContentInit () {
+    this.solicitdudes1=this.registros();
+  }*/
+
+  get registros() {
+    if (this.tamanio !== undefined && this.tamanio > 0) {
       return this.solicitdudes1
         .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
         .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
@@ -140,7 +121,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/externos/' + id);
   }
 
-  soloCambioEstado(id:string) {
+  soloCambioEstado(id: string) {
 
     let link = ['home/app-anulacion/' + id];
     console.log(link);
