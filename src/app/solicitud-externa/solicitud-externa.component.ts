@@ -90,7 +90,7 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     console.log('Login form invalid', form.invalid);//true
     console.log('Login form Valid', form.valid);//false
     console.log('Login form submitted', form.submitted);//false
-    if (this.validForm(form)) {
+   // if (this.validForm(form)) {
       this.loading = true;
       this.solicitudes.solicitud.tsolicId = '2';
       // this.solicitudes.solicitud.hojaRuta = this.cites.valor;
@@ -146,8 +146,11 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
         },
         error => {
           alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
-        });
-    }
+             });
+          // } else {
+          //   alert('No podemos procesa tu registro, vuelve a intentar.');
+          // }
+      //  }
   }
 
   validForm(f): boolean {
