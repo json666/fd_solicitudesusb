@@ -49,7 +49,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Ap. Materno</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Apellido Materno" uppercase
+                <input type="text" class="form-control" placeholder="Apellido Materno"
                        [(ngModel)]="solicitudes.solicitante.materno" #materno="ngModel" name="materno" required>
                 <div *ngIf="materno.errors && (materno.dirty || materno.touched)" class="alert alert-danger">
                   <div [hidden]="!materno.errors.required">
@@ -237,9 +237,14 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio" uppercase
-                              [maxlength]="300"
+                    <textarea class="form-control" rows="3" placeholder="Requerimiento de Servicio"
+                                #requerimiento="ngModel" pattern="^[a-zA-Z0-9-.,()#+&\s]+$"
                               [(ngModel)]="solicitudes.solicitud.requerimiento" name="requerimiento"></textarea>
+                    <div *ngIf="requerimiento.errors && (requerimiento.dirty || requerimiento.touched)" class="alert alert-danger">
+                      <div [hidden]="!requerimiento.errors.pattern">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
                   </ng-template>
                 </ngb-panel>
                 <ngb-panel id="static-8">
@@ -249,9 +254,14 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Informe de analisis  de requerimiento"
-                              uppercase [maxlength]="300"
-                              [(ngModel)]="solicitudes.solicitud.analisis" name="analisis"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Informe de analisis  de requerimiento"
+                              [(ngModel)]="solicitudes.solicitud.analisis" name="analisis" #analista="ngModel"
+                              pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
+                    <div *ngIf="analista.errors && (analista.dirty || analista.touched)" class="alert alert-danger">
+                      <div [hidden]="!analista.errors.pattern">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
                   </ng-template>
                 </ngb-panel>
                 <ngb-panel id="static-9">
@@ -261,9 +271,14 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Acciones y Recomendaciones" uppercase
-                              [maxlength]="300"
-                              [(ngModel)]="solicitudes.solicitud.recomendaciones" name="recomendaciones"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Acciones y Recomendaciones"
+                              [(ngModel)]="solicitudes.solicitud.recomendaciones" name="recomendaciones" #recomendaciones="ngModel"
+                              pattern="^[a-zA-Z0-9-.,()#+&]+$" ></textarea>
+                    <div *ngIf="recomendaciones.errors && (recomendaciones.dirty || recomendaciones.touched)" class="alert alert-danger">
+                      <div [hidden]="!recomendaciones.errors.pattern">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
                   </ng-template>
                 </ngb-panel>
                 <ngb-panel id="static-10">
@@ -273,8 +288,14 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Remision" uppercase [maxlength]="300"
-                              [(ngModel)]="solicitudes.solicitud.remision" name="remision"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Remision"
+                              [(ngModel)]="solicitudes.solicitud.remision" name="remision" #remision="ngModel"
+                              pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
+                    <div *ngIf="remision.errors && (remision.dirty || remision.touched)" class="alert alert-danger">
+                      <div [hidden]="!remision.errors.pattern">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
                   </ng-template>
                 </ngb-panel>
                 <ngb-panel id="static-11">
@@ -284,8 +305,14 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Observaciones" uppercase [maxlength]="300"
-                              [(ngModel)]="solicitudes.solicitud.observaciones" name="observaciones"></textarea>
+                    <textarea class="form-control" rows="3" placeholder="Observaciones"
+                              [(ngModel)]="solicitudes.solicitud.observaciones" name="observaciones" #observaciones="ngModel"
+                              pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
+                    <div *ngIf="observaciones.errors && (observaciones.dirty || observaciones.touched)" class="alert alert-danger">
+                      <div [hidden]="!observaciones.errors.pattern">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
                   </ng-template>
                 </ngb-panel>
                 <ngb-panel id="static-12">
@@ -296,14 +323,20 @@
                   </ng-template>
                   <ng-template ngbPanelContent>
                     <textarea class="form-control" rows="3" placeholder="Informe de avance y conclusiones de servicio"
-                              [(ngModel)]="solicitudes.solicitud.conclusion" name="conclusion"></textarea>
+                              [(ngModel)]="solicitudes.solicitud.conclusion" name="conclusion" #conclusion="ngModel"
+                              pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
+                    <div *ngIf="conclusion.errors && (conclusion.dirty || conclusion.touched)" class="alert alert-danger">
+                      <div [hidden]="!conclusion.errors.pattern">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
                   </ng-template>
                 </ngb-panel>
               </ngb-accordion>
             </div>
           </div>
         </div>
-        <button type="button" [disabled]="f.form.invalid" (onclick)="recibir(f)" class="btn btn-outline-success">Guardar</button>
+        <button type="button" [disabled]="f.form.invalid" (click)="recibir(f)" class="btn btn-outline-success">Guardar</button>
         <button type="button" class="btn btn-outline-danger">Cancelar</button>
       </form>
     </div>
