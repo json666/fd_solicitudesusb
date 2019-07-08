@@ -25,6 +25,17 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   page = 1;
   pageSize = 4;
 
+  today: any;
+  dd: string;
+  MM: string;
+  yyyy: string;
+  desde: string;
+  hasta: string;
+  pdesde: string;
+  phasta: string;
+
+
+
   constructor(private _service: CorrespondenciaService,
               private router: Router) {
 
@@ -33,15 +44,21 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   ngOnInit() {
     this.solicitudes = [];
     this.soliTemp = new RespSolicitud();
-    this._service.listadoSolicitudes().subscribe(response => {
+
+
+    this.today = new Date();
+    this.dd = String(this.today.getDate()).padStart(2, '0');
+    this.MM = String(this.today.getMonth() + 1).padStart(2, '0');
+    this.yyyy = this.today.getFullYear();
+    this.desde = this.yyyy+ '-' +this.MM + '-01';
+    this.hasta = this.yyyy+ '-' +this.MM + '-' +this.dd;
+    console.info('DESDE'+this.desde);
+    console.info('HASTA'+this.hasta);
+
+    this._service.listadoSolicitudes('',this.desde,this.hasta).subscribe(response => {
       this.solicitdudes1 = response;
-      // console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
-      // console.info('Tipo Solicitud Data.....:.. :::::', JSON.stringify(this.data));
       this.tamanio = this.solicitdudes1.length;
       console.info('Tamanio array:' + this.tamanio);
-      // this.solicitdudes1
-      //   .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
-      //   .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
     });
   }
 
@@ -102,7 +119,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
 
   busqueda() {
     console.info('Parametro.....:.. :::::', this.parametro);
-    this._service.listadoSolicitudesPorFilter(this.parametro).subscribe(response => {
+    this._service.listadoSolicitudes(this.parametro,this.pdesde,this.phasta).subscribe(response => {
       this.solicitdudes1 = null;
       this.solicitdudes1 = response;
       console.info('***********************************Tipo Solicitud***********************************.....:.. :::::', JSON.stringify(response));

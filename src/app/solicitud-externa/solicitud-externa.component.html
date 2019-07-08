@@ -104,7 +104,7 @@
               <label class="col-sm-3 col-form-label">Tipo Documento</label>
               <div class="col-sm-9">
                 <select class="form-control" name="tipDoc" #tipDoc="ngModel"
-                        [(ngModel)]="solicitudes.solicitante.tipDoc" required>
+                        [(ngModel)]="solicitudes.solicitud.tipDocSolicitud" required>
                   <option value="" disabled selected>Seleccionar Tipo de Documento</option>
                   <option *ngFor="let obj of tipoDocumentoList" [ngValue]="obj">{{obj.des}}</option>
                 </select>

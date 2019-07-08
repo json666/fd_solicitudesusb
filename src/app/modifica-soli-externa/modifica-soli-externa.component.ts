@@ -68,6 +68,11 @@ public tipoGenero: Array<Dominio> = new Array<Dominio>();
               this.solicitudes.solicitante.sexo=docEle;
             }
           }
+          for (const docTd of this.tipoDocumentoList) {
+            if (docTd.id ===Number(this.regSolicitud.solicitud.tipoDoc)) {
+              this.solicitudes.solicitante.tipDoc = docTd;
+            }
+          }
           this.loading = false;
 
         });
@@ -76,7 +81,7 @@ public tipoGenero: Array<Dominio> = new Array<Dominio>();
   }
 
 
-  modificarSolicitud(){
+  modificarSolicitud(f){
     this.loading = true;
     console.info('Modificar Solicitud:.. *************', JSON.stringify(this.regSolicitud));
     this.regSolicitud.destinatario = new RegDestinatario();

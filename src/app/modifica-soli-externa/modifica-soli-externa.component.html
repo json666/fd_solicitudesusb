@@ -2,17 +2,14 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title"></h4>
-      <form class="form-interno" novalidate>
-        <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
-        <h4 class="card-title font-weight-bold">Información de la Solicitud</h4>
+      <form class="form-interno" name="form" #f="ngForm" novalidate>
+        <h4 class="card-title font-weight-bold">Modificar la Solicitud</h4>
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Hoja de ruta</label>
               <div class="col-sm-9">
-                <!--<input type="text" class="form-control" placeholder="Nombres Solicitante" [(ngModel)]="solicitud.solicitante.nombre" name="nombre">-->
                 <span class="value">{{regSolicitud.solicitud.hojaRuta }}</span>
-                <!--                       [(ngModel)]="solicitud.solicitante.materno">-->
               </div>
             </div>
           </div>
@@ -22,8 +19,8 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nombres</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Nombres Solicitante" name="nombre"
-                       [(ngModel)]="solicitudes.solicitante.nombre" #nombre="ngModel" name="nombre">
+                <input type="text" class="form-control" placeholder="Nombres Solicitante"
+                       [(ngModel)]="regSolicitud.remExterno.nombre" #nombre="ngModel" name="nombre" required>
                 <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" class="alert alert-danger">
                   <div [hidden]="!nombre.errors.required">
                     Debe Ingresar el nombre del solicitante
@@ -34,245 +31,326 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ap. Paterno</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Apellido Paterno" name="paterno"
-                         [(ngModel)]="regSolicitud.remExterno.apellido1" #paterno="ngModel" name="paterno" required>
-                  <div *ngIf="paterno.errors && (paterno.dirty || paterno.touched)" class="alert alert-danger">
-                    <div [hidden]="!paterno.errors.required">
-                      Debe Ingresar el Apellido paterno del solicitante
-                    </div>
-                    <div [hidden]="!paterno.errors.minlength">
-                      Por favor ingrese 4 caractes como valor minimo
-                    </div>
-                  </div>
-              </div>
-            </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Ap. Materno</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Apellido Materno"
-                         [(ngModel)]="regSolicitud.remExterno.apellido2" #materno="ngModel" name="materno" required>
-                  <div *ngIf="materno.errors && (materno.dirty || materno.touched)" class="alert alert-danger">
-                    <div [hidden]="!materno.errors.required">
-                      Debe ingresar el apellido materno del solicitante
-                    </div>
-                    <div [hidden]="!materno.errors.minlength">
-                      Por favor ingrese 4 caractes como valor minimo
-                    </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Ap. Paterno</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Apellido Paterno"
+                       [(ngModel)]="regSolicitud.remExterno.apellido1" #paterno="ngModel" name="paterno" required>
+                <div *ngIf="paterno.errors && (paterno.dirty || paterno.touched)" class="alert alert-danger">
+                  <div [hidden]="!paterno.errors.required">
+                    Debe Ingresar el Apellido paterno del solicitante
                   </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Sexo</label>
-                <div class="col-sm-9">
-                  <select class="form-control" name="selTipoSexo" #selTipoSexo="ngModel"
-                          [(ngModel)]="solicitudes.solicitante.sexo">
-                    <option *ngFor="let obj of tipoGenero" [ngValue]="obj">{{obj.des}}</option>
-                  </select>
-                  <div *ngIf="selTipoSexo.invalid && (selTipoSexo.dirty || selTipoSexo.touched)" class="invalid-feedback">
-                    <div [hidden]="!selTipoSexo.errors.required">
-                      Seleccionar el tipo de Sexo
-                    </div>
+                  <div [hidden]="!paterno.errors.minlength">
+                    Por favor ingrese 4 caractes como valor minimo
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Documento de Identidad</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Nro. de Documento" pattern="^.*[0-9].*$"
-                         [(ngModel)]="regSolicitud.remExterno.numDoc" name="ci" #ci="ngModel">
-                  <div *ngIf="ci.errors && (ci.dirty || ci.touched)" class="alert alert-danger">
-                    <div [hidden]="!ci.errors.required">
-                      Debe ingresar Numero de Documento
-                    </div>
-                    <div [hidden]="!ci.errors.pattern">
-                      Por favor ingrese el formato correcto
-                    </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Ap. Materno</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Apellido Materno"
+                       [(ngModel)]="regSolicitud.remExterno.apellido2" #materno="ngModel" name="materno" required>
+                <div *ngIf="materno.errors && (materno.dirty || materno.touched)" class="alert alert-danger">
+                  <div [hidden]="!materno.errors.required">
+                    Debe ingresar el apellido materno del solicitante
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tipo Documento</label>
-                <div class="col-sm-9">
-                  <select class="form-control" name="tipDoc" #tipDoc="ngModel"
-                          [(ngModel)]="solicitudes.solicitante.tipDoc" required>
-                    <option *ngFor="let obj of tipoDocumentoList" [ngValue]="obj">{{obj.des}}</option>
-                  </select>
-                  <div *ngIf="tipDoc.invalid && (tipDoc.dirty || tipDoc.touched)" class="invalid-feedback">
-                    <div [hidden]="!tipDoc.errors.required">
-                      Debe seleccionar el Tipo de Documento
-                    </div>
+                  <div [hidden]="!materno.errors.minlength">
+                    Por favor ingrese 4 caractes como valor minimo
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nro. Telefono</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Nro. Telefono" #fono="ngModel"
-                         [(ngModel)]="regSolicitud.remExterno.fono1"
-                         name="fono" #fono="ngModel" required>
-                  <div *ngIf="fono.errors && (fono.dirty || fono.touched)" class="alert alert-danger">
-                    <div [hidden]="!fono.errors.required">
-                      Debe ingresar el numero de telefono
-                    </div>
-                    <div [hidden]="!fono.errors.pattern">
-                      Por favor ingrese el formato correcto
-                    </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Sexo</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="selTipoSexo" #selTipoSexo="ngModel"
+                        [(ngModel)]="solicitudes.solicitante.sexo" required>
+                  <option *ngFor="let obj of tipoGenero" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+                <div *ngIf="selTipoSexo.invalid && (selTipoSexo.dirty || selTipoSexo.touched)"
+                     class="invalid-feedback">
+                  <div [hidden]="!selTipoSexo.errors.required">
+                    Seleccionar el tipo de Sexo
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Nro. Celular</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Nro. Celular" name="celular"
-                         [(ngModel)]="regSolicitud.remExterno.fono2">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Documento de Identidad</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Nro. de Documento" pattern="^.*[0-9].*$"
+                       [(ngModel)]="regSolicitud.remExterno.numDoc" name="ci" #ci="ngModel" required>
+                <div *ngIf="ci.errors && (ci.dirty || ci.touched)" class="alert alert-danger">
+                  <div [hidden]="!ci.errors.required">
+                    Debe ingresar Numero de Documento
+                  </div>
+                  <div [hidden]="!ci.errors.pattern">
+                    Por favor ingrese el formato correcto
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Direccion</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Direccion" name="direccion">
-                  <!--                       [(ngModel)]="solicitud.solicitante.direccion" >-->
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Correo Electronico</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Correo Electronico" name="correo"
-                         [(ngModel)]="regSolicitud.remExterno.email">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Documento</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="tipDoc" #tipDoc="ngModel"
+                        [(ngModel)]="solicitudes.solicitante.tipDoc" required>
+                  <option *ngFor="let obj of tipoDocumentoList" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+                <div *ngIf="tipDoc.invalid && (tipDoc.dirty || tipDoc.touched)" class="invalid-feedback">
+                  <div [hidden]="!tipDoc.errors.required">
+                    Debe seleccionar el Tipo de Documento
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Tipo Caso:</label>
-                <div class="col-sm-9">
-                  <select class="form-control" name="tipoDocumentoList" [(ngModel)]="solicitudes.caso">
-                    <option *ngFor="let obj of tipoCaso" [ngValue]="obj">{{obj.des}}</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Edad:</label>
-                <div class="col-sm-9">
-                  <input type="text" class="form-control" placeholder="Edad"
-                         [(ngModel)]="regSolicitud.remExterno.edad" name="edad">
-                  <!--                       [(ngModel)]="solicitud.solicitante.celular" >-->
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nro. Telefono</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Nro. Telefono" #fono1="ngModel"
+                       [(ngModel)]="regSolicitud.remExterno.fono1"
+                       name="fono1" #fono1="ngModel" pattern="^[0-9]{8}$" required>
+                <div *ngIf="fono1.errors && (fono1.dirty || fono1.touched)" class="alert alert-danger">
+                  <div [hidden]="!fono1.errors.required">
+                    Debe ingresar el numero de telefono
+                  </div>
+                  <div [hidden]="!fono1.errors.pattern">
+                    Por favor ingrese el formato correcto
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-12 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <h4 class="card-title"></h4>
-                <p class="card-description"></p>
-                <ngb-accordion [closeOthers]="false" class="accordion accordion-danger">
-                  <ngb-panel id="static-7">
-                    <ng-template ngbPanelTitle>
-                      <h6 class="mb-0">
-                        Requerimiento de Servicio
-                      </h6>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Nro. Celular</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Nro. Celular"
+                       [(ngModel)]="regSolicitud.remExterno.fono2" name="fono2" #fono2="ngModel"
+                       pattern="^[0-9]{8}$" required>
+                <div *ngIf="fono2.errors && (fono2.dirty || fono2.touched)" class="alert alert-danger">
+                  <div [hidden]="!fono2.errors.required">
+                    Debe ingresar el numero de telefono
+                  </div>
+                  <div [hidden]="!fono2.errors.pattern">
+                    Por favor ingrese el formato correcto
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Direccion</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Direccion"
+                       [(ngModel)]="solicitudes.solicitante.direccion"
+                       name="direccion" #direccion="ngModel" required>
+                <div *ngIf="direccion.errors && (direccion.dirty || direccion.touched)"
+                     class="alert alert-danger">
+                  <div [hidden]="!direccion.errors.required">
+                    Debe ingresar la direccion de solicitante.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Correo Electronico</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Correo Electronico" name="email"
+                       [(ngModel)]="regSolicitud.remExterno.email"
+                       pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                       #email="ngModel" required>
+                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger">
+                  <div [hidden]="!email.errors.required">
+                    Debe ingresar el correo electronico
+                  </div>
+                  <div [hidden]="!email.errors.pattern">
+                    El formato de correo no es valido
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Caso:</label>
+              <div class="col-sm-9">
+                <select class="form-control" name="caso" [(ngModel)]="solicitudes.caso" #caso="ngModel" required>
+                  <option *ngFor="let obj of tipoCaso" [ngValue]="obj">{{obj.des}}</option>
+                </select>
+                <div *ngIf="caso.invalid && (caso.dirty || caso.touched)" class="invalid-feedback">
+                  <div [hidden]="!caso.errors.required">
+                    Debe seleccionar el Tipo de Caso
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Edad:</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" placeholder="Edad"
+                       [(ngModel)]="regSolicitud.remExterno.edad" name="edad" #edad="ngModel" pattern=".*[0-9].*$"
+                       required>
+                <div *ngIf="edad.errors && (edad.dirty || edad.touched)" class="alert alert-danger">
+                  <div [hidden]="!edad.errors.pattern">
+                    Por favor ingrese el formato correcto
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title"></h4>
+              <p class="card-description"></p>
+              <ngb-accordion [closeOthers]="false" class="accordion accordion-danger">
+                <ngb-panel id="static-7">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Requerimiento de Servicio
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
                     <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio" name="requerimiento"
+                              #requerimiento="ngModel"
                               [(ngModel)]="regSolicitud.detallesSolicitud.req"></textarea>
-                    </ng-template>
-                  </ngb-panel>
-                  <ngb-panel id="static-8">
-                    <ng-template ngbPanelTitle>
-                      <h6 class="mb-0">
-                        Informe de analisis de requerimiento
-                      </h6>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
+                    <div *ngIf="requerimiento.errors && (requerimiento.dirty || requerimiento.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!requerimiento.errors.required">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-8">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Informe de analisis de requerimiento
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
                     <textarea class="form-control" rows="2" placeholder="Informe de analisis  de requerimiento"
-                              name="analisis"
+                              name="analisis" #analisis="ngModel"
                               [(ngModel)]="regSolicitud.detallesSolicitud.analisis"></textarea>
-                    </ng-template>
-                  </ngb-panel>
-                  <ngb-panel id="static-9">
-                    <ng-template ngbPanelTitle>
-                      <h6 class="mb-0">
-                        Acciones y Recomendaciones
-                      </h6>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
+                    <div *ngIf="analisis.errors && (analisis.dirty || analisis.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!analisis.errors.required">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-9">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Acciones y Recomendaciones
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
                     <textarea class="form-control" rows="2" placeholder="Acciones y Recomendaciones"
-                              name="recomendaciones"
+                              name="recomendaciones" #recomendaciones="ngModel"
                               [(ngModel)]="regSolicitud.detallesSolicitud.acciones"></textarea>
-                    </ng-template>
-                  </ngb-panel>
-                  <ngb-panel id="static-10">
-                    <ng-template ngbPanelTitle>
-                      <h6 class="mb-0">
-                        Remision
-                      </h6>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="2" placeholder="Remision" name="remision"
+                    <div *ngIf="recomendaciones.errors && (recomendaciones.dirty || recomendaciones.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!recomendaciones.errors.required">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-10">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Remision
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
+                    <textarea class="form-control" rows="2" placeholder="Remision" name="remision" #remision="ngModel"
                               [(ngModel)]="regSolicitud.detallesSolicitud.remision"></textarea>
-                    </ng-template>
-                  </ngb-panel>
-                  <ngb-panel id="static-11">
-                    <ng-template ngbPanelTitle>
-                      <h6 class="mb-0">
-                        Observaciones
-                      </h6>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
+                    <div *ngIf="remision.errors && (remision.dirty || remision.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!remision.errors.required">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-11">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Observaciones
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
                     <textarea class="form-control" rows="3" placeholder="Observaciones" name="observaciones"
+                              #observaciones="ngModel"
                               [(ngModel)]="regSolicitud.detallesSolicitud.observaciones"></textarea>
-                    </ng-template>
-                  </ngb-panel>
-                  <ngb-panel id="static-12">
-                    <ng-template ngbPanelTitle>
-                      <h6 class="mb-0">
-                        Informe de avance y conclusiones de servicio
-                      </h6>
-                    </ng-template>
-                    <ng-template ngbPanelContent>
+                    <div *ngIf="observaciones.errors && (observaciones.dirty || observaciones.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!observaciones.errors.required">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+                <ngb-panel id="static-12">
+                  <ng-template ngbPanelTitle>
+                    <h6 class="mb-0">
+                      Informe de avance y conclusiones de servicio
+                    </h6>
+                  </ng-template>
+                  <ng-template ngbPanelContent>
                     <textarea class="form-control" rows="3" placeholder="Informe de avance y conclusiones de servicio"
                               name="conclusion"
-                              [(ngModel)]="regSolicitud.detallesSolicitud.avance"></textarea>
-                    </ng-template>
-                  </ngb-panel>
-                </ngb-accordion>
-              </div>
+                              [(ngModel)]="regSolicitud.detallesSolicitud.avance" #conclusion="ngModel"></textarea>
+                    <div *ngIf="conclusion.errors && (conclusion.dirty || conclusion.touched)"
+                         class="alert alert-danger">
+                      <div [hidden]="!conclusion.errors.required">
+                        Por favor no estan permitidos caracteres especiales
+                      </div>
+                    </div>
+                  </ng-template>
+                </ngb-panel>
+              </ngb-accordion>
             </div>
           </div>
-          <button type="button" class="btn btn-outline-success" (click)="modificarSolicitud()">Guardar</button>
-          <button type="button" class="btn btn-outline-primary">Imprimir</button>
-          <button type="button" class="btn btn-outline-danger">Cancelar</button>
+        </div>
+        <button type="button" class="btn btn-outline-success" [disabled]="f.form.invalid"
+                (click)="modificarSolicitud(f)">Guardar
+        </button>
+        <button type="button" class="btn btn-outline-primary">Imprimir</button>
+        <button type="button" class="btn btn-outline-danger">Cancelar</button>
       </form>
     </div>
   </div>

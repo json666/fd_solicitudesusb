@@ -44,6 +44,7 @@ import {TableModule} from 'primeng/table';
 import {ModSolicitudInternaComponent} from './mod-solicitud-interna/mod-solicitud-interna.component';
 import {HistoricoComponent} from './historico/historico.component';
 import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.comp
     ModSolicitudInternaComponent,
     HistoricoComponent,
     AnularSolicitudComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

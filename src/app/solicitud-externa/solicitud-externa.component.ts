@@ -101,7 +101,7 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
       // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
       this.regSolicitud.solicitud.hojaRuta = '';
       this.regSolicitud.solicitud.tsolicId = 1;
-      // this.regSolicitud.solicitud.solicCite = this.cite;
+      this.regSolicitud.solicitud.tipoDoc = Number(this.solicitudes.solicitud.tipDocSolicitud.id);
       this.regSolicitud.solicitud.solicCite = '';
       // console.info("TIPO CASO:**********************************"+this.solicitudes.caso.cod+"**************");
       this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);

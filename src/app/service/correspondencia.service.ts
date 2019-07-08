@@ -38,8 +38,8 @@ export class CorrespondenciaService {
     return this.http.post(environment.urlBackEndSolicitudUSB+'registradas/upd',data,options).map(this.extractData).pipe(catchError(this.handleError));
   }
 
-  listadoSolicitudes():Observable<any>{
-    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas').map(this.extractData);//catch(this.handleError);
+  listadoSolicitudes(parametro: any, desde: any, hasta: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas?cite='+parametro+'&desde='+desde+"&hasta="+hasta).map(this.extractData);//catch(this.handleError);
   }
 
 
