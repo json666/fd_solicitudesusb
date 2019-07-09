@@ -5,96 +5,108 @@
         <h4 class="card-title font-weight-bold">Consulta Estadisticas</h4>
         <form c-lass="forms-sample">
           <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card body">
-                <!--<div class="card-body">-->
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Meses Inicial</label>
-                      <div class="col-sm-9">
-                        <select class="form-control" [(ngModel)]="pmes" name="des">
-                          <option value="">--Seleccione un valor--</option>
-                          <option *ngFor="let obj of meses" [ngValue]="obj">{{obj.des}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Meses Final</label>
-                      <div class="col-sm-9">
-                        <select class="form-control" [(ngModel)]="pmes" name="des">
-                          <option value="">--Seleccione un valor--</option>
-                          <option *ngFor="let obj of meses" [ngValue]="obj">{{obj.des}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="card-title col-sm-3 col-form-label">Fecha Inicial:</label>
+                <div class="col-sm-7">
+                  <input type="date" name="desde" id="fecha" min="1000-01-01" max="3000-12-31"
+                         class="form-control border-primary"
+                         [(ngModel)]="pdesde" name="pdesde">
+                  <!--[(ngModel)]="solicitud.fecReg">-->
                 </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Año Inicial</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Año Inicial"
-                               [(ngModel)]="panio.des" name="des">
-                        <!--<select class="form-control" [(ngModel)]="panio">
-                          <option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>
-                          <option *ngFor="let anio of cargarAnios()" [ngValue]="anio">{{anio}}</option>
-                        </select>-->
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Año Final</label>
-                      <div class="col-sm-9">
-                        <input type="text" class="form-control" placeholder="Año Final"
-                               [(ngModel)]="panio.des" name="des">
-                        <!--<select class="form-control" [(ngModel)]="panio">
-                          <option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>
-                          <option *ngFor="let anio of cargarAnios()" [ngValue]="anio">{{anio}}</option>
-                        </select>-->
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--</div>-->
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group row">
-                <div class="col-sm-9">
+                <label class="card-title col-sm-3 col-form-label">Fecha Final:</label>
+                <div class="col-sm-7">
+                  <input type="date" name="hasta" id="fecha1" min="1000-01-01" max="3000-12-31"
+                         class="form-control border-primary"
+                         [(ngModel)]="phasta" name="phasta">
+                  <!--[(ngModel)]="solicitud.fecReg">-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <div class="col-sm-7">
                   <button type="button" class="btn btn-outline-success" (click)="actualizarReporteA()">Aplicar
+                  </button>
+                  <button type="button" class="btn btn-outline-primary">Cancelar
                   </button>
                 </div>
               </div>
             </div>
-            <!--<div class="col-md-4">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Fecha Inicial</label>
-                <div class="col-sm-9">
-                  <input type="date" name="fecReg" id="fechaIni" min="1000-01-01" max="3000-12-31" class="form-control">
-                </div>
-              </div>
-            </div>-->
-            <!--<div class="col-md-4">
-              <div class="form-group row">
-                <label class="col-sm-3 col-form-label">Fecha Final</label>
-                <div class="col-sm-9">
-                  <input type="date" name="fecReg" id="fechaFin" min="1000-01-01" max="3000-12-31" class="form-control">
-                </div>
-              </div>
-            </div>-->
           </div>
-          <!-- <button type="submit" class="btn btn-success mr-2">Generar</button>
-           <button class="btn btn-light">Limpiar</button>-->
         </form>
       </div>
     </div>
   </div>
-  <div class="col-md-12 d-flex align-items-stretch grid-margin">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <ngb-tabset class="tab-solid tab-solid-primary">
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              <i class="mdi mdi-home-outline"></i>Home
+            </ng-template>
+            <ng-template ngbTabContent>
+              <!--<div class="row">
+                <div class="col-md-4"><img class="img-fluid w-100 rounded" src="assets/images/samples/300x300/13.jpg"
+                                           alt=""></div>
+                <div class="col-md-8">
+                  <h5 class="mb-3">Heading</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi molestias iusto qui eos, vero
+                    provident ipsa neque! Molestiae, aperiam</p>
+                </div>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsa odio dolore perspiciatis laudantium
+                repellat quae, facere, laboriosam omnis dolorem quaerat quis assumenda!</p>-->
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              <i class="mdi mdi-account-outline"></i>Profile
+            </ng-template>
+            <ng-template ngbTabContent>
+              <!--<div class="row">
+                <div class="col-md-4"><img class="img-fluid w-100 rounded" src="assets/images/samples/300x300/9.jpg"
+                                           alt=""></div>
+                <div class="col-md-8">
+                  <h5 class="mb-3">Heading</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi molestias iusto qui eos, vero
+                    provident ipsa neque! Molestiae, aperiam</p>
+                </div>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsa odio dolore perspiciatis laudantium
+                repellat quae, facere, laboriosam omnis dolorem quaerat quis assumenda!</p>-->
+            </ng-template>
+          </ngb-tab>
+          <ngb-tab>
+            <ng-template ngbTabTitle>
+              <i class="mdi mdi-message-text-outline"></i>Contact
+            </ng-template>
+            <ng-template ngbTabContent>
+              <!--<div class="row">
+                <div class="col-md-4"><img class="img-fluid w-100 rounded" src="assets/images/samples/300x300/8.jpg"
+                                           alt=""></div>
+                <div class="col-md-8">
+                  <h5 class="mb-3">Heading</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi molestias iusto qui eos, vero
+                    provident ipsa neque! Molestiae, aperiam</p>
+                </div>
+              </div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsa odio dolore perspiciatis laudantium
+                repellat quae, facere, laboriosam omnis dolorem quaerat quis assumenda!</p>-->
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+  <!--<div class="col-md-12 d-flex align-items-stretch grid-margin">
     <div class="col-6 grid-margin">
       <div class="card">
         <div class="card-body">
@@ -111,49 +123,49 @@
         <div class="card-body">
           <h4 class="card-title"></h4>
           <p class="font-weight-bold">
-            <!--Casos atendidos por tipo de caso-->
+            &lt;!&ndash;Casos atendidos por tipo de caso&ndash;&gt;
           </p>
           <p-chart type="pie" [data]="data1" [options]="options1"></p-chart>
         </div>
-        <!--<div class="col-12 grid-margin">-->
-        <!--<div class="card body">-->
-        <!--&lt;!&ndash;<div class="card-body">&ndash;&gt;-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="form-group row">-->
-        <!--<label class="col-sm-3 col-form-label">Meses</label>-->
-        <!--<div class="col-sm-9">-->
-        <!--<select class="form-control">-->
-        <!--<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>-->
-        <!--<option *ngFor="let obj of meses" [ngValue]="obj">{{obj.mes}}</option>-->
-        <!--</select>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="form-group row">-->
-        <!--<div class="col-sm-9">-->
-        <!--<button type="button" class="btn btn-success btn-fw" >Aplicar</button>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="form-group row">-->
-        <!--<label class="col-sm-3 col-form-label">Años</label>-->
-        <!--<div class="col-sm-9">-->
-        <!--<select class="form-control">-->
-        <!--<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>-->
-        <!--<option *ngFor="let obj of cargarAnios()" [ngValue]="obj">{{obj}}</option>-->
-        <!--</select>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-        <!--</div>-->
+        &lt;!&ndash;<div class="col-12 grid-margin">&ndash;&gt;
+        &lt;!&ndash;<div class="card body">&ndash;&gt;
+        &lt;!&ndash;&lt;!&ndash;<div class="card-body">&ndash;&gt;&ndash;&gt;
+        &lt;!&ndash;<div class="row">&ndash;&gt;
+        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
+        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
+        &lt;!&ndash;<label class="col-sm-3 col-form-label">Meses</label>&ndash;&gt;
+        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
+        &lt;!&ndash;<select class="form-control">&ndash;&gt;
+        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
+        &lt;!&ndash;<option *ngFor="let obj of meses" [ngValue]="obj">{{obj.mes}}</option>&ndash;&gt;
+        &lt;!&ndash;</select>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
+        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
+        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
+        &lt;!&ndash;<button type="button" class="btn btn-success btn-fw" >Aplicar</button>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<div class="row">&ndash;&gt;
+        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
+        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
+        &lt;!&ndash;<label class="col-sm-3 col-form-label">Años</label>&ndash;&gt;
+        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
+        &lt;!&ndash;<select class="form-control">&ndash;&gt;
+        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
+        &lt;!&ndash;<option *ngFor="let obj of cargarAnios()" [ngValue]="obj">{{obj}}</option>&ndash;&gt;
+        &lt;!&ndash;</select>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
       </div>
     </div>
   </div>
@@ -164,49 +176,49 @@
           <h4 class="card-title"></h4>
           <p class="font-weight-bold">
           </p>
-          <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast>-->
+          &lt;!&ndash; <p-toast [style]="{marginTop: '80px'}"></p-toast>&ndash;&gt;
 
           <p-chart type="line" [data]="data3" [options]="options3" (onDataSelect)="selectData($event)"></p-chart>
         </div>
-        <!--<div class="col-12 grid-margin">-->
-        <!--<div class="card body">-->
-        <!--&lt;!&ndash;<div class="card-body">&ndash;&gt;-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="form-group row">-->
-        <!--<label class="col-sm-3 col-form-label">Meses</label>-->
-        <!--<div class="col-sm-9">-->
-        <!--<select class="form-control">-->
-        <!--<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>-->
-        <!--<option *ngFor="let obj of meses" [ngValue]="obj">{{obj.mes}}</option>-->
-        <!--</select>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="form-group row">-->
-        <!--<div class="col-sm-9">-->
-        <!--<button type="button" class="btn btn-success btn-fw" >Aplicar</button>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-        <!--<div class="form-group row">-->
-        <!--<label class="col-sm-3 col-form-label">Años</label>-->
-        <!--<div class="col-sm-9">-->
-        <!--<select class="form-control">-->
-        <!--<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>-->
-        <!--<option *ngFor="let obj of cargarAnios()" [ngValue]="obj">{{obj}}</option>-->
-        <!--</select>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-        <!--</div>-->
+        &lt;!&ndash;<div class="col-12 grid-margin">&ndash;&gt;
+        &lt;!&ndash;<div class="card body">&ndash;&gt;
+        &lt;!&ndash;&lt;!&ndash;<div class="card-body">&ndash;&gt;&ndash;&gt;
+        &lt;!&ndash;<div class="row">&ndash;&gt;
+        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
+        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
+        &lt;!&ndash;<label class="col-sm-3 col-form-label">Meses</label>&ndash;&gt;
+        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
+        &lt;!&ndash;<select class="form-control">&ndash;&gt;
+        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
+        &lt;!&ndash;<option *ngFor="let obj of meses" [ngValue]="obj">{{obj.mes}}</option>&ndash;&gt;
+        &lt;!&ndash;</select>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
+        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
+        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
+        &lt;!&ndash;<button type="button" class="btn btn-success btn-fw" >Aplicar</button>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<div class="row">&ndash;&gt;
+        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
+        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
+        &lt;!&ndash;<label class="col-sm-3 col-form-label">Años</label>&ndash;&gt;
+        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
+        &lt;!&ndash;<select class="form-control">&ndash;&gt;
+        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
+        &lt;!&ndash;<option *ngFor="let obj of cargarAnios()" [ngValue]="obj">{{obj}}</option>&ndash;&gt;
+        &lt;!&ndash;</select>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
       </div>
 
     </div>
@@ -223,4 +235,4 @@
     </div>
     <div *ngIf="loading">
       <app-loading-indicator></app-loading-indicator>
-    </div>
+    </div>-->
