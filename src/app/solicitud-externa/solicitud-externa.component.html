@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title"></h4>
-      <form name="form" #f="ngForm"  novalidate>
+      <form name="form" #f="ngForm" novalidate>
         <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
         <p class="card-description font-weight-bold">
           Informacion de la Persona
@@ -11,18 +11,18 @@
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nombres</label>
-              <div class="col-sm-9">
-                <input id="nombre" type="text" required class="form-control" placeholder="Nombres Solicitante"
-                       minlength="4"
-                       [(ngModel)]="solicitudes.solicitante.nombre" #nombre="ngModel" name="nombre">
-                <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" class="alert alert-danger">
-                  <div [hidden]="!nombre.errors.required">
-                    Debe Ingresar el nombre del solicitante
+                <div class="col-sm-9">
+                  <input id="nombre" type="text" required class="form-control border-primary" placeholder="Nombres Solicitante"
+                         minlength="4"
+                         [(ngModel)]="solicitudes.solicitante.nombre" #nombre="ngModel" name="nombre">
+                  <div *ngIf="nombre.errors && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                    <div [hidden]="!nombre.errors.required">
+                      Debe Ingresar el nombre del solicitante
+                    </div>
+                    <div [hidden]="!nombre.errors.minlength">
+                      Por favor ingrese 4 caractes como valor minimo
+                    </div>
                   </div>
-                  <div [hidden]="!nombre.errors.minlength">
-                    Por favor ingrese 4 caractes como valor minimo
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -30,7 +30,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Ap. Paterno</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Apellido Paterno" uppercase
+                <input type="text" class="form-control border-primary" placeholder="Apellido Paterno" uppercase
                        [(ngModel)]="solicitudes.solicitante.paterno" #paterno="ngModel" name="paterno" required>
                 <div *ngIf="paterno.errors && (paterno.dirty || paterno.touched)" class="alert alert-danger">
                   <div [hidden]="!paterno.errors.required">
@@ -49,7 +49,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Ap. Materno</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Apellido Materno"
+                <input type="text" class="form-control border-primary" placeholder="Apellido Materno"
                        [(ngModel)]="solicitudes.solicitante.materno" #materno="ngModel" name="materno" required>
                 <div *ngIf="materno.errors && (materno.dirty || materno.touched)" class="alert alert-danger">
                   <div [hidden]="!materno.errors.required">
@@ -66,12 +66,12 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Sexo</label>
               <div class="col-sm-9">
-                <select class="form-control" name="selTipoSexo" #selTipoSexo="ngModel"
+                <select class="form-control border-primary" name="selTipoSexo" #selTipoSexo="ngModel"
                         [(ngModel)]="solicitudes.solicitante.sexo" required>
                   <option value="" disabled selected>Seleccionar el Tipo</option>
                   <option *ngFor="let obj of tipoGenero" [ngValue]="obj">{{obj.des}}</option>
                 </select>
-                <div *ngIf="selTipoSexo.invalid && (selTipoSexo.dirty || selTipoSexo.touched)" class="invalid-feedback">
+                <div *ngIf="selTipoSexo.invalid" class="invalid-feedback">
                   <div [hidden]="!selTipoSexo.errors.required">
                     Seleccionar el tipo de Sexo
                   </div>
@@ -85,7 +85,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Documento de Identidad</label>
               <div class="col-sm-9">
-                <input type="text" pattern="^.*[0-9].*$" required class="form-control"
+                <input type="text" pattern="^.*[0-9].*$" required class="form-control border-primary"
                        placeholder="Nro. de Documento"
                        [(ngModel)]="solicitudes.solicitante.ci" name="ci" #ci="ngModel">
                 <div *ngIf="ci.errors && (ci.dirty || ci.touched)" class="alert alert-danger">
@@ -103,7 +103,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tipo Documento</label>
               <div class="col-sm-9">
-                <select class="form-control" name="tipDoc" #tipDoc="ngModel"
+                <select class="form-control border-primary" name="tipDoc" #tipDoc="ngModel"
                         [(ngModel)]="solicitudes.solicitud.tipDocSolicitud" required>
                   <option value="" disabled selected>Seleccionar Tipo de Documento</option>
                   <option *ngFor="let obj of tipoDocumentoList" [ngValue]="obj">{{obj.des}}</option>
@@ -122,7 +122,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nro. Telefono</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" pattern="^[0-9]{8}$" placeholder="Nro. Telefono"
+                <input type="text" class="form-control border-primary" pattern="^[0-9]{8}$" placeholder="Nro. Telefono"
                        [(ngModel)]="solicitudes.solicitante.fono" name="fono" #fono="ngModel" required>
                 <div *ngIf="fono.errors && (fono.dirty || fono.touched)" class="alert alert-danger">
                   <div [hidden]="!fono.errors.required">
@@ -139,7 +139,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Nro. Celular</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" pattern="^[0-9]{8}$" placeholder="Nro. Celular"
+                <input type="text" class="form-control border-primary" pattern="^[0-9]{8}$" placeholder="Nro. Celular"
                        [(ngModel)]="solicitudes.solicitante.fono1" name="fono1" #fono1="ngModel" required>
                 <div *ngIf="fono1.errors && (fono1.dirty || fono1.touched)" class="alert alert-danger">
                   <div [hidden]="!fono1.errors.required">
@@ -158,7 +158,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Direccion</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Direccion"
+                <input type="text" class="form-control border-primary" placeholder="Direccion"
                        [(ngModel)]="solicitudes.solicitante.direccion" name="direccion" #direccion="ngModel" required>
                 <div *ngIf="direccion.errors && (direccion.dirty || direccion.touched)" class="alert alert-danger">
                   <div [hidden]="!direccion.errors.required">
@@ -172,7 +172,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Correo Electronico</label>
               <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Correo Electronico"
+                <input type="text" class="form-control border-primary" placeholder="Correo Electronico"
                        [(ngModel)]="solicitudes.solicitante.email" name="correo"
                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
                        #correo="ngModel" required>
@@ -193,7 +193,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tipo Caso:</label>
               <div class="col-sm-9">
-                <select class="form-control" name="tipoDocumentoList"
+                <select class="form-control border-primary" name="tipoDocumentoList"
                         [(ngModel)]="solicitudes.caso" name="caso" #caso="ngModel" required>
                   <option value="" disabled selected>Seleccionar el Tipo de Caso</option>
                   <option *ngFor="let obj of tipoCaso" [ngValue]="obj">{{obj.des}}</option>
@@ -210,7 +210,7 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Edad:</label>
               <div class="col-sm-9">
-                <input type="text" maxlength="3"  pattern="^.*[0-9].*$" class="form-control" placeholder="Edad"
+                <input type="text" maxlength="3" pattern="^.*[0-9].*$" class="form-control border-primary" placeholder="Edad"
                        [(ngModel)]="solicitudes.solicitante.edad"
                        #edad="ngModel" name="edad" required>
                 <div *ngIf="edad.errors && (edad.dirty || edad.touched)" class="alert alert-danger">
@@ -237,10 +237,11 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Requerimiento de Servicio"
-                                #requerimiento="ngModel" pattern="^[a-zA-Z0-9-.,()#+&\s]+$"
+                    <textarea class="form-control border-primary" rows="3" placeholder="Requerimiento de Servicio"
+                              #requerimiento="ngModel" pattern="^[a-zA-Z0-9-.,()#+&\s]+$"
                               [(ngModel)]="solicitudes.solicitud.requerimiento" name="requerimiento"></textarea>
-                    <div *ngIf="requerimiento.errors && (requerimiento.dirty || requerimiento.touched)" class="alert alert-danger">
+                    <div *ngIf="requerimiento.errors && (requerimiento.dirty || requerimiento.touched)"
+                         class="alert alert-danger">
                       <div [hidden]="!requerimiento.errors.pattern">
                         Por favor no estan permitidos caracteres especiales
                       </div>
@@ -254,7 +255,7 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Informe de analisis  de requerimiento"
+                    <textarea class="form-control border-primary" rows="3" placeholder="Informe de analisis  de requerimiento"
                               [(ngModel)]="solicitudes.solicitud.analisis" name="analisis" #analista="ngModel"
                               pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
                     <div *ngIf="analista.errors && (analista.dirty || analista.touched)" class="alert alert-danger">
@@ -271,10 +272,12 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Acciones y Recomendaciones"
-                              [(ngModel)]="solicitudes.solicitud.recomendaciones" name="recomendaciones" #recomendaciones="ngModel"
-                              pattern="^[a-zA-Z0-9-.,()#+&]+$" ></textarea>
-                    <div *ngIf="recomendaciones.errors && (recomendaciones.dirty || recomendaciones.touched)" class="alert alert-danger">
+                    <textarea class="form-control border-primary" rows="3" placeholder="Acciones y Recomendaciones"
+                              [(ngModel)]="solicitudes.solicitud.recomendaciones" name="recomendaciones"
+                              #recomendaciones="ngModel"
+                              pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
+                    <div *ngIf="recomendaciones.errors && (recomendaciones.dirty || recomendaciones.touched)"
+                         class="alert alert-danger">
                       <div [hidden]="!recomendaciones.errors.pattern">
                         Por favor no estan permitidos caracteres especiales
                       </div>
@@ -288,7 +291,7 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Remision"
+                    <textarea class="form-control border-primary" rows="3" placeholder="Remision"
                               [(ngModel)]="solicitudes.solicitud.remision" name="remision" #remision="ngModel"
                               pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
                     <div *ngIf="remision.errors && (remision.dirty || remision.touched)" class="alert alert-danger">
@@ -305,10 +308,12 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Observaciones"
-                              [(ngModel)]="solicitudes.solicitud.observaciones" name="observaciones" #observaciones="ngModel"
+                    <textarea class="form-control border-primary" rows="3" placeholder="Observaciones"
+                              [(ngModel)]="solicitudes.solicitud.observaciones" name="observaciones"
+                              #observaciones="ngModel"
                               pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
-                    <div *ngIf="observaciones.errors && (observaciones.dirty || observaciones.touched)" class="alert alert-danger">
+                    <div *ngIf="observaciones.errors && (observaciones.dirty || observaciones.touched)"
+                         class="alert alert-danger">
                       <div [hidden]="!observaciones.errors.pattern">
                         Por favor no estan permitidos caracteres especiales
                       </div>
@@ -322,10 +327,11 @@
                     </h6>
                   </ng-template>
                   <ng-template ngbPanelContent>
-                    <textarea class="form-control" rows="3" placeholder="Informe de avance y conclusiones de servicio"
+                    <textarea class="form-control border-primary" rows="3" placeholder="Informe de avance y conclusiones de servicio"
                               [(ngModel)]="solicitudes.solicitud.conclusion" name="conclusion" #conclusion="ngModel"
                               pattern="^[a-zA-Z0-9-.,()#+&]+$"></textarea>
-                    <div *ngIf="conclusion.errors && (conclusion.dirty || conclusion.touched)" class="alert alert-danger">
+                    <div *ngIf="conclusion.errors && (conclusion.dirty || conclusion.touched)"
+                         class="alert alert-danger">
                       <div [hidden]="!conclusion.errors.pattern">
                         Por favor no estan permitidos caracteres especiales
                       </div>
@@ -336,7 +342,8 @@
             </div>
           </div>
         </div>
-        <button type="button" [disabled]="f.form.invalid" (click)="recibir(f)" class="btn btn-outline-success">Guardar</button>
+        <button type="button" [disabled]="f.form.invalid" (click)="recibir(f)" class="btn btn-outline-success">Guardar
+        </button>
         <button type="button" class="btn btn-outline-danger">Cancelar</button>
       </form>
     </div>

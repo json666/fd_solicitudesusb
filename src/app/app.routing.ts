@@ -18,6 +18,7 @@ import {HistoricoComponent} from './historico/historico.component';
 import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.component';
 import {TabsComponent} from './tabs/tabs.component';
 import {PaginationComponent} from './pagination/pagination.component';
+import {FormsComponent} from './forms/forms.component';
 // import { NgModule } from '@angular/core';
 // import { RouterModule, Routes } from '@angular/router';
 
@@ -42,8 +43,8 @@ export const routes: Routes = [
     { path: 'tables', component: TablesComponent },
     { path: 'tabs', component: TabsComponent },
     { path: 'paginacion', component: PaginationComponent },
-    { path: 'app-anular', component: AnularSolicitudComponent }
-    // { path: 'icons', component: TypographyComponent }
+    { path: 'app-anular', component: AnularSolicitudComponent },
+    { path: 'formulario', component: FormsComponent }
   ]},
   { path: '**', redirectTo: '' }
 ];

@@ -5,13 +5,35 @@
         <h4 class="card-title font-weight-bold">Consulta Correspondencia</h4>
         <form c-lass="forms-sample">
           <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="card-title col-sm-3 col-form-label">Fecha Inicial:</label>
+                <div class="col-sm-7">
+                  <input type="date" name="desde" id="fecha" min="1000-01-01" max="3000-12-31" class="form-control border-primary"
+                         [(ngModel)]="pdesde" name="pdesde">
+                  <!--[(ngModel)]="solicitud.fecReg">-->
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="card-title col-sm-3 col-form-label">Fecha Final:</label>
+                <div class="col-sm-7">
+                  <input type="date" name="hasta" id="fecha1" min="1000-01-01" max="3000-12-31" class="form-control border-primary"
+                         [(ngModel)]="phasta" name="phasta">
+                  <!--[(ngModel)]="solicitud.fecReg">-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--<div class="row">
             <div class="col-md-5">
               <div class="form-group row">
                 <label class="card-title col-sm-3 col-form-label">Fecha Inicial:</label>
                 <div class="col-sm-7">
                   <input type="date" name="desde" id="fecha" min="1000-01-01" max="3000-12-31" class="form-control"
                          [(ngModel)]="pdesde" name="pdesde">
-                  <!--[(ngModel)]="solicitud.fecReg">-->
+                  &lt;!&ndash;[(ngModel)]="solicitud.fecReg">&ndash;&gt;
                 </div>
               </div>
             </div>
@@ -21,12 +43,24 @@
                 <div class="col-sm-7">
                   <input type="date" name="hasta" id="fecha1" min="1000-01-01" max="3000-12-31" class="form-control"
                          [(ngModel)]="phasta" name="phasta">
-                  <!--[(ngModel)]="solicitud.fecReg">-->
+                  &lt;!&ndash;[(ngModel)]="solicitud.fecReg">&ndash;&gt;
+                </div>
+              </div>
+            </div>
+          </div>-->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="card-title col-sm-3 col-form-label">Hoja de Ruta:</label>
+                <div class="col-sm-7">
+                  <input type="email" class="form-control border-primary" id="exampleInputEmail2" placeholder="Hoja de Ruta"
+                         maxlength="20"
+                         [(ngModel)]="parametro" name="parametro">
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-md-5">
+         <!-- <div class="col-md-5">
             <div class="form-group row">
               <label class="card-title col-sm-3 col-form-label">Hoja de Ruta:</label>
               <div class="col-sm-7">
@@ -35,7 +69,7 @@
                        [(ngModel)]="parametro" name="parametro">
               </div>
             </div>
-          </div>
+          </div>-->
           <button type="submit" class="btn btn-outline-success mr-2" (click)="busqueda()">Buscar</button>
           <button class="btn btn-outline-warning">Limpiar</button>
         </form>

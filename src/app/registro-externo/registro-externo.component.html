@@ -1,9 +1,99 @@
-<div class="col-12 grid-margin">
+<div class="row">
+  <div class="col-md-10 grid-margin stretch-card">
+    <div class="row flex-grow">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-description font-weight-bold">
+              Hoja de Ruta Administrativa
+            </p>
+            <form class="forms-sample">
+              <div class="form-group">
+                <label for="referencia">Referencia:</label>
+                <div class="input-group">
+                  <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                  <i class="mdi mdi-database text-white"></i>
+                </span>
+                  <textarea class="form-control" id="referencia" rows="2"
+                            [(ngModel)]="solicitudes.solicitud.referencia"
+                            name="referencia"></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="fecha1">Limite:</label>
+
+                <div class="input-group">
+                  <span class="input-group-addon bg-info bg-info" id="colored-addon1">
+                  <i class="mdi mdi-shield-outline text-white"></i>
+                </span>
+                  <input type="date" name="fecReg" id="fecha1" min="1000-01-01" max="3000-12-31" class="form-control"
+                         [(ngModel)]="solicitudes.solicitud.limite">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tdocumento">Tipo Documento</label>
+                <div class="input-group">
+                  <span class="input-group-addon bg-info bg-info" id="colored-addon2">
+                  <i class="mdi mdi-account-card-details text-white"></i>
+                </span>
+                  <select class="form-control" name="selTipoDocumentoSoli" id="tdocumento"
+                          [(ngModel)]="solicitudes.solicitud.tipDocSolicitud">
+                    <option *ngFor="let obj of tipoDocumentoAccion" [ngValue]="obj">{{obj.des}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="hojas">Número Hojas</label>
+                <div class="input-group">
+                  <span class="input-group-addon bg-info bg-info" id="colored-addon3">
+                  <i class="mdi mdi-access-point text-white"></i>
+                </span>
+                  <input type="text" class="form-control" id="hojas" placeholder="Nro. Hojas"
+                         [(ngModel)]="solicitudes.solicitud.nroHojas" name="nroHojas">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="taccion">Tipo Acción</label>
+                <div class="input-group">
+                  <span class="input-group-addon bg-info bg-info" id="colored-addon4">
+                  <i class="mdi mdi-shield-half-full text-white"></i>
+                </span>
+                  <select class="form-control" name="selTipoTarea" id="taccion"
+                          [(ngModel)]="solicitudes.solicitud.taccion">
+                    <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des|uppercase}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="tcaso">Tipo Caso</label>
+                <div class="input-group">
+                  <span class="input-group-addon bg-info bg-info" id="colored-addon5">
+                  <i class="mdi mdi-account-multiple text-white"></i>
+                </span>
+                  <select class="form-control" name="selTipoDocumentoSoli" id="tcaso"
+                          [(ngModel)]="solicitudes.caso">
+                    <option *ngFor="let obj of tipoCasoReg" [ngValue]="obj">{{obj.des}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="button" class="btn btn-outline-primary" (click)="registrarInternos()" label="Show">Registrar
+              </button>
+              <button type="button" class="btn btn-outline-warning">Cancelar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="col-12 grid-margin">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title"></h4>
       <form class="form-interno" novalidate>
-        <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+        &lt;!&ndash;      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>&ndash;&gt;
         <p class="card-description font-weight-bold">
           Hoja de Ruta Administrativa
         </p>
@@ -46,7 +136,7 @@
               <div class="col-sm-9">
                 <input type="text" class="form-control" placeholder="Nro. Hojas"
                        [(ngModel)]="solicitudes.solicitud.nroHojas" name="nroHojas">
-                <!--<label  *ngIf="hojas.errors && isValidFormInterno != null && !isValidFormInterno" class="sr-only">Ingrese solo valores numericos</label>-->
+                &lt;!&ndash;<label  *ngIf="hojas.errors && isValidFormInterno != null && !isValidFormInterno" class="sr-only">Ingrese solo valores numericos</label>&ndash;&gt;
               </div>
             </div>
           </div>
@@ -60,15 +150,15 @@
               </div>
             </div>
           </div>
-          <!--          <div class="col-md-4">-->
-          <!--            <div class="form-group row">-->
-          <!--              <label class="col-sm-3 col-form-label">Fecha</label>-->
-          <!--              <div class="col-sm-9">-->
-          <!--                <input type="date" name="fecReg" id="fecha" min="1000-01-01" max="3000-12-31" class="form-control"-->
-          <!--                       [(ngModel)]="solicitud.fecReg">-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
+          &lt;!&ndash;          <div class="col-md-4">&ndash;&gt;
+          &lt;!&ndash;            <div class="form-group row">&ndash;&gt;
+          &lt;!&ndash;              <label class="col-sm-3 col-form-label">Fecha</label>&ndash;&gt;
+          &lt;!&ndash;              <div class="col-sm-9">&ndash;&gt;
+          &lt;!&ndash;                <input type="date" name="fecReg" id="fecha" min="1000-01-01" max="3000-12-31" class="form-control"&ndash;&gt;
+          &lt;!&ndash;                       [(ngModel)]="solicitud.fecReg">&ndash;&gt;
+          &lt;!&ndash;              </div>&ndash;&gt;
+          &lt;!&ndash;            </div>&ndash;&gt;
+          &lt;!&ndash;          </div>&ndash;&gt;
         </div>
         <div class="row">
           <div class="col-md-4">
@@ -86,7 +176,7 @@
         <button type="button" class="btn btn-outline-primary" (click)="registrarInternos()" label="Show">Registrar
         </button>
         <button type="button" class="btn btn-outline-warning">Cancelar</button>
-        <!--<div class="col-12 grid-margin stretch-card">
+        &lt;!&ndash;<div class="col-12 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title"></h4>
@@ -108,16 +198,11 @@
               </div>
             </div>
           </div>
-        </div>-->
+        </div>&ndash;&gt;
       </form>
     </div>
   </div>
-</div>
+</div>-->
 <div *ngIf="loading">
   <app-loading-indicator></app-loading-indicator>
 </div>
-<!--
-<div>
-  <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog>
-</div>
--->
