@@ -36,8 +36,10 @@
               "node_modules/bootstrap/dist/css/json.css"
             ],
             "scripts": [
-              "node_modules/chart.js/dist/Chart.js",
-              "node_modules/primeng/components/chart/chart.js"
+
+//              "node_modules/chart.js/dist/Chart.js",
+//              "node_modules/primeng/components/chart/chart.js",
+              "node_modules/chart.js/dist/Chart.bundle.min.js"
             ]
           },
           "configurations": {

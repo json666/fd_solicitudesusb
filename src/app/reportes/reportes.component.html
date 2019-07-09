@@ -53,17 +53,21 @@
               <i class="mdi mdi-home-outline"></i>Home
             </ng-template>
             <ng-template ngbTabContent>
-              <!--<div class="row">
-                <div class="col-md-4"><img class="img-fluid w-100 rounded" src="assets/images/samples/300x300/13.jpg"
-                                           alt=""></div>
-                <div class="col-md-8">
-                  <h5 class="mb-3">Heading</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi molestias iusto qui eos, vero
-                    provident ipsa neque! Molestiae, aperiam</p>
+              <div>
+                <div>
+                  <div style="display: block">
+                    <canvas baseChart
+                            [datasets]="barChartData"
+                            [labels]="barChartLabels"
+                            [options]="barChartOptions"
+                            [plugins]="barChartPlugins"
+                            [legend]="barChartLegend"
+                            [chartType]="barChartType">
+                    </canvas>
+                  </div>
+                  <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
                 </div>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsa odio dolore perspiciatis laudantium
-                repellat quae, facere, laboriosam omnis dolorem quaerat quis assumenda!</p>-->
             </ng-template>
           </ngb-tab>
           <ngb-tab>
@@ -71,17 +75,28 @@
               <i class="mdi mdi-account-outline"></i>Profile
             </ng-template>
             <ng-template ngbTabContent>
-              <!--<div class="row">
-                <div class="col-md-4"><img class="img-fluid w-100 rounded" src="assets/images/samples/300x300/9.jpg"
-                                           alt=""></div>
-                <div class="col-md-8">
-                  <h5 class="mb-3">Heading</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi molestias iusto qui eos, vero
-                    provident ipsa neque! Molestiae, aperiam</p>
+              <div>
+                <div>
+                  <div class="chart">
+                    <canvas baseChart
+                            [data]="pieChartData"
+                            [labels]="pieChartLabels"
+                            [chartType]="pieChartType"
+                            [options]="pieChartOptions"
+                            [plugins]="pieChartPlugins"
+                            [colors]="pieChartColors"
+                            [legend]="pieChartLegend">
+                    </canvas>
+                  </div>
                 </div>
               </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsa odio dolore perspiciatis laudantium
-                repellat quae, facere, laboriosam omnis dolorem quaerat quis assumenda!</p>-->
+              <div>
+                <button mat-button mat-raised-button color="primary" (click)="pieChartLegend=!pieChartLegend">Toggle Legend</button>
+                <button mat-button mat-raised-button color="primary" (click)="changeLabels()">Change Labels</button>
+                <button mat-button mat-raised-button color="primary" (click)="addSlice()">Add Slice</button>
+                <button mat-button mat-raised-button color="primary" (click)="removeSlice()">Remove Slice</button>
+                <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">Change Legend Position</button>
+              </div>
             </ng-template>
           </ngb-tab>
           <ngb-tab>

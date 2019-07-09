@@ -35,7 +35,7 @@ import {SolicitudExternaComponent} from './solicitud-externa/solicitud-externa.c
 import {AsignarSolicitudComponent} from './asignar-solicitud/asignar-solicitud.component';
 import {ReportesComponent} from './reportes/reportes.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {ChartModule} from 'primeng/chart';
+import {ChartsModule } from 'ng2-charts';
 import {ConfirmDialogModule, DataTableModule, FileUploadModule, MessageService} from 'primeng/primeng';
 import {ModificaSoliExternaComponent} from './modifica-soli-externa/modifica-soli-externa.component';
 import {MatrizComponent} from './matriz/matriz.component';
@@ -94,13 +94,13 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ChartModule,
     DataTableModule,
     TableModule,
     FileUploadModule,
     ConfirmDialogModule,
     NgbModule.forRoot(),
-    NgbModule
+    NgbModule,
+    ChartsModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
