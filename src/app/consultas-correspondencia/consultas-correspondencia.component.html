@@ -105,7 +105,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let obj of solicitdudes1">
+            <tr *ngFor="let obj of registros">
               <td>
                 {{obj.id}}
               </td>
@@ -125,9 +125,9 @@
                 EXTERNA
               </td>
               <td>{{obj.solicitud.hojaRuta}}</td>
-              <td *ngIf="obj.solicitud.interna == true">
+              <td *ngIf="obj.solicitud.interna == true">{{obj.solicitud.interna}}
                 <button type="button" class="btn btn-primary btn-xs" (click)="seguimiento(obj.solicitud.solicId)"
-                        ngbTooltip="Asignar">
+                        ngbTooltip="Asignar">{{obj.solicitud.solicId}}
                   <i class="fa-building-o"></i>
                 </button>
                 <button type="button" class="btn btn-danger btn-xs" ngbTooltip="Modificar">
@@ -174,12 +174,15 @@
             </tr>
             </tbody>
           </table>
-          <div class="col-md-4 col-sm-6 grid-margin stretch-card">
-            <div class="card">
-              <div class="card-body">
-                <ngb-pagination [collectionSize]="40" [pageSize]="10" [page]="1" aria-label="Default pagination" class="d-flex justify-content-center pagination-success"></ngb-pagination>
-              </div>
-            </div>
+          <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="tamanio" [(page)]="page" [pageSize]="pageSize">
+            </ngb-pagination>
+
+            <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+              <option [ngValue]="2">2 solicitudes por pagina</option>
+              <option [ngValue]="4">4 solicitudes por pagina</option>
+              <option [ngValue]="6">6 solicitudes por pagina</option>
+            </select>
           </div>
         </div>
       </div>

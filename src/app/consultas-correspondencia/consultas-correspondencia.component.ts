@@ -21,7 +21,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   public listado;
   public soliTemp: RespSolicitud;
   data = [];
-  tamanio: any=0;
+  tamanio: any = 0;
   page = 1;
   pageSize = 4;
 
@@ -67,11 +67,16 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
   }*/
 
   get registros() {
+    console.info('INCIANDO -->1');
     if (this.tamanio !== undefined && this.tamanio > 0) {
-      return this.solicitdudes1
+      console.info('MAYOR A CERO -->2');
+      this.solicitdudes1 = this.solicitdudes1
         .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
         .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+      // console.info('EL ARRAY------>' + JSON.stringify(this.solicitdudes1));
+      return this.solicitdudes1;
     } else {
+      console.info('IGUAL A CERO -->0');
       return this.solicitdudes1;
     }
   }

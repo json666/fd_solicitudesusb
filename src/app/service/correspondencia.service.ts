@@ -78,7 +78,7 @@ export class CorrespondenciaService {
     return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicporcontexto/'+parametro+'/'+parametro1).map(this.extractData);
   }
 
-  obtieneDatosEstadisticosB(parametro: any, parametro1:any):Observable<any>{
+  obtieneDatosEstadisticosB(parametro: any, parametro1: any):Observable<any>{
     return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicportipo/'+parametro+'/'+parametro1).map(this.extractData);
   }
   listadoUnidades(): Observable<any>{

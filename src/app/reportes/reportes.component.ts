@@ -65,6 +65,7 @@ export class ReportesComponent implements OnInit {
       },
     }
   };
+  public datosPie: any [];
   public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
   public pieChartData: number[] = [300, 500, 100];
   public pieChartType: ChartType = 'pie';
@@ -204,11 +205,27 @@ export class ReportesComponent implements OnInit {
     let dt = new Date();
     this._serv.obtieneDatosEstadisticosA(dt.getFullYear(), '').subscribe(response => {
       this.data = response;
+      this.barChartLabels = this.data.labels;  //: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+
+    /*this.barChartData = [
+      this.data.datasets[0], this.data.datasets[0].label ,
+      this.data.datasets[1], this.data.datasets[1].label
+      ];*/
+      //this.barChartData=this.data.datasets;
+
     });
 
     this._serv.obtieneDatosEstadisticosB(dt.getFullYear(), '').subscribe(response => {
       this.data1 = response;
       this.loading = false;
+      this.pieChartLabels = this.data1.labels;
+      /*Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];*/
+      this.pieChartData = this.data1.datasets[0].data;
+      this.pieChartColors = [
+        {
+          backgroundColor: this.data1.datasets[3].backgroundColor/*['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],*/
+        }
+      ];
     });
     this.options = {
       title: {
@@ -352,7 +369,7 @@ export class ReportesComponent implements OnInit {
       'patrol', 'satisfied', 'academy', 'acceptance', 'ivory', 'aquarium', 'building', 'store', 'replace', 'language',
       'redeem', 'honest', 'intention', 'silk', 'opera', 'sleep', 'innocent', 'ignore', 'suite', 'applaud', 'funny'];
     const randomWord = () => words[Math.trunc(Math.random() * words.length)];
-    this.pieChartLabels = Array.apply(null, { length: 3 }).map(_ => randomWord());
+    this.pieChartLabels = Array.apply(null, {length: 3}).map(_ => randomWord());
   }
 
   addSlice() {

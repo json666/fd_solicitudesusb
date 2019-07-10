@@ -6,7 +6,7 @@ export class ReporteB {
 }
 
 export class Datasets {
-  data: string [];
+  data: number [];
   hoverBackgroundColor: string[];
   backgroundColor: string[];
 
