@@ -131,6 +131,11 @@ export class CorrespondenciaService {
   }
 
 
+  cambioPassword(data: any): Observable <any> {
+    return this.http.post(environment.urlBackEndSolicitudUSB + 'auth/passwd', data).map(this.extractData).pipe(catchError(this.handleError));
+  }
+
+
 
 
   private extractData(res: Response) {

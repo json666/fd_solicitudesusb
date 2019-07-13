@@ -19,6 +19,7 @@ import {AnularSolicitudComponent} from './anular-solicitud/anular-solicitud.comp
 import {TabsComponent} from './tabs/tabs.component';
 import {PaginationComponent} from './pagination/pagination.component';
 import {FormsComponent} from './forms/forms.component';
+import {ChangePasswordComponent} from './change-password/change-password.component';
 // import { NgModule } from '@angular/core';
 // import { RouterModule, Routes } from '@angular/router';
 
@@ -44,7 +45,8 @@ export const routes: Routes = [
     { path: 'tabs', component: TabsComponent },
     { path: 'paginacion', component: PaginationComponent },
     { path: 'app-anular', component: AnularSolicitudComponent },
-    { path: 'formulario', component: FormsComponent }
+    { path: 'formulario', component: FormsComponent },
+    { path: 'cambio-contrasenia', component: ChangePasswordComponent }
   ]},
   { path: '**', redirectTo: '' }
 ];

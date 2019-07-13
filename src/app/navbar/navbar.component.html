@@ -14,18 +14,6 @@
         </a>
       </li>
     </ul>
-    <!--
-    <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home/app-solicitud-externa']" routerLinkActive="active">Casos Externos
-          <span class="badge badge-primary ml-1">Nueva</span>
-        </a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/home/registro-externo']" routerLinkActive="active">
-          <i class="mdi mdi-elevation-rise"></i>Casos Internos</a>
-      </li>
-    </ul>-->
     <ul class="navbar-nav navbar-nav-right">
       <li class="nav-item dropdown" ngbDropdown>
         <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" ngbDropdownToggle>
@@ -33,18 +21,17 @@
           <span class="count">{{cantidadNotif}}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" ngbDropdownMenu
-             aria-labelledby="notificationDropdown" *ngFor="let obj of notificacion">
+             aria-labelledby="notificationDropdown" >
           <a class="dropdown-item">
             <p class="mb-0 font-weight-normal float-left">Tu tienes {{cantidadNotif}} solicitudes, que estan por vencer
             </p>
-            <span class="badge badge-pill badge-warning float-right"></span>
+            <!--<span class="badge badge-pill badge-warning float-right">View all</span>-->
           </a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item" *ngIf="obj.interna===true"
-             [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">
+          <a class="dropdown-item preview-item"  *ngFor="let obj of notificacion" [routerLink]="['/home/mod-solicitud-interna/'+obj.solicId]">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-success">
-                <i class="mdi mdi-tune-vertical mx-0"></i>
+                <i class="mdi mdi-alert-circle-outline mx-0"></i>
               </div>
             </div>
             <div class="preview-item-content">
@@ -54,19 +41,35 @@
               </p>
             </div>
           </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item" [routerLink]="['/home/mod-solicitud-interna/' + obj.solicId]">
+
+          <!--<div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
             <div class="preview-thumbnail">
               <div class="preview-icon bg-warning">
                 <i class="mdi mdi-tune-vertical mx-0"></i>
               </div>
             </div>
             <div class="preview-item-content">
-              <h6 class="preview-subject font-weight-medium">{{obj.solicId}}-INT-{{obj.notifFecha}}</h6>
+              <h6 class="preview-subject font-weight-medium">Settings</h6>
               <p class="font-weight-light small-text">
+                Private message
               </p>
             </div>
           </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-info">
+                <i class="mdi mdi-email-outline mx-0"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <h6 class="preview-subject font-weight-medium">New user registration</h6>
+              <p class="font-weight-light small-text">
+                2 days ago
+              </p>
+            </div>
+          </a>-->
         </div>
       </li>
       <li class="nav-item dropdown d-none d-xl-inline-block" ngbDropdown>
@@ -92,7 +95,7 @@
           <a class="dropdown-item mt-2">
             Mi Cuenta
           </a>
-          <a class="dropdown-item">
+          <a class="dropdown-item" [routerLink]="['/home/cambio-contrasenia/']">
             Cambiar Password
           </a>
           <!--<a class="dropdown-item">

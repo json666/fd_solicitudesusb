@@ -126,7 +126,9 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.solicitud.persId = this.userFinal.persona.id;
     this.regSolicitud.solicitud.interna = 'true';
     this.regSolicitud.destinatario.id = this.userFinal.persona.id;
-    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia;
+    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia.toUpperCase();
+    this.regSolicitud.solicitud.nroHojas = Number(this.solicitudes.solicitud.nroHojas !== undefined
+    && this.solicitudes.solicitud.nroHojas !== '' ? this.solicitudes.solicitud.nroHojas : 0);
     let dtn = new Date(this.solicitudes.solicitud.limite);
     this.regSolicitud.solicitud.limite = new Date(dtn);
     console.info('Registrar Solicitud:.. *************', JSON.stringify(this.regSolicitud));

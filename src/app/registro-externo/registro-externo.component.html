@@ -7,77 +7,102 @@
             <p class="card-description font-weight-bold">
               Hoja de Ruta Administrativa
             </p>
-            <form class="forms-sample">
+            <form class="forms-sample" name="form" #f="ngForm" novalidate>
               <div class="form-group">
                 <label for="referencia">Referencia:</label>
-                <div class="input-group">
+                <!--<div class="input-group">
                   <span class="input-group-addon bg-info bg-info" id="colored-addon1">
                   <i class="mdi mdi-database text-white"></i>
-                </span>
-                  <textarea class="form-control" id="referencia" rows="2"
-                            [(ngModel)]="solicitudes.solicitud.referencia"
-                            name="referencia"></textarea>
+                </span>-->
+                <textarea class="form-control border-primary" id="referencia" rows="2"  #referencia="ngModel"
+                          [(ngModel)]="solicitudes.solicitud.referencia"
+                          name="referencia" required></textarea>
+                <div *ngIf="referencia.errors && (referencia.dirty || referencia.touched)" class="alert alert-danger">
+                  <div [hidden]="!referencia.errors.required">
+                    Debe Ingresar los datos de referencia
+                  </div>
                 </div>
+                <!--</div>-->
               </div>
               <div class="form-group">
                 <label for="fecha1">Limite:</label>
 
-                <div class="input-group">
+                <!--<div class="input-group">
                   <span class="input-group-addon bg-info bg-info" id="colored-addon1">
                   <i class="mdi mdi-shield-outline text-white"></i>
-                </span>
-                  <input type="date" name="fecReg" id="fecha1" min="1000-01-01" max="3000-12-31" class="form-control"
-                         [(ngModel)]="solicitudes.solicitud.limite">
+                </span>-->
+                  <input type="date" name="limite" id="fecha1" min="1000-01-01" max="3000-12-31" class="form-control border-primary" #limite="ngModel"
+                         [(ngModel)]="solicitudes.solicitud.limite" required>
+                <div *ngIf="limite.errors && (limite.dirty || limite.touched)" class="alert alert-danger">
+                  <div [hidden]="!limite.errors.required">
+                    Debe Ingresar la fecha limite de conclusion de Solicitud.
+                  </div>
                 </div>
+                <!--</div>-->
               </div>
               <div class="form-group">
                 <label for="tdocumento">Tipo Documento</label>
-                <div class="input-group">
+                <!--<div class="input-group">
                   <span class="input-group-addon bg-info bg-info" id="colored-addon2">
                   <i class="mdi mdi-account-card-details text-white"></i>
-                </span>
-                  <select class="form-control" name="selTipoDocumentoSoli" id="tdocumento"
-                          [(ngModel)]="solicitudes.solicitud.tipDocSolicitud">
+                </span>-->
+                  <select class="form-control border-primary" name="tipDocSolicitud" id="tdocumento" name="tipDocSolicitud" #tipDocSolicitud="ngModel"
+                          [(ngModel)]="solicitudes.solicitud.tipDocSolicitud" required>
                     <option *ngFor="let obj of tipoDocumentoAccion" [ngValue]="obj">{{obj.des}}</option>
                   </select>
+                <div *ngIf="tipDocSolicitud.invalid" class="invalid-feedback">
+                  <div [hidden]="!tipDocSolicitud.errors.required">
+                    Debe seleccionar el tipo de Documento
+                  </div>
                 </div>
+                <!--</div>-->
               </div>
               <div class="form-group">
                 <label for="hojas">Número Hojas</label>
-                <div class="input-group">
+                <!--<div class="input-group">
                   <span class="input-group-addon bg-info bg-info" id="colored-addon3">
                   <i class="mdi mdi-access-point text-white"></i>
-                </span>
-                  <input type="text" class="form-control" id="hojas" placeholder="Nro. Hojas"
-                         [(ngModel)]="solicitudes.solicitud.nroHojas" name="nroHojas">
-                </div>
+                </span>-->
+                  <input type="text" class="form-control border-primary" id="hojas" placeholder="Nro. Hojas"
+                         [(ngModel)]="solicitudes.solicitud.nroHojas" name="nroHojas" #nroHojas="ngModel" >
+                <!--</div>-->
               </div>
               <div class="form-group">
                 <label for="taccion">Tipo Acción</label>
-                <div class="input-group">
+                <!--<div class="input-group">
                   <span class="input-group-addon bg-info bg-info" id="colored-addon4">
                   <i class="mdi mdi-shield-half-full text-white"></i>
-                </span>
-                  <select class="form-control" name="selTipoTarea" id="taccion"
-                          [(ngModel)]="solicitudes.solicitud.taccion">
+                </span>-->
+                  <select class="form-control border-primary" name="taccion" id="taccion" #taccion="ngModel"
+                          [(ngModel)]="solicitudes.solicitud.taccion" required>
                     <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des|uppercase}}</option>
                   </select>
+                <div *ngIf="taccion.invalid" class="invalid-feedback">
+                  <div [hidden]="!taccion.errors.required">
+                    Debe seleccionar que tipo de Accion corresponde la solicitud.
+                  </div>
                 </div>
+                <!--</div>-->
               </div>
               <div class="form-group">
                 <label for="tcaso">Tipo Caso</label>
-                <div class="input-group">
+                <!--<div class="input-group">
                   <span class="input-group-addon bg-info bg-info" id="colored-addon5">
                   <i class="mdi mdi-account-multiple text-white"></i>
-                </span>
-                  <select class="form-control" name="selTipoDocumentoSoli" id="tcaso"
-                          [(ngModel)]="solicitudes.caso">
+                </span>-->
+                  <select class="form-control border-primary" name="caso" id="tcaso" #caso="ngModel"
+                          [(ngModel)]="solicitudes.caso" required>
                     <option *ngFor="let obj of tipoCasoReg" [ngValue]="obj">{{obj.des}}</option>
                   </select>
+                <div *ngIf="caso.invalid" class="invalid-feedback">
+                  <div [hidden]="!caso.errors.required">
+                    Debe seleccionar el tipo de caso que se va a registrar
+                  </div>
                 </div>
+                <!--</div>-->
               </div>
 
-              <button type="button" class="btn btn-outline-primary" (click)="registrarInternos()" label="Show">Registrar
+              <button type="button" [disabled]="f.form.invalid" class="btn btn-outline-primary" (click)="registrarInternos()" label="Show">Registrar
               </button>
               <button type="button" class="btn btn-outline-warning">Cancelar</button>
             </form>

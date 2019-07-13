@@ -47,7 +47,7 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
 
 
     this.today = new Date();
-    this.dd = String(this.today.getDate()).padStart(2, '0');
+    this.dd = String(this.today.getDate() + 1).padStart(2, '0');
     this.MM = String(this.today.getMonth() + 1).padStart(2, '0');
     this.yyyy = this.today.getFullYear();
     this.desde = this.yyyy+ '-' +this.MM + '-01';

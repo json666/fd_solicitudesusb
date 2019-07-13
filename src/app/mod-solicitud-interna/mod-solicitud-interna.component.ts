@@ -65,7 +65,7 @@ export class ModSolicitudInternaComponent implements OnInit {
       this.tipoDocumentoSolic = response3;
     });
 
-    this._param.getDatosDominio('tareasolic').subscribe(response4 => {
+    this._param.getDatosDominio('tcasoint').subscribe(response4 => {
       this.tipoAccionSolic = response4;
     });
 
@@ -91,6 +91,7 @@ export class ModSolicitudInternaComponent implements OnInit {
       const id = params['id'];
       //setTimeout(() => {
         this._serv.cargarDatosSolicitud(id).subscribe(response => {
+          console.info('resultado de la solic interna:' + JSON.stringify(response))
           this.regSolicitudAnterior = response;
           this.regSolicitud = response;
           for (const docEle of this.tipoDocumentoSolic) {
@@ -99,7 +100,7 @@ export class ModSolicitudInternaComponent implements OnInit {
             }
           }
           for (const docEle of this.tipoAccionSolic) {
-            if (docEle.id === this.regSolicitud.tipoTareaId) {
+            if (docEle.id === this.regSolicitud.solicitud.tipoCaso) {
               this.solicitudes.solicitud.taccion = docEle;
             }
           }

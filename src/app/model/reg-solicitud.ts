@@ -9,6 +9,7 @@ export class RegSolicitud {
   tipoCaso: number;
   tipoDoc: number;
   persId: number;
-  limite
+  limite;
+  nroHojas: number;
 
 }
