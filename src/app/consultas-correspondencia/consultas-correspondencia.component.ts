@@ -66,12 +66,11 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     this.solicitdudes1=this.registros();
   }*/
 
-  get registros() {
+  registros() {
     console.info('INCIANDO -->1');
     if (this.tamanio !== undefined && this.tamanio > 0) {
       console.info('MAYOR A CERO -->2');
-      this.solicitdudes1 = this.solicitdudes1
-        .map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
+      this.solicitdudes1 = this.solicitdudes1.map((listadoSolicitud, i) => ({id: i + 1, ...listadoSolicitud}))
         .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
       // console.info('EL ARRAY------>' + JSON.stringify(this.solicitdudes1));
       return this.solicitdudes1;
