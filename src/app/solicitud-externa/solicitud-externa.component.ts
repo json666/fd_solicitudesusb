@@ -95,10 +95,7 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     this.solicitudes.solicitud.tsolicId = '2';
     // this.solicitudes.solicitud.hojaRuta = this.cites.valor;
     this.solicitudes.destinatario.id = this.userFinal.id;
-    // console.info('Registrar Solicitud:.. ', this.solicitudes);
-    // console.info('Registrar Solicitud:.. 2', JSON.stringify(this.solicitudes));
     this.regSolicitud.tarea = this.solicitudes.tarea.des;
-    // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
     this.regSolicitud.solicitud.hojaRuta = '';
     this.regSolicitud.solicitud.tsolicId = 1;
     this.regSolicitud.solicitud.tipoDoc = Number(this.solicitudes.solicitud.tipDocSolicitud.id);

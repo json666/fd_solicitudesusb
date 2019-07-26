@@ -34,13 +34,14 @@ export class HistoricoComponent implements OnInit {
       console.info('Tipo Solicitud.....:.. :::::', JSON.stringify(response));
     });
     this.cols = [
-      { field: 'solicId', header: 'SolicId' },
-      { field: 'fechaRegistro', header: 'FechaRegistro' },
-      { field: 'nomSolic', header: 'NomSolic' },
-      { field: 'nomAsignado', header: 'NomAsignado'},
-      { field: 'tipoCaso', header: 'TipoCaso' },
-      { field: 'hojaRuta', header: 'HojaRuta' },
-      { field: 'tipoSolic', header: 'TipoSolic' }
+      { field: 'solicId', header: 'ID' },
+      { field: 'fechaRegistro', header: 'Fecha Registro' },
+      { field: 'nomSolic', header: 'solicitante' },
+      { field: 'nomAsignado', header: 'Asignado'},
+      { field: 'tipoCaso', header: 'Tipo de Caso' },
+      { field: 'hojaRuta', header: 'Hoja de Ruta' },
+      // { field: 'tipoSolic', header: 'Tipo' },
+      { field: 'Accion', header: 'Accion' },
     ];
   }
 
