@@ -90,75 +90,76 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     console.log('Login form invalid', form.invalid);//true
     console.log('Login form Valid', form.valid);//false
     console.log('Login form submitted', form.submitted);//false
-   // if (this.validForm(form)) {
-      this.loading = true;
-      this.solicitudes.solicitud.tsolicId = '2';
-      // this.solicitudes.solicitud.hojaRuta = this.cites.valor;
-      this.solicitudes.destinatario.id = this.userFinal.id;
-      // console.info('Registrar Solicitud:.. ', this.solicitudes);
-      // console.info('Registrar Solicitud:.. 2', JSON.stringify(this.solicitudes));
-      this.regSolicitud.tarea = this.solicitudes.tarea.des;
-      // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
-      this.regSolicitud.solicitud.hojaRuta = '';
-      this.regSolicitud.solicitud.tsolicId = 1;
-      this.regSolicitud.solicitud.tipoDoc = Number(this.solicitudes.solicitud.tipDocSolicitud.id);
-      this.regSolicitud.solicitud.solicCite = '';
-      // console.info("TIPO CASO:**********************************"+this.solicitudes.caso.cod+"**************");
-      this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
-      this.regSolicitud.solicitud.interna = 'false';
-      this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.requerimiento.toUpperCase();
-      this.regSolicitud.remExterno.nomJuridico = this.solicitudes.solicitante.nombre.charAt(0).toUpperCase() + '' + this.solicitudes.solicitante.paterno.charAt(0).toUpperCase() + '' + this.solicitudes.solicitante.materno.charAt(0).toUpperCase();
-      this.regSolicitud.remExterno.nombre = this.solicitudes.solicitante.nombre.toUpperCase();
-      this.regSolicitud.remExterno.apellido1 = this.solicitudes.solicitante.paterno.toUpperCase();
-      this.regSolicitud.remExterno.apellido2 = this.solicitudes.solicitante.materno.toUpperCase();
-      this.regSolicitud.remExterno.juridico = false;
-      this.regSolicitud.remExterno.numDoc = this.solicitudes.solicitante.ci;
-      this.regSolicitud.remExterno.fono1 = this.solicitudes.solicitante.fono;
-      this.regSolicitud.remExterno.fono2 = this.solicitudes.solicitante.fono1;
-      this.regSolicitud.remExterno.email = this.solicitudes.solicitante.email;
-      this.regSolicitud.remExterno.genero = String(this.solicitudes.solicitante.sexo.id);
-      this.regSolicitud.remExterno.edad = this.solicitudes.solicitante.edad;
-      this.regSolicitud.destinatario.id = 2;
-      /*Detalle Solicitud*/
-      this.regSolicitud.detallesSolicitud = new DetSolicitud();
-      this.regSolicitud.detallesSolicitud.req = this.solicitudes.solicitud.requerimiento.toUpperCase();
-      this.regSolicitud.detallesSolicitud.analisis = this.solicitudes.solicitud.analisis.toUpperCase();
-      this.regSolicitud.detallesSolicitud.acciones = this.solicitudes.solicitud.recomendaciones.toUpperCase();
-      this.regSolicitud.detallesSolicitud.remision = this.solicitudes.solicitud.remision.toUpperCase();
-      this.regSolicitud.detallesSolicitud.observaciones = this.solicitudes.solicitud.observaciones.toUpperCase();
-      this.regSolicitud.detallesSolicitud.avance = this.solicitudes.solicitud.conclusion.toUpperCase();
-      this.regSolicitud.tarea = '';
-      this.regSolicitud.tipoTareaId = 18;
+    // if (this.validForm(form)) {
+    this.loading = true;
+    this.solicitudes.solicitud.tsolicId = '2';
+    // this.solicitudes.solicitud.hojaRuta = this.cites.valor;
+    this.solicitudes.destinatario.id = this.userFinal.id;
+    // console.info('Registrar Solicitud:.. ', this.solicitudes);
+    // console.info('Registrar Solicitud:.. 2', JSON.stringify(this.solicitudes));
+    this.regSolicitud.tarea = this.solicitudes.tarea.des;
+    // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
+    this.regSolicitud.solicitud.hojaRuta = '';
+    this.regSolicitud.solicitud.tsolicId = 1;
+    this.regSolicitud.solicitud.tipoDoc = Number(this.solicitudes.solicitud.tipDocSolicitud.id);
+    this.regSolicitud.solicitud.solicCite = '';
+    // console.info("TIPO CASO:**********************************"+this.solicitudes.caso.cod+"**************");
+    this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
+    this.regSolicitud.solicitud.interna = 'false';
+    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.requerimiento.toUpperCase();
+    this.regSolicitud.remExterno.nomJuridico = this.solicitudes.solicitante.nombre.charAt(0).toUpperCase() + '' + this.solicitudes.solicitante.paterno.charAt(0).toUpperCase() + '' + this.solicitudes.solicitante.materno.charAt(0).toUpperCase();
+    this.regSolicitud.remExterno.nombre = this.solicitudes.solicitante.nombre.toUpperCase();
+    this.regSolicitud.remExterno.apellido1 = this.solicitudes.solicitante.paterno.toUpperCase();
+    this.regSolicitud.remExterno.apellido2 = this.solicitudes.solicitante.materno.toUpperCase();
+    this.regSolicitud.remExterno.juridico = false;
+    this.regSolicitud.remExterno.numDoc = this.solicitudes.solicitante.ci;
+    this.regSolicitud.remExterno.fono1 = this.solicitudes.solicitante.fono;
+    this.regSolicitud.remExterno.fono2 = this.solicitudes.solicitante.fono1;
+    this.regSolicitud.remExterno.email = this.solicitudes.solicitante.email;
+    this.regSolicitud.remExterno.genero = String(this.solicitudes.solicitante.sexo.id);
+    this.regSolicitud.remExterno.edad = this.solicitudes.solicitante.edad;
+    this.regSolicitud.destinatario.id = 2;
+    /*Detalle Solicitud*/
+    this.regSolicitud.detallesSolicitud = new DetSolicitud();
+    this.regSolicitud.detallesSolicitud.req = this.solicitudes.solicitud.requerimiento.toUpperCase();
+    this.regSolicitud.detallesSolicitud.analisis = this.solicitudes.solicitud.analisis.toUpperCase();
+    this.regSolicitud.detallesSolicitud.acciones = this.solicitudes.solicitud.recomendaciones.toUpperCase();
+    this.regSolicitud.detallesSolicitud.remision = this.solicitudes.solicitud.remision.toUpperCase();
+    this.regSolicitud.detallesSolicitud.observaciones = this.solicitudes.solicitud.observaciones.toUpperCase();
+    this.regSolicitud.detallesSolicitud.avance = this.solicitudes.solicitud.conclusion.toUpperCase();
+    this.regSolicitud.tarea = '';
+    this.regSolicitud.tipoTareaId = 18;
 
-      console.info('Registrar Solicitud:.. *************', JSON.stringify(this.regSolicitud));
-      let reg = JSON.stringify(this.regSolicitud);
-      this._serv.registroSolicitud(reg).subscribe(response => {
-          console.info('Response:.. *************', response);
-          //   if (response.status === '200') {
-          alert('Se realizo el registro exitosamente.');
-          this.regSolicitud = new RegistroSolicitud();
-          this.solicitudes = new Solicitudes();
-          let link = ['home/consulta-correspondencia/'];
-          console.info(link);
-          this.router.navigate(link);
-          this.loading = false;
-          // }
-        },
-        error => {
-          alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
-             });
-          // } else {
-          //   alert('No podemos procesa tu registro, vuelve a intentar.');
-          // }
-      //  }
+    console.info('Registrar Solicitud:.. *************', JSON.stringify(this.regSolicitud));
+    let reg = JSON.stringify(this.regSolicitud);
+    this._serv.registroSolicitud(reg).subscribe(response => {
+        console.info('Response:.. *************', response);
+        //   if (response.status === '200') {
+        alert('Se realizo el registro exitosamente.');
+        this.regSolicitud = new RegistroSolicitud();
+        this.solicitudes = new Solicitudes();
+        let link = ['home/consulta-correspondencia/'];
+        console.info(link);
+        this.router.navigate(link);
+        this.loading = false;
+        // }
+      },
+      error => {
+        alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
+        this.loading = false;
+      });
+    // } else {
+    //   alert('No podemos procesa tu registro, vuelve a intentar.');
+    // }
+    //  }
   }
 
   validForm(f): boolean {
     if (f.valid) {
-      console.info("E VALIDADO");
+      console.info('E VALIDADO');
       return true;
     } else {
-      console.info("NO VALIDADO");
+      console.info('NO VALIDADO');
       return false;
     }
   }

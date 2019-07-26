@@ -84,9 +84,9 @@
           <table class="table table-striped">
             <thead>
             <tr>
-              <th>
+              <!--<th>
                 Nro.
-              </th>
+              </th>-->
               <th>
                 Fecha Registro
               </th>
@@ -106,9 +106,9 @@
             </thead>
             <tbody>
             <tr *ngFor="let obj of solicitdudes1 | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let i = index">
-              <td>
+              <!--<td>
                 {{i+1}}
-              </td>
+              </td>-->
               <td>
                 {{obj.solicitud.solicFecIng|date:'yyyy/MM/dd'}}
               </td>
