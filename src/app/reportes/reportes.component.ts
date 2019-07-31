@@ -7,6 +7,7 @@ import {Parametrica} from '../model/parametrica';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import {Label} from 'ng2-charts';
+import {consoleTestResultHandler} from 'tslint/lib/test';
 
 @Component({
   selector: 'app-reportes',
@@ -30,6 +31,14 @@ export class ReportesComponent implements OnInit {
   options3: any;
   phasta: string;
   pdesde: string;
+  today: any;
+  dd: string;
+  MM: string;
+  yyyy: string;
+  desde: string;
+  hasta: string;
+  pdesde: string;
+  phasta: string;
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -206,7 +215,14 @@ export class ReportesComponent implements OnInit {
       }
     ];
     let dt = new Date();
-    this._serv.obtieneDatosEstadisticosA(dt.getFullYear(), '').subscribe(response => {
+    /*Datos para generar reporte del Mes actual*/
+    this.today = new Date();
+    this.dd = String(this.today.getDate() + 1).padStart(2, '0');
+    this.MM = String(this.today.getMonth() + 1).padStart(2, '0');
+    this.yyyy = this.today.getFullYear();
+    this.desde = this.yyyy + '-' + this.MM + '-01';
+    this.hasta = this.yyyy + '-' + this.MM + '-' + this.dd;
+    this._serv.obtieneDatosEstadisticosA(this.desde, this.hasta).subscribe(response => {
       this.data = response;
       this.barChartLabels = this.data.labels;
       this.barChartData = [
@@ -215,15 +231,15 @@ export class ReportesComponent implements OnInit {
       ];
     });
 
-    this._serv.obtieneDatosEstadisticosB(dt.getFullYear(), '').subscribe(response => {
+    this._serv.obtieneDatosEstadisticosB(this.desde, this.hasta).subscribe(response => {
       this.data1 = response;
+      console.info('Resultado del consumo:' + JSON.stringify(response));
       this.loading = false;
       this.pieChartLabels = this.data1.labels;
-      /*Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];*/
       this.pieChartData = this.data1.datasets[0].data;
       this.pieChartColors = [
         {
-          backgroundColor: this.data1.datasets[3].backgroundColor/*['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)'],*/
+          backgroundColor: this.data1.datasets[2].backgroundColor
         }
       ];
     });
@@ -331,11 +347,19 @@ export class ReportesComponent implements OnInit {
       aniio = this.panio.des;
     }
     console.info('ANIO:' + aniio);
-    this._serv.obtieneDatosEstadisticosA(aniio, mes).subscribe(response => {
+    this._serv.obtieneDatosEstadisticosA(this.desde, this.hasta).subscribe(response => {
       this.data = response;
     });
-    this._serv.obtieneDatosEstadisticosB(aniio, mes).subscribe(response => {
+    this._serv.obtieneDatosEstadisticosB(this.desde, this.hasta).subscribe(response => {
       this.data1 = response;
+      console.info('Respues del servicio:'+ JSON.stringify(response));
+      this.pieChartLabels = this.data1.labels;
+      this.pieChartData = this.data1.datasets[0].data;
+      this.pieChartColors = [
+        {
+          backgroundColor: this.data1.datasets[2].backgroundColor
+        }
+      ];
       this.loading = false;
     });
   }
