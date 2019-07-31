@@ -142,6 +142,10 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/externos/' + id);
   }
 
+  mostrarReporteInterno(id: string) {
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/internos/' + id);
+  }
+
   soloCambioEstado(id: string) {
 
     let link = ['home/app-anulacion/' + id];

@@ -137,7 +137,7 @@
                         ngbTooltip="Anular">
                   <i class="fa fa-times-rectangle"></i>
                 </button>
-                <button type="button" class="btn btn-success btn-xs" ngbTooltip="Imprimir">
+                <button type="button" class="btn btn-success btn-xs"  (click)="mostrarReporteInterno(obj.solicitud.solicId)" ngbTooltip="Imprimir">
                   <i class="fa fa-print"></i>
                 </button>
               </td>
