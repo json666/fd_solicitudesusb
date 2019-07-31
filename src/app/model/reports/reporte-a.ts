@@ -6,7 +6,7 @@ export class ReporteA {
 }
 
 export class Datasets {
-  data: string [];
+  data: number [];
   label: string;
   backgroundColor: string;
   borderColor: string;

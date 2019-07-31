@@ -110,7 +110,7 @@
                 {{i+1}}
               </td>-->
               <td>
-                {{obj.solicitud.solicFecIng|date:'yyyy/MM/dd'}}
+                {{obj.solicitud.solicFecIng|date:'yyyy/MM/dd HH:mm:ss'}}
               </td>
               <td *ngIf="obj.solicitud.interna == true">
                 {{obj.remInterno.nombre|uppercase}}

@@ -34,6 +34,9 @@ export class ReportesComponent implements OnInit {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {xAxes: [{}], yAxes: [{}]},
+    legend: {
+      position: 'bottom',
+    },
     plugins: {
       datalabels: {
         anchor: 'end',
@@ -205,14 +208,11 @@ export class ReportesComponent implements OnInit {
     let dt = new Date();
     this._serv.obtieneDatosEstadisticosA(dt.getFullYear(), '').subscribe(response => {
       this.data = response;
-      this.barChartLabels = this.data.labels;  //: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-
-    /*this.barChartData = [
-      this.data.datasets[0], this.data.datasets[0].label ,
-      this.data.datasets[1], this.data.datasets[1].label
-      ];*/
-      //this.barChartData=this.data.datasets;
-
+      this.barChartLabels = this.data.labels;
+      this.barChartData = [
+        {data: this.data.datasets[0].data, label: this.data.datasets[0].label},
+        {data: this.data.datasets[1].data, label: this.data.datasets[1].label}
+      ];
     });
 
     this._serv.obtieneDatosEstadisticosB(dt.getFullYear(), '').subscribe(response => {
@@ -304,13 +304,13 @@ export class ReportesComponent implements OnInit {
     // this.cargarAnios();
   }
 
-  selectData(event) {
+  /*selectData(event) {
     this.messageService.add({
       severity: 'info',
       summary: 'Data Selected',
       'detail': this.data.datasets[event.element._datasetIndex].data[event.element._index]
     });
-  }
+  }*/
 
   actualizarReporteA() {
     this.loading = true;
