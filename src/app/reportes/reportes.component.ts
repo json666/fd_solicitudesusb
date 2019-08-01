@@ -8,6 +8,7 @@ import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import {Label} from 'ng2-charts';
 import {consoleTestResultHandler} from 'tslint/lib/test';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-reportes',
@@ -410,6 +411,9 @@ export class ReportesComponent implements OnInit {
 
   changeLegendPosition() {
     this.pieChartOptions.legend.position = this.pieChartOptions.legend.position === 'left' ? 'top' : 'left';
+  }
+  imprimirCasosPorTipoCaso() {
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/tiposcasos/' + this.pdesde + '/' + this.phasta);
   }
 
 }

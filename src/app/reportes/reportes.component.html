@@ -91,11 +91,8 @@
                 </div>
               </div>
               <div>
-                <button mat-button mat-raised-button color="primary" (click)="pieChartLegend=!pieChartLegend">Toggle Legend</button>
-                <button mat-button mat-raised-button color="primary" (click)="changeLabels()">Change Labels</button>
-                <button mat-button mat-raised-button color="primary" (click)="addSlice()">Add Slice</button>
-                <button mat-button mat-raised-button color="primary" (click)="removeSlice()">Remove Slice</button>
-                <button mat-button mat-raised-button color="primary" (click)="changeLegendPosition()">Change Legend Position</button>
+                <button mat-button mat-raised-button color="primary" (click)="pieChartLegend=!pieChartLegend">Imprimir
+                </button>
               </div>
             </ng-template>
           </ngb-tab>
@@ -104,150 +101,10 @@
               <i class="mdi mdi-message-text-outline"></i>Contact
             </ng-template>
             <ng-template ngbTabContent>
-              <!--<div class="row">
-                <div class="col-md-4"><img class="img-fluid w-100 rounded" src="assets/images/samples/300x300/8.jpg"
-                                           alt=""></div>
-                <div class="col-md-8">
-                  <h5 class="mb-3">Heading</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi molestias iusto qui eos, vero
-                    provident ipsa neque! Molestiae, aperiam</p>
-                </div>
-              </div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod ipsa odio dolore perspiciatis laudantium
-                repellat quae, facere, laboriosam omnis dolorem quaerat quis assumenda!</p>-->
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
       </div>
     </div>
   </div>
-  <!--<div class="col-md-12 d-flex align-items-stretch grid-margin">
-    <div class="col-6 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"></h4>
-          <p class="font-weight-bold">
-
-          </p>
-          <p-chart type="bar" [data]="data" [options]="options"></p-chart>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"></h4>
-          <p class="font-weight-bold">
-            &lt;!&ndash;Casos atendidos por tipo de caso&ndash;&gt;
-          </p>
-          <p-chart type="pie" [data]="data1" [options]="options1"></p-chart>
-        </div>
-        &lt;!&ndash;<div class="col-12 grid-margin">&ndash;&gt;
-        &lt;!&ndash;<div class="card body">&ndash;&gt;
-        &lt;!&ndash;&lt;!&ndash;<div class="card-body">&ndash;&gt;&ndash;&gt;
-        &lt;!&ndash;<div class="row">&ndash;&gt;
-        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
-        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
-        &lt;!&ndash;<label class="col-sm-3 col-form-label">Meses</label>&ndash;&gt;
-        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
-        &lt;!&ndash;<select class="form-control">&ndash;&gt;
-        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
-        &lt;!&ndash;<option *ngFor="let obj of meses" [ngValue]="obj">{{obj.mes}}</option>&ndash;&gt;
-        &lt;!&ndash;</select>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
-        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
-        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
-        &lt;!&ndash;<button type="button" class="btn btn-success btn-fw" >Aplicar</button>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;<div class="row">&ndash;&gt;
-        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
-        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
-        &lt;!&ndash;<label class="col-sm-3 col-form-label">Años</label>&ndash;&gt;
-        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
-        &lt;!&ndash;<select class="form-control">&ndash;&gt;
-        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
-        &lt;!&ndash;<option *ngFor="let obj of cargarAnios()" [ngValue]="obj">{{obj}}</option>&ndash;&gt;
-        &lt;!&ndash;</select>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-      </div>
-    </div>
-  </div>
-  <div class="col-md-12 d-flex align-items-stretch grid-margin">
-    <div class="col-6 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"></h4>
-          <p class="font-weight-bold">
-          </p>
-          &lt;!&ndash; <p-toast [style]="{marginTop: '80px'}"></p-toast>&ndash;&gt;
-
-          <p-chart type="line" [data]="data3" [options]="options3" (onDataSelect)="selectData($event)"></p-chart>
-        </div>
-        &lt;!&ndash;<div class="col-12 grid-margin">&ndash;&gt;
-        &lt;!&ndash;<div class="card body">&ndash;&gt;
-        &lt;!&ndash;&lt;!&ndash;<div class="card-body">&ndash;&gt;&ndash;&gt;
-        &lt;!&ndash;<div class="row">&ndash;&gt;
-        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
-        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
-        &lt;!&ndash;<label class="col-sm-3 col-form-label">Meses</label>&ndash;&gt;
-        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
-        &lt;!&ndash;<select class="form-control">&ndash;&gt;
-        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
-        &lt;!&ndash;<option *ngFor="let obj of meses" [ngValue]="obj">{{obj.mes}}</option>&ndash;&gt;
-        &lt;!&ndash;</select>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
-        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
-        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
-        &lt;!&ndash;<button type="button" class="btn btn-success btn-fw" >Aplicar</button>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;<div class="row">&ndash;&gt;
-        &lt;!&ndash;<div class="col-md-6">&ndash;&gt;
-        &lt;!&ndash;<div class="form-group row">&ndash;&gt;
-        &lt;!&ndash;<label class="col-sm-3 col-form-label">Años</label>&ndash;&gt;
-        &lt;!&ndash;<div class="col-sm-9">&ndash;&gt;
-        &lt;!&ndash;<select class="form-control">&ndash;&gt;
-        &lt;!&ndash;<option value="">&#45;&#45;Seleccione un valor&#45;&#45;</option>&ndash;&gt;
-        &lt;!&ndash;<option *ngFor="let obj of cargarAnios()" [ngValue]="obj">{{obj}}</option>&ndash;&gt;
-        &lt;!&ndash;</select>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-        &lt;!&ndash;</div>&ndash;&gt;
-      </div>
-
-    </div>
-    <div class="col-6 grid-margin">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="card-title"></h4>
-          <p class="font-weight-bold">
-
-          </p>
-          <p-chart type="bar" [data]="data4" [options]="options2"></p-chart>
-        </div>
-      </div>
-    </div>
-    <div *ngIf="loading">
-      <app-loading-indicator></app-loading-indicator>
-    </div>-->
+</div>
