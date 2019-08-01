@@ -45,4 +45,8 @@ export class HistoricoComponent implements OnInit {
     ];
   }
 
+  mostrarSolicitud(id: string, tipo: string){
+
+  }
+
 }
