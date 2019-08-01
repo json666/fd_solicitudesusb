@@ -7,8 +7,8 @@ export class ReporteB {
 
 export class Datasets {
   data: number [];
-  hoverBackgroundColor: string[];
   backgroundColor: string[];
+  hoverBackgroundColor: string[];
 
 }
 

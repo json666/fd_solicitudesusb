@@ -37,8 +37,6 @@ export class ReportesComponent implements OnInit {
   yyyy: string;
   desde: string;
   hasta: string;
-  pdesde: string;
-  phasta: string;
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -239,7 +237,7 @@ export class ReportesComponent implements OnInit {
       this.pieChartData = this.data1.datasets[0].data;
       this.pieChartColors = [
         {
-          backgroundColor: this.data1.datasets[2].backgroundColor
+          backgroundColor: this.data1.datasets[0].backgroundColor
         }
       ];
     });
@@ -347,17 +345,23 @@ export class ReportesComponent implements OnInit {
       aniio = this.panio.des;
     }
     console.info('ANIO:' + aniio);
-    this._serv.obtieneDatosEstadisticosA(this.desde, this.hasta).subscribe(response => {
+    this._serv.obtieneDatosEstadisticosA(this.pdesde, this.phasta).subscribe(response => {
       this.data = response;
+      this.barChartLabels = this.data.labels;
+      this.barChartData = [
+        {data: this.data.datasets[0].data, label: this.data.datasets[0].label},
+        {data: this.data.datasets[1].data, label: this.data.datasets[1].label}
+      ];
     });
-    this._serv.obtieneDatosEstadisticosB(this.desde, this.hasta).subscribe(response => {
+    this._serv.obtieneDatosEstadisticosB(this.pdesde, this.phasta).subscribe(response => {
       this.data1 = response;
       console.info('Respues del servicio:'+ JSON.stringify(response));
       this.pieChartLabels = this.data1.labels;
       this.pieChartData = this.data1.datasets[0].data;
+      console.info('BackgroundColor' + this.data1.datasets[0].backgroundColor);
       this.pieChartColors = [
         {
-          backgroundColor: this.data1.datasets[2].backgroundColor
+          backgroundColor: this.data1.datasets[0].backgroundColor
         }
       ];
       this.loading = false;
