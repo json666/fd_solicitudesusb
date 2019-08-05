@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ListadoSolicitud} from '../model/response/listado-solicitud';
 import {RespSolicitud} from '../model/response/resp-solicitud';
 import {Historico} from '../model/historico';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-historico',
@@ -40,13 +41,13 @@ export class HistoricoComponent implements OnInit {
       { field: 'nomAsignado', header: 'Asignado'},
       { field: 'tipoCaso', header: 'Tipo de Caso' },
       { field: 'hojaRuta', header: 'Hoja de Ruta' },
-      // { field: 'tipoSolic', header: 'Tipo' },
-      { field: 'Accion', header: 'Accion' },
+      ///{ field: 'tipoSolic', header: 'Tipo' },
+      { field: 'solicId', header: 'Accion' },
     ];
   }
 
-  mostrarSolicitud(id: string, tipo: string){
-
+  mostrarSolicitud(id: number){
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/solicitudes/' + id);
   }
 
 }

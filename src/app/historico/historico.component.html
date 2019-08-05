@@ -29,12 +29,13 @@
           <tr [pSelectableRow]="rowData">
             <td *ngFor="let col of columns">
               <p *ngIf="col.field=='fechaRegistro'">{{rowData[col.field]|date:'dd/MM/yyyy hh:mm:ss'}}</p>
-              <p *ngIf="col.field!='fechaRegistro'">{{rowData[col.field]}}</p>
-              <p *ngIf="col.field=='Accion'">
-                <button type="button" class="btn btn-success btn-xs" (click)="mostrarSolicitud()" ngbTooltip="Imprimir">
+
+              <p *ngIf="col.header=='Accion' && col.field=='solicId'">
+                <button type="button" class="btn btn-success btn-xs" (click)="mostrarSolicitud(rowData[col.field])" ngbTooltip="Imprimir">
                   <i class="fa fa-print"></i>
                 </button>
               </p>
+              <p *ngIf="col.field!='fechaRegistro' && col.header!='Accion'">{{rowData[col.field]}}</p>
             </td>
           </tr>
         </ng-template>
