@@ -126,6 +126,10 @@ export class CorrespondenciaService {
     return this.http.get(environment.urlBackEndSolicitudUSB+'registradas/pdf/internos/'+parametro).map(this.extractData);
   }
 
+  generarReporteCasosInternoExterno(parametro: any): Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'registradas/pdf/internos/'+parametro).map(this.extractData);
+  }
+
   obtieneDatosEstadisticosC():Observable<any>{
     return this.http.get(environment.urlBackEndSolicitudUSB+'reportes/solicporcontexto/').map(this.extractData);
   }

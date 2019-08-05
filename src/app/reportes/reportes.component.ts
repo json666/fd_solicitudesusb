@@ -219,9 +219,9 @@ export class ReportesComponent implements OnInit {
     this.dd = String(this.today.getDate() + 1).padStart(2, '0');
     this.MM = String(this.today.getMonth() + 1).padStart(2, '0');
     this.yyyy = this.today.getFullYear();
-    this.desde = this.yyyy + '-' + this.MM + '-01';
-    this.hasta = this.yyyy + '-' + this.MM + '-' + this.dd;
-    this._serv.obtieneDatosEstadisticosA(this.desde, this.hasta).subscribe(response => {
+    this.pdesde = this.yyyy + '-' + this.MM + '-01';
+    this.phasta = this.yyyy + '-' + this.MM + '-' + this.dd;
+    this._serv.obtieneDatosEstadisticosA(this.pdesde, this.phasta).subscribe(response => {
       this.data = response;
       this.barChartLabels = this.data.labels;
       this.barChartData = [
@@ -230,7 +230,7 @@ export class ReportesComponent implements OnInit {
       ];
     });
 
-    this._serv.obtieneDatosEstadisticosB(this.desde, this.hasta).subscribe(response => {
+    this._serv.obtieneDatosEstadisticosB(this.pdesde, this.phasta).subscribe(response => {
       this.data1 = response;
       console.info('Resultado del consumo:' + JSON.stringify(response));
       this.loading = false;
@@ -418,6 +418,10 @@ export class ReportesComponent implements OnInit {
   }
   imprimirCasosPorTipoCaso() {
     window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/tiposcasos/' + this.pdesde + '/' + this.phasta);
+  }
+
+  imprimirCasosInternoExterno() {
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/casosInternosExternos/' + this.pdesde + '/' + this.phasta);
   }
 
 }
