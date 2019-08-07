@@ -120,6 +120,7 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.solicitud.solicCite = '';//this.cite;
     // this.regSolicitud.solicitud.solicCite = this.cite;
     console.log('TDOC:' + this.solicitudes.solicitud.tipDocSolicitud.cod);
+    console.log('TDOC ID:' + this.solicitudes.solicitud.tipDocSolicitud.id);
     this.regSolicitud.solicitud.tsolicId = this.solicitudes.solicitud.tipDocSolicitud.id;
     this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
     this.regSolicitud.remInterno.id = this.userFinal.persona.id;
