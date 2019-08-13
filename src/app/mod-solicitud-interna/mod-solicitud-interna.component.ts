@@ -90,8 +90,8 @@ export class ModSolicitudInternaComponent implements OnInit {
     this.route.params.subscribe(params => {
       const id = params['id'];
       //setTimeout(() => {
-        this._serv.cargarDatosSolicitud(id).subscribe(response => {
-          console.info('resultado de la solic interna:' + JSON.stringify(response))
+      this._serv.cargarDatosSolicitud(id).subscribe(response => {
+          console.info('resultado de la solic interna:' + JSON.stringify(response));
           this.regSolicitudAnterior = response;
           this.regSolicitud = response;
           for (const docEle of this.tipoDocumentoSolic) {
@@ -109,6 +109,10 @@ export class ModSolicitudInternaComponent implements OnInit {
 
           }
           this.loading = false;
+        },
+        error => {
+          alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
+          this.loading = false;
         });
       //}, 3000);
     });
@@ -123,6 +127,7 @@ export class ModSolicitudInternaComponent implements OnInit {
     // }
 
   }
+
   adicionarRevisiones() {
     const revision = new Revisiones();
     revision.solicId = this.regSolicitud.solicitud.solicId;
@@ -131,7 +136,7 @@ export class ModSolicitudInternaComponent implements OnInit {
     revision.idPersona = this.revisiones.personas.id;
     revision.idTipoTarea = this.revisiones.accion.id;
     revision.idEsolic = this.revisiones.estado.esolicId;
-    console.info('Para enviar a registra revision:.......'+ JSON.stringify(revision));
+    console.info('Para enviar a registra revision:.......' + JSON.stringify(revision));
     this._serv.registrarRevisiones(revision).subscribe(response => {
       alert('Se realizo el registro de la revision');
       const link = ['home/consulta-correspondencia/'];

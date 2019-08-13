@@ -103,11 +103,13 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     // console.info("TIPO CASO:**********************************"+this.solicitudes.caso.cod+"**************");
     this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
     this.regSolicitud.solicitud.interna = 'false';
-    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.requerimiento.toUpperCase();
+    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.requerimiento !== undefined ? this.solicitudes.solicitud.requerimiento.toUpperCase() : '';
     this.regSolicitud.remExterno.nomJuridico = this.solicitudes.solicitante.nombre.charAt(0).toUpperCase() + '' + this.solicitudes.solicitante.paterno.charAt(0).toUpperCase() + '' + this.solicitudes.solicitante.materno.charAt(0).toUpperCase();
     this.regSolicitud.remExterno.nombre = this.solicitudes.solicitante.nombre.toUpperCase();
     this.regSolicitud.remExterno.apellido1 = this.solicitudes.solicitante.paterno.toUpperCase();
     this.regSolicitud.remExterno.apellido2 = this.solicitudes.solicitante.materno.toUpperCase();
+    console.info('Tipo1:' +this.solicitudes.solicitante.natural);
+    console.info('Tipo2:' +this.solicitudes.solicitante.juridico);
     this.regSolicitud.remExterno.juridico = false;
     this.regSolicitud.remExterno.numDoc = this.solicitudes.solicitante.ci;
     this.regSolicitud.remExterno.fono1 = this.solicitudes.solicitante.fono;
@@ -118,12 +120,12 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     this.regSolicitud.destinatario.id = 2;
     /*Detalle Solicitud*/
     this.regSolicitud.detallesSolicitud = new DetSolicitud();
-    this.regSolicitud.detallesSolicitud.req = this.solicitudes.solicitud.requerimiento.toUpperCase();
-    this.regSolicitud.detallesSolicitud.analisis = this.solicitudes.solicitud.analisis.toUpperCase();
-    this.regSolicitud.detallesSolicitud.acciones = this.solicitudes.solicitud.recomendaciones.toUpperCase();
-    this.regSolicitud.detallesSolicitud.remision = this.solicitudes.solicitud.remision.toUpperCase();
-    this.regSolicitud.detallesSolicitud.observaciones = this.solicitudes.solicitud.observaciones.toUpperCase();
-    this.regSolicitud.detallesSolicitud.avance = this.solicitudes.solicitud.conclusion.toUpperCase();
+    this.regSolicitud.detallesSolicitud.req = this.solicitudes.solicitud.requerimiento !== undefined ? this.solicitudes.solicitud.requerimiento.toUpperCase() : '';
+    this.regSolicitud.detallesSolicitud.analisis = this.solicitudes.solicitud.analisis !== undefined ? this.solicitudes.solicitud.analisis.toUpperCase() : '';
+    this.regSolicitud.detallesSolicitud.acciones = this.solicitudes.solicitud.recomendaciones !== undefined ? this.solicitudes.solicitud.recomendaciones.toUpperCase() : '';
+    this.regSolicitud.detallesSolicitud.remision = this.solicitudes.solicitud.remision !== undefined ? this.solicitudes.solicitud.remision.toUpperCase() : '';
+    this.regSolicitud.detallesSolicitud.observaciones = this.solicitudes.solicitud.observaciones !== undefined ? this.solicitudes.solicitud.observaciones.toUpperCase() : '';
+    this.regSolicitud.detallesSolicitud.avance = this.solicitudes.solicitud.conclusion !== undefined ? this.solicitudes.solicitud.conclusion.toUpperCase() : '';
     this.regSolicitud.tarea = '';
     this.regSolicitud.tipoTareaId = 18;
 

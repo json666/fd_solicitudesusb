@@ -17,6 +17,7 @@ export class Solicitante {
   sexo: Dominio = new Dominio();
   abrev: string;
   juridico: boolean;
+  natural: boolean;
   genero: string;
   edad: number;
   telefono: string;

@@ -14,6 +14,7 @@ import {RegSolicitud} from '../model/reg-solicitud';
 import {RegDestinatario} from '../model/reg-destinatario';
 import {RemInterno} from '../model/rem-interno';
 import {Message} from 'primeng/api';
+import {RemExterno} from '../model/rem-externo';
 
 @Component({
   selector: 'app-registro-externo',
@@ -74,6 +75,7 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.solicitud = new RegSolicitud();
     this.regSolicitud.remInterno = new RemInterno();
     this.regSolicitud.destinatario = new RegDestinatario();
+    this.regSolicitud.remExterno = new RemExterno();
 
     // this._param.generaCITE('INT').subscribe(response1 => {
     //   this.hoja_ruta = response1;
@@ -115,6 +117,17 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.tarea = 'Aqui va la descripcion de la tarea';
     this.regSolicitud.tipoTareaId = this.solicitudes.solicitud.taccion.id;
     console.log('TDOCTAR:' + this.solicitudes.solicitud.limite + '' + this.userFinal.persona.id);
+    /*Remitente Interno*/
+    /*Remitente Interno*/
+    this.regSolicitud.remExterno.nomJuridico = this.solicitudes.solicitante.nombre !== undefined ? this.solicitudes.solicitante.nombre.toUpperCase() : '';
+    this.regSolicitud.remExterno.nombre = this.solicitudes.solicitante.nombre !== undefined ? this.solicitudes.solicitante.nombre.toUpperCase() : '';
+    this.regSolicitud.remExterno.juridico = true;
+    console.info('Tipo1:' +this.solicitudes.solicitante.natural);
+    console.info('Tipo2:' +this.solicitudes.solicitante.juridico);
+    //this.regSolicitud.remExterno.numDoc = this.solicitudes.solicitante.ci;
+    this.regSolicitud.remExterno.fono1 = this.solicitudes.solicitante.fono1;
+    this.regSolicitud.remExterno.email = this.solicitudes.solicitante.email;
+
     // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
     this.regSolicitud.solicitud.hojaRuta = '';//"";
     this.regSolicitud.solicitud.solicCite = '';//this.cite;
@@ -127,7 +140,7 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.solicitud.persId = this.userFinal.persona.id;
     this.regSolicitud.solicitud.interna = 'true';
     this.regSolicitud.destinatario.id = this.userFinal.persona.id;
-    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia.toUpperCase();
+    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia !== undefined ? this.solicitudes.solicitud.referencia.toUpperCase(): '';
     this.regSolicitud.solicitud.nroHojas = Number(this.solicitudes.solicitud.nroHojas !== undefined
     && this.solicitudes.solicitud.nroHojas !== '' ? this.solicitudes.solicitud.nroHojas : 0);
     let dtn = new Date(this.solicitudes.solicitud.limite);
@@ -137,13 +150,11 @@ export class RegistroExternoComponent implements OnInit {
     const link = ['home/consulta-correspondencia/'];
     this._serv.registroSolicitud(reg).subscribe(response => {
         console.log('response:' + JSON.stringify(response));
-        //if (response.status === '200') {
           alert('Se realizo el registro exitosamente.');
           this.regSolicitud = new RegistroInterno();
           this.solicitudes = new Solicitudes();
           this.router.navigate(link);
           this.loading = false;
-        //}
       },
       error => {
         alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');

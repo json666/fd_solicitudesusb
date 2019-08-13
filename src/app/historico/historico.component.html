@@ -6,6 +6,10 @@
       </div>
       <p-table #dt [columns]="cols" [value]="historicos.data" [paginator]="true" [rows]="5">
         <ng-template pTemplate="caption">
+          <div style="text-align: left">
+            <button type="submit" style="font-size: 11px" class="btn btn-outline-success mr-2" (click)="imprimirExternosTodo()">Imprimir Todo Externos</button>
+            <button type="submit" style="font-size: 11px" class="btn btn-outline-warning" (click)="imprimirInternosTodo()">Imprimir Todo Internos</button>
+          </div>
           <div style="text-align: right">
             <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
             <input type="text" pInputText size="50" placeholder="Global Filter"
@@ -31,8 +35,7 @@
               <p *ngIf="col.field=='fechaRegistro'">{{rowData[col.field]|date:'dd/MM/yyyy hh:mm:ss'}}</p>
 
               <p *ngIf="col.header=='Accion' && col.field=='solicId'">
-                <button type="button" class="btn btn-success btn-xs" (click)="mostrarSolicitud(rowData[col.field])" ngbTooltip="Imprimir">
-                  <i class="fa fa-print"></i>
+                <button type="button" style="font-size: 11px;" class="btn btn-success btn-xs" (click)="mostrarSolicitud(rowData[col.field])">Imprimir
                 </button>
               </p>
               <p *ngIf="col.field!='fechaRegistro' && col.header!='Accion'">{{rowData[col.field]}}</p>

@@ -12,4 +12,6 @@ export class RegistroInterno {
   remInterno: RemInterno;
   destinatario: RegDestinatario;
   revisiones: Revisiones[];
+  remExterno: RemExterno;
 }
+

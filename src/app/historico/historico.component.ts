@@ -50,4 +50,11 @@ export class HistoricoComponent implements OnInit {
     window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/solicitudes/' + id);
   }
 
+  imprimirExternosTodo(){
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/reporteGeneralExternos');
+  }
+  imprimirInternosTodo(){
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/reporteGeneralInternos');
+  }
+
 }

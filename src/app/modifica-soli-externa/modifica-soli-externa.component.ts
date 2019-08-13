@@ -22,7 +22,7 @@ export class ModificaSoliExternaComponent implements OnInit {
   solicitudes: Solicitudes = new Solicitudes();
   public regSolicitud: RegistroSolicitud = new RegistroSolicitud();
   public regSolicitudAnterior: RegistroSolicitud = new RegistroSolicitud();
-public tipoGenero: Array<Dominio> = new Array<Dominio>();
+  public tipoGenero: Array<Dominio> = new Array<Dominio>();
   public tipoDocumentoList: Array<Dominio> = new Array<Dominio>();
   public tipoCaso: Array<Dominio> = new Array<Dominio>();
   loading: boolean = false;
@@ -59,17 +59,17 @@ public tipoGenero: Array<Dominio> = new Array<Dominio>();
           this.regSolicitudAnterior = response;
           this.regSolicitud = response;
           for (const docEle of this.tipoCaso) {
-            if (docEle.id ===this.regSolicitud.solicitud.tipoCaso) {
-                      this.solicitudes.caso=docEle;
+            if (docEle.id === this.regSolicitud.solicitud.tipoCaso) {
+              this.solicitudes.caso = docEle;
             }
           }
           for (const docEle of this.tipoGenero) {
-            if (docEle.id ===Number(this.regSolicitud.remExterno.genero)) {
-              this.solicitudes.solicitante.sexo=docEle;
+            if (docEle.id === Number(this.regSolicitud.remExterno.genero)) {
+              this.solicitudes.solicitante.sexo = docEle;
             }
           }
           for (const docTd of this.tipoDocumentoList) {
-            if (docTd.id ===Number(this.regSolicitud.solicitud.tipoDoc)) {
+            if (docTd.id === Number(this.regSolicitud.solicitud.tipoDoc)) {
               this.solicitudes.solicitante.tipDoc = docTd;
             }
           }
@@ -81,21 +81,25 @@ public tipoGenero: Array<Dominio> = new Array<Dominio>();
   }
 
 
-  modificarSolicitud(f){
+  modificarSolicitud(f) {
     this.loading = true;
     console.info('Modificar Solicitud:.. *************', JSON.stringify(this.regSolicitud));
     this.regSolicitud.destinatario = new RegDestinatario();
     let reg = JSON.stringify(this.regSolicitud);
 
     this._serv.actualizarSolicitud(reg).subscribe(response => {
-      alert('Se realizo la modificación del registro exitosamente.');
-      this.regSolicitud = new RegistroSolicitud();
-      this.solicitudes = new Solicitudes();
-      let link = ['home/consulta-correspondencia/'];
-      console.info(link);
-      this.router.navigate(link);
-      this.loading = false;
-    });
+        alert('Se realizo la modificación del registro exitosamente.');
+        this.regSolicitud = new RegistroSolicitud();
+        this.solicitudes = new Solicitudes();
+        let link = ['home/consulta-correspondencia/'];
+        console.info(link);
+        this.router.navigate(link);
+        this.loading = false;
+      },
+      error => {
+        alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
+        this.loading = false;
+      });
   }
 
 }
