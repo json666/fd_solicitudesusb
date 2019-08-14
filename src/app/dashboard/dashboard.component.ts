@@ -3,6 +3,8 @@ import {ViewEncapsulation} from '@angular/core';
 import {CorrespondenciaService} from '../service/correspondencia.service';
 import {Totalcasos} from '../model/reports/totalcasos';
 import {VistaEstados} from '../model/vista-estados';
+import {Color, Label} from 'ng2-charts';
+import {ChartDataSets, ChartOptions} from 'chart.js';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,15 +25,87 @@ export class DashboardComponent implements OnInit {
 
   data4: any;
 
+  public lineChartData: ChartDataSets[] = [
+    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
+    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' }//,
+    // { data: [180, 480, 770, 90, 1000, 270, 400], label: 'Series C', yAxisID: 'y-axis-1' }
+  ];
+  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartOptions: (ChartOptions & { annotation: any }) = {
+    responsive: true,
+    scales: {
+      // We use this empty structure as a placeholder for dynamic theming.
+      xAxes: [{}],
+      yAxes: [
+        {
+          id: 'y-axis-0',
+          position: 'left',
+        },
+        {
+          id: 'y-axis-1',
+          position: 'right',
+          gridLines: {
+            color: 'rgba(255,0,0,0.3)',
+          },
+          ticks: {
+            fontColor: 'red',
+          }
+        }
+      ]
+    },
+    annotation: {
+      annotations: [
+        {
+          type: 'line',
+          mode: 'vertical',
+          scaleID: 'x-axis-0',
+          value: 'March',
+          borderColor: 'orange',
+          borderWidth: 2,
+          label: {
+            enabled: true,
+            fontColor: 'orange',
+            content: 'LineAnno'
+          }
+        },
+      ],
+    },
+  };
+  public lineChartColors: Color[] = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // dark grey
+      backgroundColor: 'rgba(77,83,96,0.2)',
+      borderColor: 'rgba(77,83,96,1)',
+      pointBackgroundColor: 'rgba(77,83,96,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(77,83,96,1)'
+    },
+    { // red
+      backgroundColor: 'rgba(255,0,0,0.3)',
+      borderColor: 'red',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public lineChartLegend = true;
+  public lineChartType = 'line';
+
   constructor(private _serv: CorrespondenciaService) {
   }
 
   ngOnInit() {
 
     let dt = new Date();
-    /*this._serv.obtieneDatosEstadisticosEdad(dt.getFullYear()).subscribe(response => {
-      this.data1 = response;
-    });*/
     this._serv.obtieneTotal().subscribe(response1 => {
       this.total = response1.total;
     });
@@ -61,34 +135,6 @@ export class DashboardComponent implements OnInit {
       }
     };
 
-
-
-/*    this.data = {
-      datasets: [{
-        data: [
-          10,
-          20,
-          50,
-          80,
-          100
-        ],
-        backgroundColor: [
-          '#FF6384',
-          '#4BC0C0',
-          '#FFCE56',
-          '#E7E9ED',
-          '#36A2EB'
-        ],
-        label: 'My dataset'
-      }],
-      labels: [
-        '2018',
-        '2019',
-        '2020',
-        '2021',
-        '2022'
-      ]
-    };*/
   }
 
 }

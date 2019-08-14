@@ -82,15 +82,15 @@
 </div>
 <div class="row">
   <!--<div class="col-6 grid-margin">-->
-    <!--<div class="card">-->
-      <!--<div class="card-body">-->
-        <!--<h4 class="card-title"></h4>-->
-        <!--<p class="card-description">-->
-          <!--Cantidad de casos por Gestion-->
-        <!--</p>-->
-        <!--<p-chart type="bar" [data]="data1"></p-chart>-->
-      <!--</div>-->
-    <!--</div>-->
+  <!--<div class="card">-->
+  <!--<div class="card-body">-->
+  <!--<h4 class="card-title"></h4>-->
+  <!--<p class="card-description">-->
+  <!--Cantidad de casos por Gestion-->
+  <!--</p>-->
+  <!--<p-chart type="bar" [data]="data1"></p-chart>-->
+  <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
   <div class="col-lg-6 grid-margin">
     <div class="card">
@@ -124,7 +124,8 @@
               </td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{'width':obj.porcentaje+'%'}"
+                  <div class="progress-bar bg-info progress-bar-striped" role="progressbar"
+                       [ngStyle]="{'width':obj.porcentaje+'%'}"
                        aria-valuenow="20" aria-valuemin="0"
                        aria-valuemax="100"></div>
                 </div>
@@ -135,6 +136,29 @@
             </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 grid-margin">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"></h4>
+        <p class="card-description">
+          Cantidad de casos por Gestion
+        </p>
+        <div class="flex">
+          <div class="flex-item">
+            <div style="display: block;">
+              <canvas baseChart width="400" height="400"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>
