@@ -59,7 +59,7 @@
       <div class="jumbotron">
         <h1 class="h3 mb-3 font-weight-normal">Ingrese sus datos</h1>
         <form class="form-signin"   name="form" #f="ngForm" novalidate>
-          <!--<img class="mb-4" src="../../assets/images/logo&#45;&#45;usb.png" alt="" width="235" height="56" >-->
+          <img class="mb-4" src="../../assets/images/logo--usb.png" alt="" width="235" height="56" >
           <label  class="sr-only">Usuario</label>
           <input type="text"  class="form-control" placeholder="Usuario" [(ngModel)]="data.username" #username="ngModel" name="username"
                  [ngClass]="{'is-invalid': f.submitted && username.invalid}" required>
@@ -80,11 +80,7 @@
   </div>
 </div>
 
-<!--
-<body class="text-center">
 
-</body>
-</html>
 <div *ngIf="loading">
   <app-loading-indicator></app-loading-indicator>
-</div>-->
+</div>

@@ -45,6 +45,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loading = true;
+    setTimeout(() => {
+    }, 5000);
     // this.form = new FormControl({
     //   usr: new FormControl('', Validators.required),
     //   pwd: new FormControl('', Validators.required)
@@ -54,6 +57,7 @@ export class LoginComponent implements OnInit {
        /!*usr: ('', [Validators.required, Validators.maxLength(20)]),
        pwd: ('', [Validators.required, Validators.maxLength(20)])*!/
      });*/
+    this.loading = false;
   }
 
   /*get usr() {
@@ -61,7 +65,7 @@ export class LoginComponent implements OnInit {
   }*/
 
   public login(form) {
-
+    this.loading = true;
     console.log('Login form Invalid', form.invalid);
     console.log('Login form Valid', form.valid);
     console.log('Login form Submitted', form.submitted);
@@ -72,7 +76,7 @@ export class LoginComponent implements OnInit {
 
           console.log('Usuario:' + JSON.stringify(response));
           if (response.status === 'success') {
-            this.loading = true;
+            //this.loading = true;
             console.info(' JsonLogin:.. 2', JSON.stringify(response));
 
             this.loginUser = response;
