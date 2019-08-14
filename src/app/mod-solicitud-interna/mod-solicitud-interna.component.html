@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title"></h4>
-      <form class="form-interno" novalidate>
+      <form name="form" #f="ngForm" class="form-interno" novalidate>
         <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
         <p class="card-description font-weight-bold">
           Hoja de Ruta Administrativa
@@ -130,7 +130,7 @@
                   <div class="form-group row">
                     <label class="col-sm-3 col-form-label">Tipo Acción</label>
                     <div class="col-sm-9">
-                      <select class="form-control border-primary" name="selTipoTarea"
+                      <select class="form-control border-primary" name="selTipoTarea" name="accion" #accion="ngModel"
                               [(ngModel)]="revisiones.accion">
                         <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des|uppercase}}</option>
                       </select>
@@ -148,7 +148,7 @@
                   </div>
                 </div>
               </div>
-              <button type="button" class="btn btn-success btn-fw" (click)="adicionarRevisiones()" label="Show">
+              <button type="button" class="btn btn-success btn-fw" (click)="adicionarRevisiones(f)" label="Show">
                 Adicionar
               </button>
               <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
@@ -168,7 +168,7 @@
                   </h6>
                 </ng-template>
                 <ng-template ngbPanelContent>
-                  {{rev.desc}}
+                  {{rev.desc|uppercase}}
                 </ng-template>
               </ngb-panel>
             </ngb-accordion>

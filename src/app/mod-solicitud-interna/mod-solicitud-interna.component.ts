@@ -145,13 +145,29 @@ export class ModSolicitudInternaComponent implements OnInit {
 
   }
 
-  adicionarRevisiones() {
+  adicionarRevisiones(form) {
     const revision = new Revisiones();
     revision.solicId = this.regSolicitud.solicitud.solicId;
     revision.fecha = new Date().getTime();
+    if (this.revisiones.desc === undefined || this.revisiones.desc === '') {
+      alert('El campo referencia no debe ser vacio.');
+      return;
+    }
     revision.desc = this.revisiones.desc;
+    if (this.revisiones.personas === undefined) {
+      alert('El campo Responsable debe ser seleccionado.');
+      return;
+    }
     revision.idPersona = this.revisiones.personas.id;
+    if (this.revisiones.accion === undefined) {
+      alert('El campo Tipo Accion debe ser seleccionado.');
+      return;
+    }
     revision.idTipoTarea = this.revisiones.accion.id;
+    if (this.revisiones.estado === undefined) {
+      alert('El campo Estado debe ser seleccionado.');
+      return;
+    }
     revision.idEsolic = this.revisiones.estado.esolicId;
     console.info('Para enviar a registra revision:.......' + JSON.stringify(revision));
     this._serv.registrarRevisiones(revision).subscribe(response => {
