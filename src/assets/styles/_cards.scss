@@ -6,7 +6,7 @@
   .card-body {
     padding: $card-padding-y $card-padding-x;
     + .card-body {
-      padding-top: 0;
+      padding-top: 1px;
     }
   }
   &.card-outline-success{

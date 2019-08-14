@@ -26,7 +26,7 @@ import {Revisiones} from '../model/revisiones';
 export class ModSolicitudInternaComponent implements OnInit {
 
   solicitudes: Solicitudes = new Solicitudes();
-  tipoCaso: Array<Dominio> = new Array<Dominio>();
+   tipoCaso: Array<Dominio> = new Array<Dominio>();
   tipoDocumentoAccion: Array<Dominio> = new Array<Dominio>();
   tipoAccion: Array<Dominio> = new Array<Dominio>();
   regSolicitud: RegistroInterno = new RegistroInterno();
@@ -40,7 +40,7 @@ export class ModSolicitudInternaComponent implements OnInit {
   public hoja_ruta: NumeroTramite;
   public tipoDocumentoSolic: Array<Dominio> = new Array<Dominio>();
   public tipoAccionSolic: Array<Dominio> = new Array<Dominio>();
-  public tipoCaso: Array<Dominio> = new Array<Dominio>();
+  // public tipoCaso: Array<Dominio> = new Array<Dominio>();
 
   tipoUnidad: Array<Unidades> = new Array<Unidades>();
   listadoPersonas: Array<Persona> = new Array<Persona>();
@@ -111,11 +111,11 @@ export class ModSolicitudInternaComponent implements OnInit {
             }
           }
 
-          for (const docEle of this.tipoCaso) {
-            if (docEle.id === this.regSolicitud.solicitud.tipoCaso) {
-              this.solicitudes.solicitud.taccion = docEle;
-            }
-          }
+          // for (const docEle of this.tipoCaso) {
+          //   if (docEle.id === this.regSolicitud.solicitud.tipoCaso) {
+          //     this.solicitudes.solicitud.taccion = docEle;
+          //   }
+          // }
           if (this.regSolicitud.revisiones.length > 0) {
             this.verRevisiones = true;
 
