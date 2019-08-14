@@ -14,4 +14,6 @@ export class Persona {
   genero: string;
   direccion: string;
   tipoDocId: string;
+  nombreCorto: string;
+  nombreLargo: string;
 }

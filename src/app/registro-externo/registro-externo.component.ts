@@ -134,13 +134,13 @@ export class RegistroExternoComponent implements OnInit {
     // this.regSolicitud.solicitud.solicCite = this.cite;
     console.log('TDOC:' + this.solicitudes.solicitud.tipDocSolicitud.cod);
     console.log('TDOC ID:' + this.solicitudes.solicitud.tipDocSolicitud.id);
-    this.regSolicitud.solicitud.tsolicId = this.solicitudes.solicitud.tipDocSolicitud.id;
+    this.regSolicitud.solicitud.tipoDoc = this.solicitudes.solicitud.tipDocSolicitud.id;
     this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
     this.regSolicitud.remInterno.id = this.userFinal.persona.id;
     this.regSolicitud.solicitud.persId = this.userFinal.persona.id;
     this.regSolicitud.solicitud.interna = 'true';
     this.regSolicitud.destinatario.id = this.userFinal.persona.id;
-    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia !== undefined ? this.solicitudes.solicitud.referencia.toUpperCase(): '';
+    this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.referencia !== undefined ? this.solicitudes.solicitud.referencia.toUpperCase() : '';
     this.regSolicitud.solicitud.nroHojas = Number(this.solicitudes.solicitud.nroHojas !== undefined
     && this.solicitudes.solicitud.nroHojas !== '' ? this.solicitudes.solicitud.nroHojas : 0);
     let dtn = new Date(this.solicitudes.solicitud.limite);

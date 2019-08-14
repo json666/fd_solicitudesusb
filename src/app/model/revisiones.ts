@@ -14,4 +14,5 @@ export class Revisiones {
     personas: Persona;
     accion: Dominio;
     estado: Estados;
+    nombrePersona: string;
 }

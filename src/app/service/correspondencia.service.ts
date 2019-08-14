@@ -143,6 +143,10 @@ export class CorrespondenciaService {
     return this.http.post(environment.urlBackEndSolicitudUSB + 'auth/passwd', data).map(this.extractData).pipe(catchError(this.handleError));
   }
 
+  obtieneDatosPersona(parameter: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'personas/informacion/'+parameter).map(this.extractData).pipe(catchError(this.handleError));
+  }
+
 
 
 

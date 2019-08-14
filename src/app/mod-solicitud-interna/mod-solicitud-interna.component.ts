@@ -40,6 +40,7 @@ export class ModSolicitudInternaComponent implements OnInit {
   public hoja_ruta: NumeroTramite;
   public tipoDocumentoSolic: Array<Dominio> = new Array<Dominio>();
   public tipoAccionSolic: Array<Dominio> = new Array<Dominio>();
+  public tipoCaso: Array<Dominio> = new Array<Dominio>();
 
   tipoUnidad: Array<Unidades> = new Array<Unidades>();
   listadoPersonas: Array<Persona> = new Array<Persona>();
@@ -57,6 +58,7 @@ export class ModSolicitudInternaComponent implements OnInit {
 
     this.regSolicitud.solicitud = new RegSolicitud();
     this.regSolicitud.remInterno = new RemInterno();
+    this.regSolicitud.remExterno = new RemExterno();
     this.regSolicitud.destinatario = new RegDestinatario();
 
     this.solicitudes.solicitud = new Solicitud();
@@ -67,6 +69,10 @@ export class ModSolicitudInternaComponent implements OnInit {
 
     this._param.getDatosDominio('tcasoint').subscribe(response4 => {
       this.tipoAccionSolic = response4;
+    });
+
+    this._param.getDatosDominio('tipocaso').subscribe(response2 => {
+      this.tipoCaso = response2;
     });
 
     this._serv.estadosSolicitud().subscribe(response => {
@@ -104,9 +110,20 @@ export class ModSolicitudInternaComponent implements OnInit {
               this.solicitudes.solicitud.taccion = docEle;
             }
           }
+
+          for (const docEle of this.tipoCaso) {
+            if (docEle.id === this.regSolicitud.solicitud.tipoCaso) {
+              this.solicitudes.solicitud.taccion = docEle;
+            }
+          }
           if (this.regSolicitud.revisiones.length > 0) {
             this.verRevisiones = true;
 
+          }
+          if (this.regSolicitud.remExterno.juridico) {
+            this.solicitudes.solicitante.abrev = 'JURIDICO'.toUpperCase();
+          } else {
+            this.solicitudes.solicitante.abrev = 'NATURAL'.toUpperCase();
           }
           this.loading = false;
         },

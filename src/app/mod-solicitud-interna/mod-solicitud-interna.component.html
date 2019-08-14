@@ -10,9 +10,21 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Hoja de ruta</label>
+              <label class="col-sm-3 col-form-label">Solicitante</label>
               <div class="col-sm-9">
-                <span class="value">{{regSolicitud.solicitud.hojaRuta}}</span>
+                <input id="nombre" type="text" required class="form-control border-primary"
+                       [(ngModel)]="regSolicitud.remExterno.nomJuridico" [disabled]="true" #nomJuridico="ngModel"
+                       name="nomJuridico">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Hoja de Ruta</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control border-primary"
+                       [(ngModel)]="regSolicitud.solicitud.hojaRuta" name="hojaRuta"
+                       #hojaRuta="ngModel" [disabled]="true" required>
               </div>
             </div>
           </div>
@@ -20,137 +32,129 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-3 col-form-label">Referencia:</label>
+              <label class="col-sm-3 col-form-label">Tipo Documento</label>
               <div class="col-sm-9">
-                <span class="value">{{regSolicitud.solicitud.solicRef|uppercase}}</span>
-
-                <!--                <textarea class="form-control" id="referencia" rows="2" name="solicRef"-->
-                <!--                          [(ngModel)]="regSolicitud.solicitud.solicRef"></textarea>-->
+                <input type="text" class="form-control border-primary" [disabled]="true"
+                       [(ngModel)]="solicitudes.solicitud.tipDocSolicitud.des" name="des" #des="ngModel" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Solicitante</label>
+              <div class="col-sm-4">
+                <input type="text" class="form-control border-primary" [disabled]="true"
+                       [(ngModel)]="solicitudes.solicitante.abrev" name="abrev" #abrev="ngModel" required>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label">Tipo Documento</label>
-              <div class="col-sm-7">
-                {{solicitudes.solicitud.tipDocSolicitud.des|uppercase}}
-                <!--<select class="form-control" name="selTipoDocumentoSoli"
-                        [(ngModel)]="solicitudes.solicitud.tipDocSolicitud">
-                  <option *ngFor="let obj of tipoDocumentoAccion" [ngValue]="obj">{{obj.des}}</option>
-                </select>-->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label">Número Hojas</label>
-              <div class="col-sm-8">
-                {{regSolicitud.solicitud.persId}}
-                <!--                <input type="text" class="form-control" placeholder="Nro. Hojas"-->
-                <!--                       [(ngModel)]="regSolicitud.solicitud.persId"-->
-                <!--                       name="nroHojas">-->
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label">Tipo Acción</label>
+              <label class="col-sm-3 col-form-label">Número Hojas</label>
               <div class="col-sm-9">
-                {{solicitudes.solicitud.taccion.des|uppercase}}
-                <!--<select class="form-control" name="selTipoTarea" [(ngModel)]="solicitudes.solicitud.taccion">-->
-                  <!--<option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des}}</option>-->
-                <!--</select>-->
+                <input type="text" class="form-control border-primary" id="hojas" [disabled]="true"
+                       [(ngModel)]="regSolicitud.solicitud.nroHojas" name="nroHojas" #nroHojas="ngModel">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Acción</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control border-primary" [disabled]="true"
+                       [(ngModel)]="solicitudes.solicitud.taccion.des" name="taccion" #taccion="ngModel" required>
               </div>
             </div>
           </div>
         </div>
-        <!--        <div class="col-12 grid-margin">-->
-        <div class="col-lg-12 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Revisiones</h4>
-              <form class="form-interno" novalidate>
-                <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
-                <p class="card-description">
-
-                </p>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-4 col-form-label">Estado:</label>
-                      <div class="col-sm-8">
-                        <select class="form-control" name="desc"
-                                [(ngModel)]="revisiones.estado">
-                          <option *ngFor="let obj of listaEstados" [ngValue]="obj">{{obj.esolicDesc}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                  <!--<div class="col-md-4">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Unidad</label>
-                      <div class="col-sm-9">
-                        <select class="form-control" name="selTipoTarea" (change)="cargarPersonas($event)">
-                          &lt;!&ndash;                          [(ngModel)]="solicitudes.solicitud.taccion">&ndash;&gt;
-                          <option *ngFor="let obj of tipoUnidad" [ngValue]="obj">{{obj.unidDesc|lowercase}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>-->
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-5 col-form-label">Responsable:</label>
-                      <div class="col-sm-7">
-                        <select class="form-control" name="selTipoTarea"
-                                [(ngModel)]="revisiones.personas">
-                          <option *ngFor="let obj of listadoPersonas"
-                                  [ngValue]="obj">{{obj.nombre}} {{obj.apellido1}}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group row">
-                      <label class="col-sm-3 col-form-label">Tipo Acción</label>
-                      <div class="col-sm-9">
-                        <select class="form-control" name="selTipoTarea"
-                                [(ngModel)]="revisiones.accion">
-                          <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des}}</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--                <div class="col-12 stretch-card">-->
-                <!--                <div class="card">-->
-                <!--                  <div class="card-body">-->
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Descripcion:</label>
-                  <div class="col-sm-9">
-                          <textarea class="form-control" rows="2" placeholder="Requerimiento de Servicio"
-                                    name="requerimiento"
-                                    [(ngModel)]="revisiones.desc"> </textarea>
-
-                  </div>
-                  <!--                    </div>-->
-
-                  <!--                    </div>-->
-                  <!--                  </div>-->
-                </div>
-                <button type="button" class="btn btn-success btn-fw" (click)="adicionarRevisiones()" label="Show">
-                  Adicionar
-                </button>
-                <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
-              </form>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Tipo Caso</label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control border-primary" [disabled]="true"
+                       [(ngModel)]="solicitudes.solicitud.taccion.des" name="taccion1" #taccion1="ngModel" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Referencia:</label>
+              <div class="col-sm-9">
+                <textarea class="form-control border-primary" id="solicRef" rows="2" #solicRef="ngModel"
+                          [disabled]="true"
+                          [(ngModel)]="regSolicitud.solicitud.solicRef"
+                          name="solicRef" required></textarea>
+              </div>
             </div>
           </div>
         </div>
-        <!--        </div>-->
+
+        <!--<div class="col-12 grid-margin">-->
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"></h4>
+            <!--<form class="form-interno_1" novalidate>-->
+              <!--      <form class="form-interno" [formGroup]="solicitudFrm" novalidate>-->
+              <p class="card-description font-weight-bold">Revisiones</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Estado:</label>
+                    <div class="col-sm-9">
+                      <select class="form-control border-primary" name="estado" #estado="ngModel"
+                              [(ngModel)]="revisiones.estado">
+                        <option *ngFor="let obj of listaEstados" [ngValue]="obj">{{obj.esolicDesc|uppercase}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Responsable:</label>
+                    <div class="col-sm-9">
+                      <select class="form-control border-primary" name="personas" #personas="ngModel"
+                              [(ngModel)]="revisiones.personas">
+                        <option *ngFor="let obj of listadoPersonas"
+                                [ngValue]="obj">{{obj.nombre}} {{obj.apellido1}}
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tipo Acción</label>
+                    <div class="col-sm-9">
+                      <select class="form-control border-primary" name="selTipoTarea"
+                              [(ngModel)]="revisiones.accion">
+                        <option *ngFor="let obj of tipoAccion" [ngValue]="obj">{{obj.des|uppercase}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Referencia:</label>
+                    <div class="col-sm-9">
+                <textarea class="form-control border-primary" rows="2" placeholder="Requerimiento de Servicio"
+                          name="requerimiento"
+                          [(ngModel)]="revisiones.desc"> </textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-success btn-fw" (click)="adicionarRevisiones()" label="Show">
+                Adicionar
+              </button>
+              <button type="button" class="btn btn-warning btn-fw">Cancelar</button>
+            <!--</form>-->
+          </div>
+        </div>
         <div class="col-lg-12 grid-margin stretch-card" *ngIf="verRevisiones == true">
           <!--          <div class="card">-->
           <div class="card-body">
@@ -160,7 +164,7 @@
               <ngb-panel *ngFor="let rev of regSolicitud.revisiones">
                 <ng-template ngbPanelTitle>
                   <h6 class="mb-0">
-                    Fecha registro: {{rev.fecha|date:'yyyy/MM/dd'}} - Responsable: {{rev.idPersona}}
+                    Fecha registro: {{rev.fecha|date:'yyyy/MM/dd'}} - Responsable: {{rev.nombrePersona}}
                   </h6>
                 </ng-template>
                 <ng-template ngbPanelContent>
