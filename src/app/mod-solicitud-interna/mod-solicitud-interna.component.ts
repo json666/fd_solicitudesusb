@@ -95,7 +95,7 @@ export class ModSolicitudInternaComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       const id = params['id'];
-      //setTimeout(() => {
+      setTimeout(() => {
       this._serv.cargarDatosSolicitud(id).subscribe(response => {
           console.info('resultado de la solic interna:' + JSON.stringify(response));
           this.regSolicitudAnterior = response;
@@ -131,7 +131,7 @@ export class ModSolicitudInternaComponent implements OnInit {
           alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');
           this.loading = false;
         });
-      //}, 3000);
+      }, 3000);
     });
   }
 
@@ -146,6 +146,7 @@ export class ModSolicitudInternaComponent implements OnInit {
   }
 
   adicionarRevisiones(form) {
+
     const revision = new Revisiones();
     revision.solicId = this.regSolicitud.solicitud.solicId;
     revision.fecha = new Date().getTime();
@@ -170,10 +171,13 @@ export class ModSolicitudInternaComponent implements OnInit {
     }
     revision.idEsolic = this.revisiones.estado.esolicId;
     console.info('Para enviar a registra revision:.......' + JSON.stringify(revision));
+    this.loading=true;
     this._serv.registrarRevisiones(revision).subscribe(response => {
       alert('Se realizo el registro de la revision');
       const link = ['home/consulta-correspondencia/'];
+      this.loading = false;
       this.router.navigate(link);
+
     });
     /*this._serv.registrarRevisiones(revision).subscribe(response4 => {
       alert('Se realizo el registro de la revision');

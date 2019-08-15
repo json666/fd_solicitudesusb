@@ -91,6 +91,18 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     console.log('Login form Valid', form.valid);//false
     console.log('Login form submitted', form.submitted);//false
     // if (this.validForm(form)) {
+    if (this.solicitudes.solicitante.sexo === undefined) {
+      alert('Debe seleccionar un tipo de genero.');
+      return;
+    }
+    if (this.solicitudes.solicitud.tipDocSolicitud === undefined) {
+      alert('Debe seleccionar un tipo de documento.');
+      return;
+    }
+    if (this.solicitudes.caso === undefined) {
+      alert('Debe seleccionar un tipo de caso.');
+      return;
+    }
     this.loading = true;
     this.solicitudes.solicitud.tsolicId = '2';
     // this.solicitudes.solicitud.hojaRuta = this.cites.valor;
@@ -98,9 +110,11 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     this.regSolicitud.tarea = this.solicitudes.tarea.des;
     this.regSolicitud.solicitud.hojaRuta = '';
     this.regSolicitud.solicitud.tsolicId = 1;
+
     this.regSolicitud.solicitud.tipoDoc = Number(this.solicitudes.solicitud.tipDocSolicitud.id);
     this.regSolicitud.solicitud.solicCite = '';
     // console.info("TIPO CASO:**********************************"+this.solicitudes.caso.cod+"**************");
+
     this.regSolicitud.solicitud.tipoCaso = Number(this.solicitudes.caso.id);
     this.regSolicitud.solicitud.interna = 'false';
     this.regSolicitud.solicitud.solicRef = this.solicitudes.solicitud.requerimiento !== undefined ? this.solicitudes.solicitud.requerimiento.toUpperCase() : '';
@@ -108,13 +122,13 @@ export class SolicitudExternaComponent implements OnInit, OnDestroy {
     this.regSolicitud.remExterno.nombre = this.solicitudes.solicitante.nombre.toUpperCase();
     this.regSolicitud.remExterno.apellido1 = this.solicitudes.solicitante.paterno.toUpperCase();
     this.regSolicitud.remExterno.apellido2 = this.solicitudes.solicitante.materno.toUpperCase();
-    console.info('Tipo1:' +this.solicitudes.solicitante.natural);
-    console.info('Tipo2:' +this.solicitudes.solicitante.juridico);
+
     this.regSolicitud.remExterno.juridico = false;
     this.regSolicitud.remExterno.numDoc = this.solicitudes.solicitante.ci;
     this.regSolicitud.remExterno.fono1 = this.solicitudes.solicitante.fono;
     this.regSolicitud.remExterno.fono2 = this.solicitudes.solicitante.fono1;
     this.regSolicitud.remExterno.email = this.solicitudes.solicitante.email;
+
     this.regSolicitud.remExterno.genero = String(this.solicitudes.solicitante.sexo.id);
     this.regSolicitud.remExterno.edad = this.solicitudes.solicitante.edad;
     this.regSolicitud.destinatario.id = 2;

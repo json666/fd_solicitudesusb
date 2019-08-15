@@ -102,7 +102,9 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
+          this.loading = true;
           alert('Usuario no encontrado');
+
         });
 
 
@@ -111,8 +113,10 @@ export class LoginComponent implements OnInit {
 
   validForm(f): boolean {
     if (f.valid) {
+      this.loading = false;
       return true;
     } else {
+      this.loading = false;
       return false;
     }
   }

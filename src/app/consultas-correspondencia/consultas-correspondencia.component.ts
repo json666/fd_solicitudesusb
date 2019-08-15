@@ -62,9 +62,6 @@ export class ConsultasCorrespondenciaComponent implements OnInit {
     });
   }
 
-  /*ngAfterContentInit () {
-    this.solicitdudes1=this.registros();
-  }*/
 
   registros() {
     console.info('INCIANDO -->1');

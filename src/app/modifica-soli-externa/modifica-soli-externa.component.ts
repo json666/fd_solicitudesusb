@@ -92,7 +92,6 @@ export class ModificaSoliExternaComponent implements OnInit {
         this.regSolicitud = new RegistroSolicitud();
         this.solicitudes = new Solicitudes();
         let link = ['home/consulta-correspondencia/'];
-        console.info(link);
         this.router.navigate(link);
         this.loading = false;
       },
