@@ -68,7 +68,6 @@
               <div class="col-sm-9">
                 <select class="form-control border-primary" name="selTipoSexo" #selTipoSexo="ngModel"
                         [(ngModel)]="solicitudes.solicitante.sexo" required>
-                  <option value="" disabled selected>Seleccionar el Tipo</option>
                   <option *ngFor="let obj of tipoGenero" [ngValue]="obj">{{obj.des}}</option>
                 </select>
                 <div *ngIf="selTipoSexo.invalid" class="invalid-feedback">
@@ -105,7 +104,6 @@
               <div class="col-sm-9">
                 <select class="form-control border-primary" name="tipDoc" #tipDoc="ngModel"
                         [(ngModel)]="solicitudes.solicitud.tipDocSolicitud" required>
-                  <option value="" disabled selected>Seleccionar Tipo de Documento</option>
                   <option *ngFor="let obj of tipoDocumentoList" [ngValue]="obj">{{obj.des}}</option>
                 </select>
                 <div *ngIf="tipDoc.invalid && (tipDoc.dirty || tipDoc.touched)" class="invalid-feedback">
@@ -195,7 +193,6 @@
               <div class="col-sm-9">
                 <select class="form-control border-primary" name="tipoDocumentoList"
                         [(ngModel)]="solicitudes.caso" name="caso" #caso="ngModel" required>
-                  <option value="" disabled selected>Seleccionar el Tipo de Caso</option>
                   <option *ngFor="let obj of tipoCaso" [ngValue]="obj">{{obj.des}}</option>
                 </select>
                 <div *ngIf="caso.invalid && (caso.dirty || caso.touched)" class="invalid-feedback">
