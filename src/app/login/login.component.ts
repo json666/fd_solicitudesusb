@@ -102,7 +102,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error => {
-          this.loading = true;
+          this.loading = false;
           alert('Usuario no encontrado');
 
         });
