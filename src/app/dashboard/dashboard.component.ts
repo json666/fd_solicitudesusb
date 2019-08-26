@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
   options2: any;
   validaRep = false;
   estados: VistaEstados[];
+  estadosExterno: VistaEstados[];
 
   data4: any;
 
@@ -139,6 +140,10 @@ export class DashboardComponent implements OnInit {
     });
     this._serv.obtieneDatosEstadisticosD(dt.getFullYear()).subscribe(response1 => {
       this.estados = response1;
+    });
+    /**Agregados Extenos*/
+    this._serv.obtieneDatosEstadisticosE(dt.getFullYear()).subscribe(response1 => {
+      this.estadosExterno = response1;
     });
 
     this._serv.obtieneDatosEstadisticosC().subscribe(response => {

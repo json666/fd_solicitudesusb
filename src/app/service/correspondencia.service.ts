@@ -139,6 +139,11 @@ export class CorrespondenciaService {
   }
 
 
+  obtieneDatosEstadisticosE(parameter: any):Observable<any>{
+    return this.http.get(environment.urlBackEndSolicitudUSB+'solicitudes/agregadoExterno/'+parameter).map(this.extractData);
+  }
+
+
   cambioPassword(data: any): Observable <any> {
     return this.http.post(environment.urlBackEndSolicitudUSB + 'auth/passwd', data).map(this.extractData).pipe(catchError(this.handleError));
   }

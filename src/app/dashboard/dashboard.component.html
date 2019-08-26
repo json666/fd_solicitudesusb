@@ -152,16 +152,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let obj of estados">
+            <tr *ngFor="let obj of estadosExterno">
               <td class="font-weight-medium">
                 {{obj.numero}}
               </td>
               <td>
-                {{obj.tipo_estado}}
+                {{obj.tipo_caso}}
               </td>
               <td>
                 <div class="progress">
-                  <div class="progress-bar bg-info progress-bar-striped" role="progressbar"
+                  <div class="progress-bar bg-primary progress-bar-striped" role="progressbar"
                        [ngStyle]="{'width':obj.porcentaje+'%'}"
                        aria-valuenow="20" aria-valuemin="0"
                        aria-valuemax="100"></div>
