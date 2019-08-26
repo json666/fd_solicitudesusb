@@ -16,19 +16,21 @@
         <td colspan="6">
           <a href="#" [pRowToggler]="rowData">
             <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
-            <span>{{rowData.hojaRuta}}</span>
+            <span style="font-size: 10.5px;">{{rowData.hojaRuta}}</span>
           </a>
+<!--          <a   (click)="imprimirSeleccionado()" style="font-size: 10.5px; position: relative;float: right;">Imprimir</a>-->
+          <button type="button" class="btn btn-outline-primary btn-xs" (click)="imprimirSeleccionado(rowData.solicId)" style="font-size: 10px; position: relative;float: right;">Imprimir</button>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex">
       <tr>
-        <td>{{rowData.fechaRevision|date:'dd/MM/yyyy hh:mm:ss'}}</td>
-        <td>{{rowData.remitInt}}</td>
-        <td>{{rowData.asignadoA}}</td>
-        <td>{{rowData.descEstSolic}}</td>
-        <td>{{rowData.descTipoTarea}}</td>
-        <td>{{rowData.descTarea}}</td>
+        <td style="font-size: 10.5px;">{{rowData.fechaRevision|date:'dd/MM/yyyy hh:mm:ss'}}</td>
+        <td style="font-size: 10.5px;">{{rowData.remitInt|uppercase}}</td>
+        <td style="font-size: 10.5px;">{{rowData.asignadoA|uppercase}}</td>
+        <td style="font-size: 10.5px;">{{rowData.descEstSolic|uppercase}}</td>
+        <td style="font-size: 10.5px;">{{rowData.descTipoTarea|uppercase}}</td>
+        <td style="font-size: 10.5px;">{{rowData.descTarea|uppercase}}</td>
       </tr>
     </ng-template>
   </p-table>

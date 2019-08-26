@@ -4,6 +4,7 @@ import {CorrespondenciaService} from '../service/correspondencia.service';
 import {Router} from '@angular/router';
 import {Matriz} from '../model/matriz';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {environment} from '../environments/environment';
 
 @Component({
   selector: 'app-matriz',
@@ -67,6 +68,10 @@ export class MatrizComponent implements OnInit {
         }
       }
     }
+  }
+  imprimirSeleccionado(id: any){
+    console.info('Aqui va el reporte.' + id);
+    window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/reporteDetalleInterno/' + id);
   }
 
 }
