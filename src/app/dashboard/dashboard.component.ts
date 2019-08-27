@@ -117,18 +117,18 @@ export class DashboardComponent implements OnInit {
       this.totalcasos = response1;
       console.info('I====' + JSON.stringify(this.totalcasos[0]));
       console.info('E====' + JSON.stringify(this.totalcasos[1]));
-      if (this.totalcasos[0] !== undefined) {
-        if (this.totalcasos[0].count !== undefined) {
-          this.interno = this.totalcasos[0].count;
+      if (this.totalcasos[1] !== undefined) {
+        if (this.totalcasos[1].count !== undefined && this.totalcasos[1].casos === 'interno') {
+          this.interno = this.totalcasos[1].count;
         } else {
           this.interno = 0;
         }
       } else {
         this.interno = 0;
       }
-      if (this.totalcasos[1] !== undefined) {
-        if (this.totalcasos[1].count !== undefined) {
-          this.externo = this.totalcasos[1].count;
+      if (this.totalcasos[0] !== undefined) {
+        if (this.totalcasos[0].count !== undefined && this.totalcasos[0].casos === 'externo') {
+          this.externo = this.totalcasos[0].count;
         } else {
           this.externo = 0;
         }
