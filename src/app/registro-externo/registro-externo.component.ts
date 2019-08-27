@@ -15,6 +15,7 @@ import {RegDestinatario} from '../model/reg-destinatario';
 import {RemInterno} from '../model/rem-interno';
 import {Message} from 'primeng/api';
 import {RemExterno} from '../model/rem-externo';
+import {Item} from '../model/Item';
 
 @Component({
   selector: 'app-registro-externo',
@@ -45,6 +46,18 @@ export class RegistroExternoComponent implements OnInit {
 
   msgs: Message[] = [];
 
+
+  ITEMS: Item[] = [
+    {
+      name: 'Juridico',
+      value: 'juridico'
+    },
+    {
+      name: 'Natural',
+      value: 'natural'
+    }
+  ];
+
   hojasPattern = '^[0-9]{3}$';
 
   /*internoForm = new FormGroup({
@@ -66,6 +79,7 @@ export class RegistroExternoComponent implements OnInit {
   }
 
   ngOnInit() {
+    itemsList: this.ITEMS;
     this.userSession = sessionStorage.getItem('app-login');
     this.userFinal = JSON.parse(this.userSession);
 
@@ -118,19 +132,24 @@ export class RegistroExternoComponent implements OnInit {
     this.regSolicitud.tipoTareaId = this.solicitudes.solicitud.taccion.id;
     console.log('TDOCTAR:' + this.solicitudes.solicitud.limite + '' + this.userFinal.persona.id);
     /*Remitente Interno*/
-    /*Remitente Interno*/
     this.regSolicitud.remExterno.nomJuridico = this.solicitudes.solicitante.nombre !== undefined ? this.solicitudes.solicitante.nombre.toUpperCase() : '';
     this.regSolicitud.remExterno.nombre = this.solicitudes.solicitante.nombre !== undefined ? this.solicitudes.solicitante.nombre.toUpperCase() : '';
-    this.regSolicitud.remExterno.juridico = true;
-    console.info('Tipo1:' +this.solicitudes.solicitante.natural);
-    console.info('Tipo2:' +this.solicitudes.solicitante.juridico);
+    console.info('Tipo2:' + this.solicitudes.solicitante.juridico);
+    if (this.solicitudes.solicitante.juridico !== undefined) {
+      if (this.solicitudes.solicitante.juridico === 'juridico') {
+        this.regSolicitud.remExterno.juridico = true;
+      } else if (this.solicitudes.solicitante.juridico === 'natural') {
+        this.regSolicitud.remExterno.juridico = false;
+      }
+    } else {
+          alert('Debe seleccionar el tipo de solicitante');
+          return;
+    }
     //this.regSolicitud.remExterno.numDoc = this.solicitudes.solicitante.ci;
     this.regSolicitud.remExterno.fono1 = this.solicitudes.solicitante.fono1;
     this.regSolicitud.remExterno.email = this.solicitudes.solicitante.email;
-
-    // this.regSolicitud.solicitud.hojaRuta = this.h_ruta;
-    this.regSolicitud.solicitud.hojaRuta = '';//"";
-    this.regSolicitud.solicitud.solicCite = '';//this.cite;
+    this.regSolicitud.solicitud.hojaRuta = '';
+    this.regSolicitud.solicitud.solicCite = '';
     // this.regSolicitud.solicitud.solicCite = this.cite;
     console.log('TDOC:' + this.solicitudes.solicitud.tipDocSolicitud.cod);
     console.log('TDOC ID:' + this.solicitudes.solicitud.tipDocSolicitud.id);
@@ -150,11 +169,11 @@ export class RegistroExternoComponent implements OnInit {
     const link = ['home/consulta-correspondencia/'];
     this._serv.registroSolicitud(reg).subscribe(response => {
         console.log('response:' + JSON.stringify(response));
-          alert('Se realizo el registro exitosamente.');
-          this.regSolicitud = new RegistroInterno();
-          this.solicitudes = new Solicitudes();
-          this.router.navigate(link);
-          this.loading = false;
+        alert('Se realizo el registro exitosamente.');
+        this.regSolicitud = new RegistroInterno();
+        this.solicitudes = new Solicitudes();
+        this.router.navigate(link);
+        this.loading = false;
       },
       error => {
         alert('No se pudo concretar el registro, por  favor comuniquese con soporte tecnico o vuelva a intentar.');

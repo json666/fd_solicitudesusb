@@ -68,21 +68,13 @@
           <div class="col-md-6">
             <div class="form-group row">
               <label class="col-sm-3 col-form-label">Tipo Solicitante</label>
-              <div class="col-sm-4">
-                <div class="form-radio">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input"  value="natural"
-                           [(ngModel)]="solicitudes.solicitante.natural" name="natural" #natural="ngModel">
-                    Natural
-                  </label>
-                </div>
-              </div>
               <div class="col-sm-5">
                 <div class="form-radio">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input"
-                           [(ngModel)]="solicitudes.solicitante.juridico" name="juridico" #juridico="ngModel" value="juridico">
-                    Juridico
+                    <li  *ngFor="let item of ITEMS" style="display: inline; left: 10px; position: relative;">
+                    <input type="radio"
+                           [(ngModel)]="solicitudes.solicitante.juridico" name="juridico" #juridico="ngModel" value={{item.value}}>{{item.name}}
+                    </li>
                   </label>
                 </div>
               </div>
