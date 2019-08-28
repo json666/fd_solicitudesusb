@@ -101,6 +101,22 @@
               <i class="mdi mdi-message-text-outline"></i>Reporte C
             </ng-template>
             <ng-template ngbTabContent>
+              <div>
+                <div>
+                  <div style="display: block">
+                    <canvas baseChart
+                            [datasets]="barChartDataC"
+                            [labels]="barChartLabelsC"
+                            [options]="barChartOptionsC"
+                            [plugins]="barChartPluginsC"
+                            [legend]="barChartLegendC"
+                            [chartType]="barChartTypeC"
+                            [colors]="barChartColorsC">
+                    </canvas>
+                  </div>
+                  <button mat-button mat-raised-button color="primary" (click)="imprimirCasosInternoExterno()">Imprimir</button>
+                </div>
+              </div>
             </ng-template>
           </ngb-tab>
           <ngb-tab>

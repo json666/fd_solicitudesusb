@@ -38,6 +38,7 @@ export class ReportesComponent implements OnInit {
   yyyy: string;
   desde: string;
   hasta: string;
+
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
@@ -60,6 +61,41 @@ export class ReportesComponent implements OnInit {
   public barChartData: ChartDataSets[] = [
     {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
     {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+  ];
+  /*BarChart A*/
+  public barChartOptionsC: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: {xAxes: [{}], yAxes: [{}]},
+    legend: {
+      position: 'top',
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public barChartLabelsC: Label[] = ['Tipo Caso1', 'Tipo Caso2', 'Tipo Caso3', 'Tipo Caso4', 'Tipo Caso5', 'Tipo Caso6', 'Tipo Caso7'];
+  public barChartTypeC: ChartType = 'bar';
+  public barChartLegendC = true;
+  public barChartPluginsC = [pluginDataLabels];
+  public barChartColorsC = [
+    {
+      backgroundColor: ['rgba(255,0,0,0.3)', 'rgba(0,255,0,0.3)', 'rgba(0,0,255,0.3)', 'rgba(0,0,255,5.3)', 'rgba(0,1,255,0.3)', 'rgba(1,12,255,8.3)', 'rgba(1,12,90,0,3)']
+    },
+  ];
+
+  public barChartDataC: ChartDataSets[] = [
+    // {data: [65, 0, 0, 0, 0, 0, 0], label: 'Tipo Caso1'},
+    // {data: [0, 59, 0, 0, 0, 0, 0], label: 'Tipo Caso2'},
+    // {data: [0, 0, 80, 0, 0, 0, 0], label: 'Tipo Caso3'},
+    // {data: [0, 0, 0, 81, 0, 0, 0], label: 'Tipo Caso4'},
+    // {data: [0, 0, 0, 0, 60, 0, 0], label: 'Tipo Caso5'},
+    // {data: [0, 0, 0, 0, 0, 90, 0], label: 'Tipo Caso6'},
+    // {data: [0, 0, 0, 0, 0, 0, 84], label: 'Tipo Caso7'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Reporte por Tipo de Caso'}
   ];
   /* Chart PIE*/
   public pieChartOptions: ChartOptions = {
@@ -91,57 +127,6 @@ export class ReportesComponent implements OnInit {
 
   constructor(private messageService: MessageService,
               private _serv: CorrespondenciaService) {
-    /* this.anios=0;
-     for (var i=1900;i++;i<=2040) {
-         this.anios= this.anios+i;
-     }*/
-
-    /*this.data = {
-      labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-      datasets: [
-        {
-          label: 'Internos',
-          backgroundColor: '#42A5F5',
-          borderColor: '#1E88E5',
-          data: [100, 30, 25, 80, 56, 55, 40, 10, 30, 25, 80, 56]
-        },
-        {
-          label: 'Externos',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 60]
-        }
-      ]
-    };*/
-    /* this.data1 = {
-       labels: ['ASISTENCIA FAMILIAR', 'ASISTENCIA ACADEMICA', 'VIOLENCIA FAMILIAR',
-         'TRAFICO DE DROGRAS', 'MALTRATO PSICOLOGICO', 'INCENDIO PROVOCADO',
-         'ASISTENCIA PENAL', 'ASISTENCIA LABORAL'],
-       datasets: [
-         {
-           data: [35, 20, 20, 5, 3, 9, 2, 4],
-           backgroundColor: [
-             '#FF6384',
-             '#36A2EB',
-             '#FFCE56',
-             '#7CB342',
-             '#7f00ff',
-             '#ff2800',
-             '#ff0066',
-             '#808080'
-           ],
-           hoverBackgroundColor: [
-             '#FF6384',
-             '#36A2EB',
-             '#FFCE56',
-             '#7CB342',
-             '#7f00ff',
-             '#ff2800',
-             '#ff0066',
-             '#808080'
-           ]
-         }]
-     };*/
     this.data3 = {
       labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
       datasets: [
@@ -300,33 +285,7 @@ export class ReportesComponent implements OnInit {
         position: 'bottom'
       }
     };
-
-    /*this._serv.obtieneDatosEstadisticosC().subscribe(response => {
-      this.data4 = response;
-      this.loading = false;
-    });
-
-    this.options2 = {
-      title: {
-        display: true,
-        text: 'Casos atendidos por gestion.',
-        fontSize: 16
-      },
-      legend: {
-        position: 'bottom'
-      }
-    };*/
-    // this.cargarAnios();
   }
-
-  /*selectData(event) {
-    this.messageService.add({
-      severity: 'info',
-      summary: 'Data Selected',
-      'detail': this.data.datasets[event.element._datasetIndex].data[event.element._index]
-    });
-  }*/
-
   actualizarReporteA() {
     this.loading = true;
     let mes;
@@ -356,7 +315,7 @@ export class ReportesComponent implements OnInit {
     });
     this._serv.obtieneDatosEstadisticosB(this.pdesde, this.phasta).subscribe(response => {
       this.data1 = response;
-      console.info('Respues del servicio:'+ JSON.stringify(response));
+      console.info('Respues del servicio:' + JSON.stringify(response));
       this.pieChartLabels = this.data1.labels;
       this.pieChartData = this.data1.datasets[0].data;
       console.info('BackgroundColor' + this.data1.datasets[0].backgroundColor);
@@ -416,6 +375,7 @@ export class ReportesComponent implements OnInit {
   changeLegendPosition() {
     this.pieChartOptions.legend.position = this.pieChartOptions.legend.position === 'left' ? 'top' : 'left';
   }
+
   imprimirCasosPorTipoCaso() {
     window.open(environment.urlBackEndSolicitudUSB + 'registradas/pdf/tiposcasos/' + this.pdesde + '/' + this.phasta);
   }
