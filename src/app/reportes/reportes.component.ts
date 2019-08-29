@@ -227,6 +227,20 @@ export class ReportesComponent implements OnInit {
         }
       ];
     });
+    this._serv.obtieneDatosEstadisticosG(this.pdesde, this.phasta).subscribe(response => {
+      this.data = response;
+      this.barChartLabelsC = this.data.labels;
+      this.barChartColorsC = [
+        {
+          backgroundColor: this.data.backgroundColor
+        }
+      ];
+      this.barChartDataC = [
+        {data: this.data.datasets[0].data, label: this.data.datasets[0].label}
+      ];
+    });
+
+
     this.options = {
       title: {
         display: true,
@@ -286,6 +300,7 @@ export class ReportesComponent implements OnInit {
       }
     };
   }
+
   actualizarReporteA() {
     this.loading = true;
     let mes;

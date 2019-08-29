@@ -2,6 +2,7 @@ export class ReporteA {
 
   labels: string[];
   datasets: Datasets[];
+  backgroundColor: string[];
 
 }
 
