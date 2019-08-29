@@ -42,14 +42,39 @@ export class ReportesComponent implements OnInit {
   public barChartOptions: ChartOptions = {
     responsive: true,
     // We use these empty structures as placeholders for dynamic theming.
-    scales: {xAxes: [{}], yAxes: [{}]},
+    scales: {
+      xAxes: [{
+        barPercentage: 0.8,
+        // barThickness: 10,
+        // maxBarThickness: 50,
+        // gridLines: {
+        //   offsetGridLines: false
+        // }
+      }], yAxes: [{
+        // barThickness: 20,
+        // maxBarThickness: 50,
+        // gridLines: {
+        //   offsetGridLines: false
+        // }
+      }]
+    },
     legend: {
-      position: 'bottom',
+      position: 'left',
+      display: true,
+      labels: {fontColor: '#000000'}
     },
     plugins: {
       datalabels: {
         anchor: 'end',
         align: 'end',
+      },
+      layout: {
+        padding: {
+          left: 70,
+          right: 10,
+          top: 10,
+          bottom: 30
+        }
       }
     }
   };
@@ -69,11 +94,21 @@ export class ReportesComponent implements OnInit {
     scales: {xAxes: [{}], yAxes: [{}]},
     legend: {
       position: 'top',
+      display: true,
+      labels: {fontColor: '#000000'}
     },
     plugins: {
       datalabels: {
         anchor: 'end',
         align: 'end',
+      }
+    },
+    layout: {
+      padding: {
+        left: 70,
+        right: 10,
+        top: 10,
+        bottom: 30
       }
     }
   };
@@ -101,7 +136,9 @@ export class ReportesComponent implements OnInit {
   public pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
-      position: 'top',
+      position: 'left',
+      display: true,
+      labels: {fontColor: '#000000'}
     },
     plugins: {
       datalabels: {
@@ -109,7 +146,26 @@ export class ReportesComponent implements OnInit {
           const label = ctx.chart.data.labels[ctx.dataIndex];
           return label;
         },
+        font: {
+          weight: 'bold',
+          size: 8
+        },
+        color: '#FFF'
       },
+    },
+    layout: {
+      padding: {
+        left: 70,
+        right: 10,
+        top: 10,
+        bottom: 30
+      }
+    },
+    title: {
+      display: true,
+      fontSize: 14,
+      text: 'Custom Chart Title'
+
     }
   };
   public datosPie: any [];
@@ -226,6 +282,7 @@ export class ReportesComponent implements OnInit {
           backgroundColor: this.data1.datasets[0].backgroundColor
         }
       ];
+
     });
     this._serv.obtieneDatosEstadisticosG(this.pdesde, this.phasta).subscribe(response => {
       this.data = response;
