@@ -27,7 +27,7 @@
     "compass-mixins": "^0.12.10",
     "core-js": "^2.6.9",
     "font-awesome": "^4.7.0",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "m": "^1.5.3",
     "mdi": "^2.2.43",
     "ng2-completer": "^2.0.8",
